@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+@import "page/_home";
+
+@import "templates/_sprite";
+@import "sprite/built/_@1x";
+@import "sprite/built/_@2x";
+@import "sprite/_icons";
+
+html, body {
+	height: 100%;
+
+    .my-class {
+        background: black;
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mazarine-grunt-kitstarter",
+  "version": "0.1.2",
+  "ignore": [
+    ".jshintrc",
+    "**/*.txt",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/vendor",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "requirejs": "~2.1.15",
+    "almond": "~0.3.0",
+    "jquery": "~1.11.0"
+    },
+  "authors": ["Mazarine Digital"],
+  "keywords": [],
+  "license": "MIT"
+}

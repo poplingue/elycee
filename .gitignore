@@ -7,4 +7,10 @@
 /app/phpunit.xml
 /composer.phar
 /web/bundles/
+/vendor
+/bin
 .idea
+preprocess/node_modules
+preprocess/bower_components
+*.phar
+.sass-cache

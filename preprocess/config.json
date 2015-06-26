@@ -1,0 +1,16 @@
+{
+    "js_path": "./src/js",
+    "vendor_path": "./src/vendor",
+    "precompiled_path": "./src/precompiled",
+    "img_path": "./src/img",
+    "sass_path": "./src/scss",
+    "bower_path": "./bower_components",
+
+    "public_path": "../web",
+    "css_dir": "css",
+    "js_dir": "js",
+
+    "require_include_modules" : ["main"],
+    "bower_main_files":{},
+    "bower_dependencies":{}
+}
