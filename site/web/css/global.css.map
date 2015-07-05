@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";AAAA,IAAI;EACH,UAAU,EAAE,IAAI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;ACQjB,UAAW;EACV,MAAM,EAAE,IAAI;;EAET,8BAAU;IACN,UAAU,EAAE,KAAK",
-"sources": ["../../preprocess/src/scss/page/_home.scss","../../preprocess/src/scss/global.scss"],
-"names": [],
-"file": "global.css"
-}

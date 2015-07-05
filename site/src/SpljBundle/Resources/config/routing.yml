@@ -1,0 +1,3 @@
+splj_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: SpljBundle:Default:index }

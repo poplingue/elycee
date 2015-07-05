@@ -1,3 +1,8 @@
+splj:
+    resource: "@SpljBundle/Controller/"
+    prefix:   /
+    type:     annotation
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

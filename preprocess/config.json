@@ -6,7 +6,7 @@
     "sass_path": "./src/scss",
     "bower_path": "./bower_components",
 
-    "public_path": "../web",
+    "public_path": "../site/web/bundles/splj",
     "css_dir": "css",
     "js_dir": "js",
 

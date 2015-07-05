@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="keywords" content="keyword1,keyword2"
+        <meta name="description" content="100 mots max">
+        <!-- compatibilité IE -->
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <!-- Rétro compatibilité -->
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <![endif]-->
+        <!--[if gte IE 7]><html class="ie ie7plus" lang="fr"><![endif]-->
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/splj/css/theme/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/splj/css/theme/font-awesome.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/splj/css/theme/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/splj/css/theme/style-responsive.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/splj/css/global.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body class="{% block class %}{% endblock %}">
+        <header class="header black-bg">
+            <div class="sidebar-toggle-box">
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+            </div>
+            <a href="{{ url('splj.window.index')}}" class="logo"><b>Collège - Lycée Saint-Paul-le-Jeune</b></a>
+            <div class="top-menu">
+                <ul class="nav pull-right top-menu">
+                <li><a class="logout" href="{{ url('splj.window.login')}}">Login</a></li>
+                </ul>
+            </div>
+        </header>
+    	{%include ('SpljBundle:Bloc:aside.html.twig') %}
+        <section id="main-content">
+            <section class="wrapper">
+                <div class="row">
+                    <div class="col-lg-9">
+                        {% block body %}{% endblock %}
+                    </div>
+                    <div class="col-lg-3 ds">
+                        {% block rightCol %}{% endblock %}
+                    </div>
+                </div>
+            </section>
+        </section>
+        {%include ('SpljBundle:Bloc:bottom.html.twig') %}
+    </body>
+</html>

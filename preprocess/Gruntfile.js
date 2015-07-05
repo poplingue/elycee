@@ -38,7 +38,7 @@ module.exports = function(grunt) {
                         '<%= config.js_path %>/**/*.js',
                         '!<%= config.js_path %>/**/_*.js' // IGNORED
                     ],
-                    '<%= config.public_path %>/<%= config.js_dir %>/vendor.js': [
+                    '<%= config.public_path %>/vendor/vendor.js': [
                         '<%= config.bower_path %>/bower.js',
                         '<%= config.vendor_path %>/**/*.js',
                         '<%= config.bower_path %>/requirejs/require.js',
@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                         '<%= config.js_path %>/**/*.js',
                         '!<%= config.js_path %>/**/_*.js' // IGNORED
                     ],
-                    '<%= config.public_path %>/<%= config.js_dir %>/vendor.js': [
+                    '<%= config.public_path %>/vendor/vendor.js': [
                         '<%= config.bower_path %>/bower.js',
                         '<%= config.vendor_path %>/**/*.js',
                         '<%= config.bower_path %>/almond/almond.js',

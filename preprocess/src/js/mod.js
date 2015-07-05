@@ -1,3 +1,2 @@
-define('mod', ['templates/mod'], function(template){
-    console.log(template());
+define('mod', function(){
 });
