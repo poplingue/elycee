@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
 @import "page/_home";
+@import "_common";
+@import "_theme";
 
 @import "templates/_sprite";
 @import "sprite/built/_@1x";
