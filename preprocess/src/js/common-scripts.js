@@ -15,7 +15,6 @@ $(function() {
 
 var Script = function () {
 
-
 //    sidebar dropdown menu auto scrolling
 
     jQuery('#sidebar .sub-menu > a').click(function () {

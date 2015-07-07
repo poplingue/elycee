@@ -252,20 +252,20 @@ ul.top-menu > li > .logout {
 
 
 /*sidebar navigation*/
-
-#sidebar {
-    width: 210px;
-    height: 100%;
-    position: fixed;
-    background: #fff;
+@media screen and(min-width: 768px){
+    #sidebar {
+        width: 210px;
+        height: 100%;
+        position: fixed;
+    }
 }
 
 #sidebar h5 {
     color: $yellow;
+    font-weight: 700;
     .dashboard & {
         color: $blue;
     }
-	font-weight: 700;
 }
 
 #sidebar ul li {
@@ -290,6 +290,7 @@ ul.sidebar-menu , ul.sidebar-menu li ul.sub{
 }
 
 ul.sidebar-menu {
+    background: #fff;
     margin-top: 75px;
 }
 
@@ -450,6 +451,9 @@ a.logo {
     float: left;
     margin-top: 15px;
     text-transform: uppercase;
+    @media screen and(max-width: 640px){
+        display: none;
+    }
 }
 
 a.logo b {

@@ -33,13 +33,18 @@
         </header>
     	{%include ('SpljBundle:Bloc:aside.html.twig') %}
         <section id="main-content">
-            <section class="wrapper">
-                <div class="row">
-                    <div class="col-lg-9">
-                        {% block body %}{% endblock %}
-                    </div>
-                    <div class="col-lg-3 ds">
-                        {% block rightCol %}{% endblock %}
+            <section class="wrapper site-min-height">
+                <h1><i class="fa fa-angle-right"></i>Nos derniers articles</h1>
+                <div class="row mt">
+                    <div class="col-lg-12">
+                        <div class="row mt">
+                            <div class="col-lg-9">
+                                {% block body %}{% endblock %}
+                            </div>
+                            <div class="col-lg-3 ds">
+                                {% block rightCol %}{% endblock %}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

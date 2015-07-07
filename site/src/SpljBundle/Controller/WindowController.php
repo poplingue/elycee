@@ -33,4 +33,43 @@ class WindowController extends Controller
     {
        return array();
     }
+
+      /**
+    * @Route(
+    * 	"/home/etablissement",
+    * 	name="splj.window.estate"
+    * )
+    *
+    * @Template("SpljBundle:Window:estate.html.twig")
+    */
+    public function estateAction()
+    {
+       return array();
+    }
+
+      /**
+    * @Route(
+    * 	"/home/statistiques",
+    * 	name="splj.window.stats"
+    * )
+    *
+    * @Template("SpljBundle:Window:stats.html.twig")
+    */
+    public function statsAction()
+    {
+       return array();
+    }
+
+       /**
+    * @Route(
+    * 	"/home/titre",
+    * 	name="splj.window.article"
+    * )
+    *
+    * @Template("SpljBundle:Window:article.html.twig")
+    */
+    public function articleAction()
+    {
+       return array();
+    }
 }
