@@ -1,38 +1,96 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %}Home{% endblock %}
 {% block class %}home{% endblock %}
+{% block h1 %}nos derniers articles{% endblock %}
 {% block body %}
+<div class="row mtbox">
 	<ul class="wrap-list">
-		<li>
-			<div class="col-lg-4 text-center">
-				<figure>
-					<a href="">
-						<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
-					</a>
-				</figure>
-			</div>
-			<div class="col-lg-8">
-				<strong><a href="{{ url('splj.window.article')}}">Titre</a></strong>
-				<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas.</figcaption>
-			</div>
-		</li>
-		<li class="article">
-			<div class="col-lg-4 text-center">
-				<figure>
-					<a href="">
-						<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
-					</a>
-				</figure>
-			</div>
-			<div class="col-lg-8">
-				<strong><a href="">Titre</a></strong>
-				<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas.</figcaption>
-			</div>
-		</li>
+		<div class="col-md-6 col-sm-6 mb">
+			<li class="article white-panel pn donut-chart">
+				<div class="white-header">
+					<h3><a href="{{ url('splj.window.article')}}">TitreTitreTitreTitre Titre</a></h3>
+				</div>
+				<div class="text-left">
+					<div class="infos">
+						<span>publié le </span><date>25/05/2015</date><span> - par <span>Auteur</span></span>
+					</div>
+					<figure class="text-center">
+						<a href="{{ url('splj.window.article')}}">
+							<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
+						</a>
+					</figure>
+				</div>
+				<div class="">
+					<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas<a href="{{ url('splj.window.article')}}">...Lire la suite</a></figcaption>
+					<p class="comments">3 commentaires</p>
+				</div>
+			</li>
+		</div>
+		<div class="col-md-6 col-sm-6 mb">
+			<li class="article white-panel pn donut-chart">
+				<div class="white-header">
+					<h3><a href="{{ url('splj.window.article')}}">TitreTitreTitreTitre Titre</a></h3>
+				</div>
+				<div class="text-left">
+					<div class="infos">
+						<span>publié le </span><date>25/05/2015</date><span> - par <span>Auteur</span></span>
+					</div>
+					<figure class="text-center">
+						<a href="{{ url('splj.window.article')}}">
+							<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
+						</a>
+					</figure>
+				</div>
+				<div class="">
+					<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas<a href="{{ url('splj.window.article')}}">...Lire la suite</a></figcaption>
+					<p class="comments">3 commentaires</p>
+				</div>
+			</li>
+		</div>
+		<div class="col-md-6 col-sm-6 mb">
+			<li class="article white-panel pn donut-chart">
+				<div class="white-header">
+					<h3><a href="{{ url('splj.window.article')}}">TitreTitreTitreTitre Titre</a></h3>
+				</div>
+				<div class="text-left">
+					<div class="infos">
+						<span>publié le </span><date>25/05/2015</date><span> - par <span>Auteur</span></span>
+					</div>
+					<figure class="text-center">
+						<a href="{{ url('splj.window.article')}}">
+							<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
+						</a>
+					</figure>
+				</div>
+				<div class="">
+					<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas<a href="{{ url('splj.window.article')}}">...Lire la suite</a></figcaption>
+					<p class="comments">3 commentaires</p>
+				</div>
+			</li>
+		</div>
+		<div class="col-md-6 col-sm-6 mb">
+			<li class="article white-panel pn donut-chart">
+				<div class="white-header">
+					<h3><a href="{{ url('splj.window.article')}}">TitreTitreTitreTitre Titre</a></h3>
+				</div>
+				<div class="text-left">
+					<div class="infos">
+						<span>publié le </span><date>25/05/2015</date><span> - par <span>Auteur</span></span>
+					</div>
+					<figure class="text-center">
+						<a href="{{ url('splj.window.article')}}">
+							<img src="{{ asset('bundles/splj/img/articles/thumb/th_01.jpg') }}" alt="">
+						</a>
+					</figure>
+				</div>
+				<div class="">
+					<figcaption>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut quae ipsa atque assumenda animi porro corporis dicta aliquam voluptas<a href="{{ url('splj.window.article')}}">...Lire la suite</a></figcaption>
+					<p class="comments">3 commentaires</p>
+				</div>
+			</li>
+		</div>
 	</ul>
-{% endblock %}
-{% block rightCol %}
-	<h3>à lire aussi...</h3>
+</div>
 {% endblock %}
 	          	
 

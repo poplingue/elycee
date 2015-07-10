@@ -20,4 +20,30 @@ class DashteacherController extends Controller
     {
        return array();
     }
+
+    /**
+    * @Route(
+    *   "/dashboard-teacher/list-qcm",
+    *   name="splj.dashTeacher.list-qcm"
+    * )
+    *
+    * @Template("SpljBundle:DashTeacher:list-qcm.html.twig")
+    */
+    public function qcmAction()
+    {
+       return array();
+    }
+
+    /**
+    * @Route(
+    *   "/dashboard-teacher/list-article",
+    *   name="splj.dashTeacher.list-article"
+    * )
+    *
+    * @Template("SpljBundle:DashTeacher:list-article.html.twig")
+    */
+    public function articleAction()
+    {
+       return array();
+    }
 }

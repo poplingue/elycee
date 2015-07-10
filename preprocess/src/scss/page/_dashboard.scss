@@ -1,0 +1,11 @@
+.dashboard{
+	.fa-bars{
+		color: $yellow;
+	}
+	.sub-menu{
+		display: none;
+		&.li-dashboard{
+			display: block;
+		}
+	}
+}

@@ -23,7 +23,13 @@
             <div class="sidebar-toggle-box">
                 <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
             </div>
-            <a href="{{ url('splj.window.index')}}" class="logo"><b>Collège - Lycée Saint-Paul-le-Jeune</b></a>
+            <div class="wrap-logo">
+                <a href="{{ url('splj.window.index')}}" class="logo">
+                <img src="/bundles/splj/img/logo_60_yellow.jpg" class="img-circle" width="60">
+                <!-- <img src="/bundles/splj/img/logo_60.jpg" class="img-circle" width="60"> -->
+                <b>Collège - Lycée Saint-Paul-le-Jeune</b>
+                </a>
+            </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                 <li><a class="logout" href="{{ url('splj.window.login')}}">Login</a></li>
@@ -34,17 +40,13 @@
     	{%include ('SpljBundle:Bloc:aside.html.twig') %}
         <section id="main-content">
             <section class="wrapper site-min-height">
-                <h1><i class="fa fa-angle-right"></i>Nos derniers articles</h1>
-                <div class="row mt">
-                    <div class="col-lg-12">
-                        <div class="row mt">
-                            <div class="col-lg-9">
-                                {% block body %}{% endblock %}
-                            </div>
-                            <div class="col-lg-3 ds">
-                                {% block rightCol %}{% endblock %}
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-lg-9 main-chart">
+                        <h1>{% block h1 %}{% endblock %}</h1>
+                        {% block body %}{% endblock %}
+                    </div>
+                    <div class="col-lg-3 ds">
+                       {%include ('SpljBundle:Bloc:right-col.html.twig') %}
                     </div>
                 </div>
             </section>

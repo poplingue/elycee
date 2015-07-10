@@ -1,9 +1,7 @@
 <aside>
     <div id="sidebar"  class="nav-collapse ">
         <ul class="sidebar-menu" id="nav-accordion">
-        <p class="centered"><a href="profile.html"><img src="{{ asset('bundles/splj/img/logo_60.jpg') }}" class="img-circle" width="60"></a></p>
-            <h5 class="centered">Saint-Paul-le-Jeune</h5>
-            <li class="sub-menu">
+            <li class="sub-menu li-dashboard">
                 <a class="active" href="{{ url('splj.window.index')}}">
                     <i class="fa fa-home"></i>
                     <span>Accueil</span>
@@ -31,6 +29,18 @@
                 <a href="">
                     <i class="fa fa-search"></i>
                     <span>Recherche</span>
+                </a>
+            </li>
+            <li class="sub-menu li-dashboard">
+                <a href="{{ url('splj.dashTeacher.list-qcm')}}">
+                    <i class="fa fa-question-circle"></i>
+                    <span>QCM</span>
+                </a>
+            </li>
+            <li class="sub-menu li-dashboard">
+                <a href="{{ url('splj.dashTeacher.list-article')}}">
+                    <i class="fa fa-file-text"></i>
+                    <span>Articles</span>
                 </a>
             </li>
         </ul>
