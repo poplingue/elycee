@@ -1,1 +1,35 @@
-articles
+{%extends "SpljBundle:Bloc:skeleton.html.twig"%}
+{% block title %}List Articles{% endblock %}
+{% block class %}dashboard article{% endblock %}
+{% block h1 %}liste des article{% endblock %}
+{% block link %}
+    <li><a class="logout" href="{{ url('splj.window.index')}}">Logout</a></li>
+{% endblock %}
+{% block body %}
+<table class="table table-striped table-advance table-hover">
+    <thead>
+        <tr>
+            <th><i class="fa fa-heart-o"></i>Titre</th>
+            <th class="hidden-phone"><i class="fa fa-male"></i>Auteur</th>
+            <th><i class="fa fa-calendar"></i>Date</th>
+            <th><i class=" fa fa-dot-circle-o"></i> Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        {% for article in article %}
+            <td><a href="basic_table.html#">{{ article.title }}</a></td>
+            <td class="hidden-phone">{{ article.author }}</td>
+            <td>{{ article.date }}</td>
+            <td><span class="label label-info label-mini">{{ article.statut }}</span></td>
+            <td>
+                <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
+                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

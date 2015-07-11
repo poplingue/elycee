@@ -8,18 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DashteacherController extends Controller
 {
-	/**
-    * @Route(
-    * 	"/dashboard-teacher",
-    * 	name="splj.dashTeacher.index"
-    * )
-    *
-    * @Template("SpljBundle:DashTeacher:index.html.twig")
-    */
-    public function indexAction()
-    {
-       return array();
-    }
 
     /**
     * @Route(
@@ -29,9 +17,21 @@ class DashteacherController extends Controller
     *
     * @Template("SpljBundle:DashTeacher:list-qcm.html.twig")
     */
-    public function qcmAction()
+    public function listQcmAction()
     {
-       return array();
+       $qcm = array(
+         [
+            'id' => '0',
+            'sujet' => 'la procrastination',
+            'theme' => 'branleur',
+            'author' => 'titi',
+            'statut' => 'publié'
+
+        ]);
+
+       return array(
+        "qcm" => $qcm
+        );
     }
 
     /**
@@ -42,8 +42,20 @@ class DashteacherController extends Controller
     *
     * @Template("SpljBundle:DashTeacher:list-article.html.twig")
     */
-    public function articleAction()
+    public function listArticleAction()
     {
-       return array();
+       $article = array(
+         [
+            'id' => '0',
+            'title' => 'lorem rem',
+            'author' => 'branleur',
+            'date' => '27/06/2015',
+            'statut' => 'publié'
+
+        ]);
+
+       return array(
+        "article" => $article
+        );
     }
 }
