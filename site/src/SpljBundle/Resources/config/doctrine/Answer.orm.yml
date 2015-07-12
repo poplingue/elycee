@@ -1,0 +1,18 @@
+SpljBundle\Entity\Answer:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        answer:
+            type: text
+        correct:
+            type: boolean
+        idQuestion:
+            type: integer
+            column: id_question
+    lifecycleCallbacks: {  }

@@ -1,0 +1,22 @@
+SpljBundle\Entity\Mcq:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: '100'
+        theme:
+            type: string
+            length: '100'
+        published:
+            type: boolean
+        nbQuestions:
+            type: integer
+            column: nb_questions
+    lifecycleCallbacks: {  }

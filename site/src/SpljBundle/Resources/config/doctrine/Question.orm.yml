@@ -1,0 +1,16 @@
+SpljBundle\Entity\Question:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        question:
+            type: text
+        idQcm:
+            type: integer
+            column: id_qcm
+    lifecycleCallbacks: {  }

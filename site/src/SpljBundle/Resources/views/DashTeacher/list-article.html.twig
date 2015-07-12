@@ -1,11 +1,9 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %}List Articles{% endblock %}
 {% block class %}dashboard article{% endblock %}
-{% block h1 %}liste des article{% endblock %}
-{% block link %}
-    <li><a class="logout" href="{{ url('splj.window.index')}}">Logout</a></li>
-{% endblock %}
+{% block h1 %}liste des articles{% endblock %}
 {% block body %}
+<a class="btn add" href="{{ url('splj.dashTeacher.create-article')}}"><i class="fa fa-plus-square"></i>article</a>
 <table class="table table-striped table-advance table-hover">
     <thead>
         <tr>
@@ -19,7 +17,7 @@
     <tbody>
         <tr>
         {% for article in article %}
-            <td><a href="basic_table.html#">{{ article.title }}</a></td>
+            <td><a href="">{{ article.title }}</a></td>
             <td class="hidden-phone">{{ article.author }}</td>
             <td>{{ article.date }}</td>
             <td><span class="label label-info label-mini">{{ article.statut }}</span></td>

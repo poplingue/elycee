@@ -1,0 +1,38 @@
+.public-window{
+	.nav.pull-right{
+		li:nth-child(2){
+			display: none;
+		}
+	}
+	&.home{
+		.main-chart h3{
+			padding: 10px;
+			text-transform: uppercase;
+			font-size: 14px;
+		}
+		figcaption{
+			display: inline-block;
+			text-align: left;
+			padding: 15px 5px 0 5px;
+		}
+		.infos{
+			padding: 8px 0;
+		}
+		.comments{
+			text-align: right;
+			padding: 4px;
+		}
+	}
+	&.estate{
+		#main-content img{
+			width: 100%;
+			height: auto;
+			max-width: 720px;
+			margin: 0 auto;
+			padding: 15px 0;
+		}
+		.detail span{
+			text-transform: italic;
+		}
+	}
+}
