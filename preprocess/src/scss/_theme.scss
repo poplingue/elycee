@@ -33,20 +33,16 @@ a, a:hover, a:focus {
     background: $blue;
     }
     .dashboard &{
-        background: $yellow;
+        background: $grey-light;
     }
     color: #fff;
 }
 ::-moz-selection {
     background: $blue;
-    .dashboard & {
-
-    background: $blue;
-    }
-    .dashboard &{
-        background: $yellow;
-    }
     color: #fff;
+    .dashboard &{
+        background: $grey-light;
+    }
 }
 
 #container {
@@ -112,7 +108,7 @@ a, a:hover, a:focus {
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
   color: #fff;
-  background-color: $yellow;
+  background-color: $grey-light;
   border-color: $blue;
 }
 
@@ -173,33 +169,19 @@ hr {
 
 .label-theme {
     background-color: $blue;
-    .dashboard & {
-
-    background-color: $blue;
-    }
-}
-
-.bg-theme {
-    background-color: $blue;
-    .dashboard & {
-
-    background-color: $blue;
-    }
 }
 
 ul.top-menu > li > .logout {
     background: $blue;
-    color: $yellow;
+    color: $grey-light;
     font-size: 12px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border: 1px solid #c9aa5f !important;
+    border: 1px solid $grey-light !important;
     padding: 5px 15px;
     margin-right: 15px;
     margin-top: 15px;
     .dashboard & {
         color: $blue;
-        background: $yellow;
+        background: $grey-light;
     }
 }
 
@@ -219,7 +201,7 @@ ul.top-menu > li > .logout {
 }
 
 #sidebar h5 {
-    color: $yellow;
+    color: $grey-light;
     font-weight: 700;
     padding: 5px 0;
     .dashboard & {
@@ -311,8 +293,6 @@ ul.sidebar-menu li ul.sub li.active a {
 ul.sidebar-menu li{
     /*line-height: 20px !important;*/
     margin-bottom: 5px;
-    margin-left:10px;
-    margin-right:10px;
 }
 
 ul.sidebar-menu li.sub-menu{
@@ -340,7 +320,7 @@ ul.sidebar-menu li a{
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
     background: $blue;
     .dashboard & {
-        background: $yellow;
+        background: $grey-light;
     }
     color: #fff;
     display: block;
@@ -391,7 +371,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #fff;
+    background: $grey-light;
     .dashboard &{
         background: $blue;
     }
@@ -446,21 +426,17 @@ a.logo span {
 ul.top-menu > li > a {
     color: #666666;
     font-size: 16px;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
     border:1px solid #666666 !important;
     padding: 2px 6px;
     margin-right: 15px;
 }
 
 ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
-    border:1px solid #b6b6b6 !important;
+    border:1px solid $grey-dark !important;
     background-color: transparent !important;
-    border-color: #b6b6b6 !important;
+    border-color: $grey-dark !important;
     text-decoration: none;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
-    color: #b6b6b6 !important;
+    color: $grey-dark !important;
 }
 
 .notify-row .badge {
@@ -754,7 +730,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	line-height: 60px;
 	height: 60px;
 	margin: 0;
-	background: $yellow;
+	background: $blue;
 	text-align: center;
 }
 
@@ -794,11 +770,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .ds a {
-    color: $blue;
-    .dashboard & {
-
-    color: $blue;
-    }
+    color: $grey-dark;
 }
 
 /* LINE ICONS CONFIGURATION */
@@ -1805,8 +1777,6 @@ label {
 
 /* TOGGLE CONFIGURATION */
 .has-switch {
-    border-radius: 30px;
-    -webkit-border-radius: 30px;
     display: inline-block;
     cursor: pointer;
     line-height: 1.231;
@@ -1848,7 +1818,7 @@ label {
 }
 .has-switch > div.switch-off label {
     background-color: $blue;
-    border-color: $yellow;
+    border-color: $grey-light;
     -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
     -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
     box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
@@ -1857,7 +1827,7 @@ label {
     left: 0%;
 }
 .has-switch > div.switch-on label {
-    background-color: $yellow;
+    background-color: $grey-light;
 }
 .has-switch input[type=checkbox] {
     display: none;
@@ -1886,13 +1856,11 @@ label {
     -webkit-backface-visibility: hidden;
 }
 .has-switch span.switch-left {
-    border-radius: 30px 0 0 30px;
-    background-color: $yellow;
+    background-color: $grey-light;
     color: #fff;
     border-left: 1px solid transparent;
 }
 .has-switch span.switch-right {
-    border-radius: 0 30px 30px 0;
     background-color: $blue;
     color: #ffffff;
     text-indent: 7px;
@@ -1902,11 +1870,9 @@ label {
 }
 .has-switch label {
     border: 3px solid $blue;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
     float: left;
     height: 29px;
-    margin: 0 -21px 0 -14px;
+    margin: 0 -21px 0 -13px;
     padding: 0;
     position: relative;
     vertical-align: middle;

@@ -11,9 +11,9 @@ SpljBundle\Entity\Article:
         title:
             type: string
             length: 255
-        author:
-            type: string
-            length: '100'
+        userId:
+            type: integer
+            column: user_id
         date:
             type: date
         image:

@@ -1,6 +1,8 @@
 .dashboard{
-	.fa-bars{
-		color: $yellow;
+	.wrap-logo{
+		a.logo{
+			color: $grey-light;
+		}
 	}
 	.main-chart{
 		h1{

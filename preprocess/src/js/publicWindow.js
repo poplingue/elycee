@@ -9,10 +9,10 @@ define('publicWindow', function(){
 			if (body.hasClass('public-window home')) {
 				$('.sub-menu').eq(1).find('a').addClass('active');
 			}
-			else if(body.hasClass('public-window', 'estate')){
+			else if(body.hasClass('public-window estate')){
 				$('.sub-menu').eq(2).find('a').addClass('active');
 			}
-			else if(body.hasClass('public-window', 'contact')){
+			else if(body.hasClass('public-window contact')){
 				$('.sub-menu').eq(3).find('a').addClass('active');
 			}
 		}

@@ -20,9 +20,9 @@ class Article
     private $title;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $author;
+    private $userId;
 
     /**
      * @var \DateTime
@@ -44,7 +44,7 @@ class Article
      */
     private $extract;
 
-      /**
+    /**
      * @var string
      */
     private $status;
@@ -84,26 +84,26 @@ class Article
     }
 
     /**
-     * Set author
+     * Set userId
      *
-     * @param string $author
+     * @param integer $userId
      * @return Article
      */
-    public function setAuthor($author)
+    public function setUserId($userId)
     {
-        $this->author = $author;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get author
+     * Get userId
      *
-     * @return string 
+     * @return integer 
      */
-    public function getAuthor()
+    public function getUserId()
     {
-        return $this->author;
+        return $this->userId;
     }
 
     /**
@@ -201,7 +201,7 @@ class Article
     /**
      * Set status
      *
-     * @param string $status
+     * @param integer $status
      * @return Article
      */
     public function setStatus($status)
@@ -214,7 +214,7 @@ class Article
     /**
      * Get status
      *
-     * @return string 
+     * @return integer 
      */
     public function getStatus()
     {

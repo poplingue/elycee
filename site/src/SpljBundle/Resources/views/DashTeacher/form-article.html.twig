@@ -3,7 +3,15 @@
 {% block class %}dashboard crud-article{% endblock %}
 {% block h1 %}créer un article{% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
+<form class="form-horizontal style-form" action="{{ path('splj.dashTeacher.create-article') }}" method="POST" {{ form_enctype(form) }} novalidate>
+    <div class="form-group">
+        <div class="col-sm-10">
+            {{ form_widget(form.user_id, {'value' : 1},
+                { 'attr' : { 'class' : 'form-control' }}
+                 )
+            }}
+        </div>
+    </div>
     <div class="form-group">
         <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
         <div class="col-sm-10">
@@ -51,7 +59,7 @@
         </div>
     </div>
     <div class="wrap-submit">
-        <button type="submit" class="btn btn-theme">créer</button> 
+        <input type="submit" class="btn btn-theme" value="créer" /> 
     </div>
 </form>
 {% endblock %}

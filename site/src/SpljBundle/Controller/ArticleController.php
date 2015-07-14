@@ -10,6 +10,8 @@ use SpljBundle\Entity\Article;
 use SpljBundle\Form\ArticleType;
 use Symfony\Component\HttpFoundation\Request as Request;
 
+use Doctrine\Common\Util\Debug as Debug;
+
 class ArticleController extends Controller
 {
 
@@ -53,15 +55,27 @@ class ArticleController extends Controller
     * )
     *
     * @Template("SpljBundle:DashTeacher:form-article.html.twig")
+    * 
     */
     public function createArticleAction(Request $request)
     {
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+        $src = $doctrine->getRepository('SpljBundle:Article');
+
         $entity = new Article();
         $type = new ArticleType();
         
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
         
+        if($form->isSubmitted()){
+
+            $data = $form->getData();
+            $em->persist($data);
+            $em->flush();
+        }
+
         return array(
             'form' => $form->createView()
         );

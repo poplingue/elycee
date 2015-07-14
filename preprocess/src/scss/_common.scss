@@ -1,6 +1,6 @@
-$yellow: #FFD32C;
-$blue: #333399;
-$grey-dark: rgb(121,121,121);
+$grey-light: #CCCCCC;
+$blue: #9966FF;
+$grey-dark: #666666;
 
 h1{
 	font-size: 22px;
@@ -16,7 +16,6 @@ h1{
 		vertical-align: middle;
 	}
 	a.logo {
-		color: $yellow;
 	    font-size: 20px;
 	    margin-top: 15px;
 	}
@@ -46,6 +45,9 @@ h1{
 			padding-left: 6px;
 		}
 	}
+	a:hover{
+		color: $grey-dark;
+	}	
 }
 .li-dashboard, span.dashboard{
 	display: none;

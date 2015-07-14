@@ -60,19 +60,19 @@ var Script = function() {
     // custom scrollbar
     $("#sidebar").niceScroll({
         styler: "fb",
-        cursorcolor: "#333399",
+        cursorcolor: "#9966FF",
         cursorwidth: "2",
         cursorborderradius: "10px",
-        background: "#797979",
+        background: "#666666",
         spacebarenabled: false,
         cursorborder: ""
     });
     $("html").niceScroll({
         styler: "fb",
-        cursorcolor: "#333399",
+        cursorcolor: "#9966FF",
         cursorwidth: "4",
         cursorborderradius: "10px",
-        background: "#797979",
+        background: "#666666",
         spacebarenabled: false,
         cursorborder: "",
         zindex: "1000"
@@ -112,7 +112,7 @@ define("dashboard", function() {
         init: function init() {
             var body = $("body");
             if (body.hasClass("dashboard")) {
-                $(".wrap-logo img").attr("src", "/bundles/splj/img/logo_60_yellow.jpg");
+                $(".wrap-logo img").attr("src", "/bundles/splj/img/logo_60_grey.jpg");
                 $("#main-content .col-lg-3").remove();
                 $("#main-content .col-lg-9").removeClass().addClass("col-lg-12 main-chart");
             }
@@ -139,9 +139,9 @@ define("publicWindow", function() {
             var body = $("body");
             if (body.hasClass("public-window home")) {
                 $(".sub-menu").eq(1).find("a").addClass("active");
-            } else if (body.hasClass("public-window", "estate")) {
+            } else if (body.hasClass("public-window estate")) {
                 $(".sub-menu").eq(2).find("a").addClass("active");
-            } else if (body.hasClass("public-window", "contact")) {
+            } else if (body.hasClass("public-window contact")) {
                 $(".sub-menu").eq(3).find("a").addClass("active");
             }
         }

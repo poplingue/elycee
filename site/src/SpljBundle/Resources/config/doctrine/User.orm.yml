@@ -1,0 +1,19 @@
+SpljBundle\Entity\User:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '100'
+        email:
+            type: string
+            length: '100'
+        type:
+            type: boolean
+    lifecycleCallbacks: {  }

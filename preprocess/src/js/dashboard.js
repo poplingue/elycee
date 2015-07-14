@@ -6,7 +6,7 @@ define('dashboard', function(){
 
 		    var body = $('body');
 	    	if (body.hasClass('dashboard')) {
-	    		$('.wrap-logo img').attr('src','/bundles/splj/img/logo_60_yellow.jpg');
+	    		$('.wrap-logo img').attr('src','/bundles/splj/img/logo_60_grey.jpg');
 	    		$('#main-content .col-lg-3').remove();
 	    		$('#main-content .col-lg-9').removeClass().addClass('col-lg-12 main-chart');
 

@@ -16,16 +16,21 @@ class ArticleType extends AbstractType
     {
 
         $builder
-        	->add('title', 'text')
-        	->add('date', 'date')
+            ->add('title', 'text')
+        	->add('user_id', 'hidden')
+        	->add('date', 'date', array(
+                'data' => new \DateTime("now"),
+                'format' => 'dd-MMM-yyyy',
+                'input' => 'datetime'
+            ))
         	->add('content', 'textarea')
         	->add('extract', 'textarea')
         	->add('image', 'file')
         	->add('status', 'choice', array(
             	'choices' => array(
-               		1 => 'non publié',
-                	2 => 'publié'
-            	))
+               		0 => 'non publié',
+                	1 => 'publié'
+            ))
         	);
     }
     
