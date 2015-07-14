@@ -1,0 +1,93 @@
+{%extends "SpljBundle:Bloc:skeleton.html.twig"%}
+{% block title %}Statistiques{% endblock %}
+{% block class %}dashboard stats{% endblock %}
+{% block h1 %}Statistiques du site{% endblock %}
+{% block body %}
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Total Articles</th>
+			<th>Total commentaires</th>
+			<th>Total QCM</th>
+			<th>Total Questions</th>
+			<th>Total Étudiants</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>28</td>
+			<td>5</td>
+			<td>12</td>
+			<td>26</td>
+			<td>125</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Enseignant</th>
+			<th>Total Articles</th>
+			<th>Total QCM</th>
+			<th>Total Questions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>a</td>
+			<td>16</td>
+			<td>5</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>b</td>
+			<td>16</td>
+			<td>7</td>
+			<td>55</td>
+		</tr>
+		<tr>
+			<td>c</td>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>d</td>
+			<td>16</td>
+			<td>5</td>
+			<td>5</td>
+		</tr>
+	</tbody>
+</table>
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Étudiant</th>
+			<th>QCM répondu</th>
+			<th>QCM réussi</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>A</td>
+			<td>16</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>B</td>
+			<td>16</td>
+			<td>7</td>
+		</tr>
+		<tr>
+			<td>C</td>
+			<td>0</td>
+			<td>0</td>
+		</tr>
+		<tr>
+			<td>D</td>
+			<td>5</td>
+			<td>5</td>
+		</tr>
+	</tbody>
+</table>
+{% endblock %}

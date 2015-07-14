@@ -12,7 +12,7 @@ define('publicWindow', function(){
 			else if(body.hasClass('public-window', 'estate')){
 				$('.sub-menu').eq(2).find('a').addClass('active');
 			}
-			else if(body.hasClass('public-window', 'stats')){
+			else if(body.hasClass('public-window', 'contact')){
 				$('.sub-menu').eq(3).find('a').addClass('active');
 			}
 		}

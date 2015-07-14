@@ -3,12 +3,55 @@
 {% block class %}dashboard crud-article{% endblock %}
 {% block h1 %}créer un article{% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" method="get">
+<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">Default</label>
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control">
+            {{ form_widget(form.title,
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
         </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.date, "date")}}</label>
+        <div class="col-sm-10">
+            {{ form_widget(form.date)}}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.content, "Contenu")}}</label>
+        <div class="col-sm-10">
+            {{ form_widget(form.content, 
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+    </div>
+     <div class="form-group">
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.extract, "Extrait")}}</label>
+        <div class="col-sm-10">
+            {{ form_widget(form.extract, 
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.image, "Illustration")}}</label>
+        <div class="col-sm-10">
+            {{ form_widget(form.image, 
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.status, "Statut")}}</label>
+        <div class="col-sm-10">
+            {{ form_widget(form.status, 
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+    </div>
+    <div class="wrap-submit">
+        <button type="submit" class="btn btn-theme">créer</button> 
     </div>
 </form>
 {% endblock %}

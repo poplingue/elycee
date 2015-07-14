@@ -1,18 +1,14 @@
 @charset "UTF-8";
 
-@import "page/_home";
+@import "helpers/_reset";
 @import "_common";
 @import "_theme";
+
+@import "page/_public";
+@import "page/_dashboard";
+
 
 @import "templates/_sprite";
 @import "sprite/built/_@1x";
 @import "sprite/built/_@2x";
 @import "sprite/_icons";
-
-html, body {
-	height: 100%;
-
-    .my-class {
-        background: black;
-    }
-}

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class McqType extends AbstractType
+class ArticleType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,25 +16,17 @@ class McqType extends AbstractType
     {
 
         $builder
-            ->add('title', 'text')
-            ->add('theme', 'text')
-            ->add('nbQuestions', 'choice', array(
-            'choices' => array(
-                1 => '1',
-                2 => '2',
-                3 => '3',
-                4 => '4',
-                5 => '5'
-            ),
-            'required'    => true,
-            ))
-             ->add('status', 'choice', array(
-            'choices' => array(
-                1 => 'non publié',
-                2 => 'publié',
-            ),
-            'empty_data'  => null
-            ));
+        	->add('title', 'text')
+        	->add('date', 'date')
+        	->add('content', 'textarea')
+        	->add('extract', 'textarea')
+        	->add('image', 'file')
+        	->add('status', 'choice', array(
+            	'choices' => array(
+               		1 => 'non publié',
+                	2 => 'publié'
+            	))
+        	);
     }
     
     /**
@@ -43,7 +35,7 @@ class McqType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SpljBundle\Entity\Mcq'
+            'data_class' => 'SpljBundle\Entity\Article',
         ));
     }
 
@@ -52,6 +44,6 @@ class McqType extends AbstractType
      */
     public function getName()
     {
-        return 'mcq';
+        return 'article';
     }
 }

@@ -1,2 +1,52 @@
 $yellow: #FFD32C;
-$blue: #4A58FF;
+$blue: #333399;
+$grey-dark: rgb(121,121,121);
+
+h1{
+	font-size: 22px;
+	padding: 10px 0;
+}
+.wrap-logo{
+	display: inline-block;
+	padding: 10px 0;
+	text-align: center;
+	width: 90%;
+	b,img{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	a.logo {
+		color: $yellow;
+	    font-size: 20px;
+	    margin-top: 15px;
+	}
+}
+.top-menu{
+	display: inline-block;
+	position: absolute;
+	right: 0;
+}
+@media screen and(max-width: 640px){
+	.wrap-logo{
+		width: 80%;
+		b{
+	    	display: none;
+		}
+	}
+}
+.main-chart{
+	p{
+		color: $blue;
+		text-indent: 20px;
+		padding: 15px 20px;
+		line-height: 14px;
+	}
+	a.add{
+		span{
+			padding-left: 6px;
+		}
+	}
+}
+.li-dashboard, span.dashboard{
+	display: none;
+}

@@ -103,10 +103,8 @@ a, a:hover, a:focus {
   color: #fff;
   background-color: $blue;
   .dashboard & {
-
-  background-color: $blue;
+    background-color: $blue;
   }
-  border-color: #48bcb4;
 }
 .btn-theme:hover,
 .btn-theme:focus,
@@ -114,53 +112,8 @@ a, a:hover, a:focus {
 .btn-theme.active,
 .open .dropdown-toggle.btn-theme {
   color: #fff;
-  background-color: #48bcb4;
-  border-color: #48bcb4;
-}
-
-.btn-theme02 {
-  color: #fff;
-  background-color: #ac92ec;
-  border-color: #967adc;
-}
-.btn-theme02:hover,
-.btn-theme02:focus,
-.btn-theme02:active,
-.btn-theme02.active,
-.open .dropdown-toggle.btn-theme02 {
-  color: #fff;
-  background-color: #967adc;
-  border-color: #967adc;
-}
-
-.btn-theme03 {
-  color: #fff;
-  background-color: #48cfad;
-  border-color: #37bc9b;
-}
-.btn-theme03:hover,
-.btn-theme03:focus,
-.btn-theme03:active,
-.btn-theme03.active,
-.open .dropdown-toggle.btn-theme03 {
-  color: #fff;
-  background-color: #37bc9b;
-  border-color: #37bc9b;
-}
-
-.btn-theme04 {
-  color: #fff;
-  background-color: #ed5565;
-  border-color: #da4453;
-}
-.btn-theme04:hover,
-.btn-theme04:focus,
-.btn-theme04:active,
-.btn-theme04.active,
-.open .dropdown-toggle.btn-theme04 {
-  color: #fff;
-  background-color: #da4453;
-  border-color: #da4453;
+  background-color: $yellow;
+  border-color: $blue;
 }
 
 .btn-clear-g {
@@ -255,14 +208,20 @@ ul.top-menu > li > .logout {
 @media screen and(min-width: 768px){
     #sidebar {
         width: 210px;
-        height: 100%;
         position: fixed;
+    }
+}
+#sidebar{
+    height: 100%;
+    ul{
+        height: 100%;
     }
 }
 
 #sidebar h5 {
     color: $yellow;
     font-weight: 700;
+    padding: 5px 0;
     .dashboard & {
         color: $blue;
     }
@@ -287,18 +246,21 @@ ul.top-menu > li > .logout {
 ul.sidebar-menu , ul.sidebar-menu li ul.sub{
     margin: -2px 0 0;
     padding: 0;
+    margin-top: 80px;
 }
 
 ul.sidebar-menu {
     background: #fff;
-    margin-top: 75px;
+    > p{
+        padding: 10px 0;
+    }
 }
 
 #sidebar > ul > li > ul.sub {
     display: none;
 }
 
-#sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a {
+#sidebar > ul > li.active > ul.sub, #sidebar > ul > li > ul.sub > li > a,.sidebar-menu a{
     display: block;
 }
 
@@ -362,7 +324,7 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #aeb2b7;
+    color: rgb(121,121,121);
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
@@ -412,6 +374,7 @@ ul.sidebar-menu li a.active i {
 
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
+    background: #f2f2f2;
     margin-left: 210px;
 }
 
@@ -428,11 +391,10 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: $yellow;
+    background: #fff;
     .dashboard &{
         background: $blue;
     }
-    border-bottom: 1px solid #c9aa5f;
 }
 
 .wrapper {
@@ -443,17 +405,6 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
-}
-
-a.logo {
-    font-size: 20px;
-    color: #ffffff;
-    float: left;
-    margin-top: 15px;
-    text-transform: uppercase;
-    @media screen and(max-width: 640px){
-        display: none;
-    }
 }
 
 a.logo b {
@@ -761,7 +712,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .sidebar-toggle-box {
     float: left;
     padding-right: 15px;
-    margin-top: 20px;
+    margin-top: 31px;
 }
 
 .sidebar-toggle-box .fa-bars {
@@ -803,7 +754,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	line-height: 60px;
 	height: 60px;
 	margin: 0;
-	background: #ff865c;
+	background: $yellow;
 	text-align: center;
 }
 
@@ -817,14 +768,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 	display: inline-block;
 	padding: 15px 0;
 	width: 100%;
-}
-
-.ds .desc:hover {
-    background: $blue;
-    .dashboard & {
-
-    background: $blue;
-    }
 }
 
 .ds .thumb {
@@ -1039,7 +982,7 @@ PANELS CONFIGURATIONS
 	background: #dfdfe1;
 }
 .grey-panel .grey-header {
-	background: #ccd1d9;
+	background: $grey-dark;
 	padding: 3px;
 	margin-bottom: 15px;
 }
@@ -1125,7 +1068,7 @@ PANELS CONFIGURATIONS
 .white-panel {
 	text-align: center;
 	background: #ffffff;
-	color: #ccd1d9;
+	color: $grey-dark;
 }
 
 .white-panel p {
@@ -1136,12 +1079,11 @@ PANELS CONFIGURATIONS
 .white-panel .white-header {
 	background: #f4f4f4;
 	padding: 3px;
-	margin-bottom: 15px;
 	color: #c6c6c6;
 }
 .white-panel .small {
 	font-size: 10px;
-	color: #ccd1d9;
+	color: $grey-dark;
 }
 
 .white-panel i {
@@ -1905,8 +1847,8 @@ label {
     left: -63%;
 }
 .has-switch > div.switch-off label {
-    background-color: #7f8c9a;
-    border-color: #bdc3c7;
+    background-color: $blue;
+    border-color: $yellow;
     -webkit-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
     -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
     box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
@@ -1915,7 +1857,7 @@ label {
     left: 0%;
 }
 .has-switch > div.switch-on label {
-    background-color: #41cac0;
+    background-color: $yellow;
 }
 .has-switch input[type=checkbox] {
     display: none;
@@ -1945,13 +1887,13 @@ label {
 }
 .has-switch span.switch-left {
     border-radius: 30px 0 0 30px;
-    background-color: #2A3542;
-    color: #41cac0;
+    background-color: $yellow;
+    color: #fff;
     border-left: 1px solid transparent;
 }
 .has-switch span.switch-right {
     border-radius: 0 30px 30px 0;
-    background-color: #bdc3c7;
+    background-color: $blue;
     color: #ffffff;
     text-indent: 7px;
 }
@@ -1959,7 +1901,7 @@ label {
     text-indent: 0;
 }
 .has-switch label {
-    border: 4px solid #2A3542;
+    border: 3px solid $blue;
     border-radius: 50%;
     -webkit-border-radius: 50%;
     float: left;

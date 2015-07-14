@@ -36,7 +36,7 @@ class WindowController extends Controller
 
       /**
     * @Route(
-    * 	"/home/etablissement",
+    * 	"/home/estate",
     * 	name="splj.window.estate"
     * )
     *
@@ -49,11 +49,11 @@ class WindowController extends Controller
 
       /**
     * @Route(
-    * 	"/home/statistiques",
-    * 	name="splj.window.stats"
+    * 	"/home/contact",
+    * 	name="splj.window.contact"
     * )
     *
-    * @Template("SpljBundle:Window:stats.html.twig")
+    * @Template("SpljBundle:Window:contact.html.twig")
     */
     public function statsAction()
     {

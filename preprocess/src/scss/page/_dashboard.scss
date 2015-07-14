@@ -2,10 +2,50 @@
 	.fa-bars{
 		color: $yellow;
 	}
+	.main-chart{
+		h1{
+		  display: inline-block;
+		  width: 80%;
+		  vertical-align: middle;
+		}
+	}
 	.sub-menu{
 		display: none;
 		&.li-dashboard{
 			display: block;
 		}
+	}
+	span{
+		&.li-dashboard{
+			display: block;
+		}
+	}
+	.nav.pull-right{
+		li:nth-child(1){
+			display: none;
+		}
+	}
+	.wrap-submit{
+		width: 100%;
+		text-align: right;
+	}
+	.table{
+		thead span{
+			padding-left: 6px;
+		}
+	}
+	&.qcm,
+	&.article{
+		.form-control#mcq_status,
+		.form-control#article_status{
+			height: 20px;
+			padding: 0px 5px;
+			width: 40%;
+			display: inline-block;
+			vertical-align: middle;
+		}
+	}
+	&.stats .table{
+		margin: 50px 0;
 	}
 }

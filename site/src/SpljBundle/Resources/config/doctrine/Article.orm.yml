@@ -1,4 +1,4 @@
-SpljBundle\Entity\Mcq:
+SpljBundle\Entity\Article:
     type: entity
     table: null
     id:
@@ -10,13 +10,19 @@ SpljBundle\Entity\Mcq:
     fields:
         title:
             type: string
-            length: '100'
-        theme:
+            length: 255
+        author:
             type: string
             length: '100'
+        date:
+            type: date
+        image:
+            type: string
+            length: 255
+        content:
+            type: text
+        extract:
+            type: text
         status:
             type: boolean
-        nbQuestions:
-            type: integer
-            column: nb_questions
     lifecycleCallbacks: {  }

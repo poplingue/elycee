@@ -1,3 +1,6 @@
-define('main',['mod'], function(mod) {
-    //
+define('main',['publicWindow','dashboard'], function(publicWindow, dashboard) {
+
+    dashboard.init();
+    publicWindow.init();
+
 });

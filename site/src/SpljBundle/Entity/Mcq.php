@@ -27,7 +27,7 @@ class Mcq
     /**
      * @var boolean
      */
-    private $published;
+    private $status;
 
     /**
      * @var integer
@@ -92,26 +92,26 @@ class Mcq
     }
 
     /**
-     * Set published
+     * Set status
      *
-     * @param boolean $published
+     * @param boolean $status
      * @return Mcq
      */
-    public function setPublished($published)
+    public function setStatus($status)
     {
-        $this->published = $published;
+        $this->status = $status;
 
         return $this;
     }
 
     /**
-     * Get published
+     * Get status
      *
      * @return boolean 
      */
-    public function getPublished()
+    public function getStatus()
     {
-        return $this->published;
+        return $this->status;
     }
 
     /**

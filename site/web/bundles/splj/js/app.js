@@ -120,6 +120,8 @@ define("dashboard", function() {
                 $(".sub-menu").eq(5).find("a").addClass("active");
             } else if (body.hasClass("article")) {
                 $(".sub-menu").eq(6).find("a").addClass("active");
+            } else if (body.hasClass("stats")) {
+                $(".sub-menu").eq(7).find("a").addClass("active");
             }
         }
     };
@@ -139,7 +141,7 @@ define("publicWindow", function() {
                 $(".sub-menu").eq(1).find("a").addClass("active");
             } else if (body.hasClass("public-window", "estate")) {
                 $(".sub-menu").eq(2).find("a").addClass("active");
-            } else if (body.hasClass("public-window", "stats")) {
+            } else if (body.hasClass("public-window", "contact")) {
                 $(".sub-menu").eq(3).find("a").addClass("active");
             }
         }

@@ -54,51 +54,50 @@ table {
   border-spacing: 0; }
 
 /* line 5, src/scss/_common.scss */
-.fa {
-  padding-right: 6px; }
-
-/* line 8, src/scss/_common.scss */
 h1 {
   font-size: 22px;
   padding: 10px 0; }
 
-/* line 12, src/scss/_common.scss */
+/* line 9, src/scss/_common.scss */
 .wrap-logo {
   display: inline-block;
   padding: 10px 0;
   text-align: center;
   width: 90%; }
-  /* line 17, src/scss/_common.scss */
+  /* line 14, src/scss/_common.scss */
   .wrap-logo b, .wrap-logo img {
     display: inline-block;
     vertical-align: middle; }
-  /* line 21, src/scss/_common.scss */
+  /* line 18, src/scss/_common.scss */
   .wrap-logo a.logo {
     color: #FFD32C;
     font-size: 20px;
     margin-top: 15px; }
 
-/* line 27, src/scss/_common.scss */
+/* line 24, src/scss/_common.scss */
 .top-menu {
   display: inline-block;
   position: absolute;
   right: 0; }
 
 @media screen and (max-width: 640px) {
-  /* line 33, src/scss/_common.scss */
+  /* line 30, src/scss/_common.scss */
   .wrap-logo {
     width: 80%; }
-    /* line 35, src/scss/_common.scss */
+    /* line 32, src/scss/_common.scss */
     .wrap-logo b {
       display: none; } }
-/* line 41, src/scss/_common.scss */
+/* line 38, src/scss/_common.scss */
 .main-chart p {
   color: #333399;
   text-indent: 20px;
   padding: 15px 20px;
   line-height: 14px; }
+/* line 45, src/scss/_common.scss */
+.main-chart a.add span {
+  padding-left: 6px; }
 
-/* line 48, src/scss/_common.scss */
+/* line 50, src/scss/_common.scss */
 .li-dashboard, span.dashboard {
   display: none; }
 
@@ -2473,6 +2472,21 @@ label {
 .dashboard .wrap-submit {
   width: 100%;
   text-align: right; }
+/* line 33, src/scss/page/_dashboard.scss */
+.dashboard .table thead span {
+  padding-left: 6px; }
+/* line 39, src/scss/page/_dashboard.scss */
+.dashboard.qcm .form-control#mcq_status,
+.dashboard.qcm .form-control#article_status, .dashboard.article .form-control#mcq_status,
+.dashboard.article .form-control#article_status {
+  height: 20px;
+  padding: 0px 5px;
+  width: 40%;
+  display: inline-block;
+  vertical-align: middle; }
+/* line 48, src/scss/page/_dashboard.scss */
+.dashboard.stats .table {
+  margin: 50px 0; }
 
 /*
 SCSS variables are information about icon's compiled state, stored under its original file name

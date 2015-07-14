@@ -14,31 +14,6 @@ class McqController extends Controller
 {
 
 	/**
-    * @Route(
-    *   "/dashboard-teacher/list-qcm",
-    *   name="splj.dashTeacher.list-qcm"
-    * )
-    *
-    * @Template("SpljBundle:DashTeacher:list-qcm.html.twig")
-    */
-    public function listQcmAction()
-    {
-       $qcm = array(
-         [
-            'id' => '0',
-            'sujet' => 'la procrastination',
-            'theme' => 'branleur',
-            'author' => 'titi',
-            'statut' => 'publié'
-
-        ]);
-
-       return array(
-        "qcm" => $qcm
-        );
-    }
-
-	/**
      * 
      * @Route (
      *      "/dashboard-teacher/create-mcq",
@@ -48,7 +23,7 @@ class McqController extends Controller
      * @Template("SpljBundle:DashTeacher:form-mcq.html.twig")
      * 
      */
-    public function addAction(Request $request)
+    public function createAction(Request $request)
     { 
         
         $entity = new Mcq();
