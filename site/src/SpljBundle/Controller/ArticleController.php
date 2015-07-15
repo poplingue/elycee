@@ -18,33 +18,28 @@ class ArticleController extends Controller
     /**
     * @Route(
     *   "/dashboard-teacher/list-article",
-    *   name="splj.dashTeacher.list-article"
+    *   name="splj.dashTeacher.list-article",
     * )
     *
+    * )
     * @Template("SpljBundle:DashTeacher:list-article.html.twig")
     */
     public function listArticleAction(Request $request)
     {
-
+        $doctrine = $this->getDoctrine();
+        $src = $doctrine->getRepository('SpljBundle:Article');
+       
         $entity = new Article();
         $type = new ArticleType();
         
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
         
-        $article = array(
-         [
-            'id' => '0',
-            'title' => 'lorem rem',
-            'author' => 'branleur',
-            'date' => '27/06/2015',
-            'status' => 'publié'
+        $article = $src->findAll();
 
-        ]);
-
-       return array(
-        "article" => $article,
-        'form' => $form->createView()
+        return array(
+            'article' => $article,
+            'form' => $form->createView()
         );
     }
 
@@ -70,9 +65,9 @@ class ArticleController extends Controller
         $form->handleRequest($request);
         
         if($form->isSubmitted()){
-
-            $data = $form->getData();
-            $em->persist($data);
+            $em = $this->getDoctrine()->getManager();
+            $entity->upload();
+            $em->persist($entity);
             $em->flush();
         }
 
@@ -80,4 +75,25 @@ class ArticleController extends Controller
             'form' => $form->createView()
         );
     }
+
+    /**
+    * @Route(
+    *   "/dashboard-teacher/update-status-article/{id}",
+    *   name="splj.dashTeacher.update-article"
+    * )
+    * 
+    */
+   public function updateStatusAction($id)
+   {
+        $newStatus = $_POST["status"];
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('SpljBundle:Article')->find($id);
+
+        $article->setStatus($newStatus);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
+
+   }
+    
 }

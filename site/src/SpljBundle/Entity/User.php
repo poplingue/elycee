@@ -21,6 +21,7 @@ class User
 
     /**
      * @var string
+     *
      */
     private $email;
 

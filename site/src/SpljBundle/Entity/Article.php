@@ -3,9 +3,14 @@
 namespace SpljBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
+ *
+ * @ORM\Entity
+ * @FileStore\Uploadable
  */
 class Article
 {
@@ -30,9 +35,19 @@ class Article
     private $date;
 
     /**
-     * @var string
+     *
+     * @ORM\Column(type="array",nullable=true)
+     * @FileStore\UploadableField(mapping="image")
+     * @Assert\Image(maxSize="6000000")
+     * 
      */
     private $image;
+
+     /**
+     * @var string
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $path;
 
     /**
      * @var string
@@ -135,7 +150,7 @@ class Article
      * @param string $image
      * @return Article
      */
-    public function setImage($image)
+    public function setImage()
     {
         $this->image = $image;
 
@@ -150,6 +165,28 @@ class Article
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Article
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 
     /**
@@ -220,4 +257,30 @@ class Article
     {
         return $this->status;
     }
+/****************************************/
+
+    public function upload()
+    {
+        print_r($this->image);
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->image) {
+            return;
+        }
+
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+
+        // la méthode « move » prend comme arguments le répertoire cible et
+        // le nom de fichier cible où le fichier doit être déplacé
+        $this->image->move($this->getUploadRootDir(), $this->image->getClientOriginalName());
+
+        // définit la propriété « path » comme étant le nom de fichier où vous
+        // avez stocké le fichier
+        $this->path = $this->image->getClientOriginalName();
+
+        // « nettoie » la propriété « image » comme vous n'en aurez plus besoin
+        $this->image = null;
+    }
+
 }

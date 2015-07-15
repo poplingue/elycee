@@ -18,13 +18,20 @@
         <tr>
         {% for article in article %}
             <td><a href="">{{ article.title }}</a></td>
-            <td class="hidden-phone">{{ article.author }}</td>
-            <td>{{ article.date }}</td>
-            <td>
-                <form class="" method="POST" {{ form_enctype(form) }} novalidate>
-                    {{ form_widget(form.status,
-                        { 'attr' : { 'class' : 'form-control'} } )
-                    }}
+            <td class="hidden-phone">{{ article.userid }}</td>
+            <td>{{ article.date|date('d/m/Y') }}</td>
+            <td>    
+                <form action="/dashboard-teacher/update-status-article/{{ article.id }}" method="POST" {{ form_enctype(form) }} novalidate>
+                        <select name="status">
+                        {% if article.status == 0 %}
+                            <option selected="selected" value="0">non publié</option>
+                            <option  value="1">publié</option>
+                        {% else %}
+                            <option selected="selected" value="1">publié</option>
+                            <option  value="0">non publié</option>
+                        {% endif %}
+                        </select>
+                       
                     <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
                 </form>
             </td>

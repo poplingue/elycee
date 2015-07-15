@@ -78,3 +78,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+#iphp
+iphp_file_store:
+    mappings:
+        image:
+           upload_dir:  %kernel.root_dir%/../web/bundles/splj/img/articles
+           upload_path: /splj/img/articles

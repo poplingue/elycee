@@ -1,3 +1,4 @@
+/site/app/bootstrap.php.cache
 /site/app/cache/*
 !app/cache/.gitkeep
 /site/app/config/parameters.yml
