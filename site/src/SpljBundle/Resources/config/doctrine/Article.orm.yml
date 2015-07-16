@@ -20,13 +20,10 @@ SpljBundle\Entity\Article:
             type: string
             length: 255
             nullable: true
-        path:
-            type: string
-            nullable: true
         content:
             type: text
         extract:
             type: text
         status:
-            type: boolean
+            type: integer
     lifecycleCallbacks: {  }

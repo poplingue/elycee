@@ -25,7 +25,7 @@ class ArticleType extends AbstractType
             ))
         	->add('content', 'textarea')
         	->add('extract', 'textarea')
-        	->add('image', 'iphp_file')
+        	->add('file')
         	->add('status', 'choice', array(
             	'choices' => array(
                		0 => 'non publié',

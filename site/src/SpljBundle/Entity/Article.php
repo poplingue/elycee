@@ -3,14 +3,13 @@
 namespace SpljBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Iphp\FileStoreBundle\Mapping\Annotation as FileStore;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
  *
  * @ORM\Entity
- * @FileStore\Uploadable
+ * 
  */
 class Article
 {
@@ -35,19 +34,15 @@ class Article
     private $date;
 
     /**
-     *
-     * @ORM\Column(type="array",nullable=true)
-     * @FileStore\UploadableField(mapping="image")
-     * @Assert\Image(maxSize="6000000")
-     * 
-     */
-    private $image;
-
-     /**
-     * @var string
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $path;
+    public $image;
+
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
 
     /**
      * @var string
@@ -60,11 +55,33 @@ class Article
     private $extract;
 
     /**
-     * @var string
+     * @var integer
      */
     private $status;
 
 
+    public function getAbsolutePath()
+    {
+        return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../../site/web/bundles/splj/img'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+         return '/articles';
+    }
     /**
      * Get id
      *
@@ -168,28 +185,6 @@ class Article
     }
 
     /**
-     * Set path
-     *
-     * @param string $path
-     * @return Article
-     */
-    public function setPath($path)
-    {
-        $this->path = $path;
-
-        return $this;
-    }
-
-    /**
-     * Get path
-     * @return string 
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
      * Set content
      *
      * @param string $content
@@ -259,7 +254,7 @@ class Article
     }
 /****************************************/
 
-    public function upload()
+   /* public function upload()
     {
         print_r($this->image);
         // la propriété « file » peut être vide si le champ n'est pas requis
@@ -281,6 +276,29 @@ class Article
 
         // « nettoie » la propriété « image » comme vous n'en aurez plus besoin
         $this->image = null;
+    }*/
+
+    public function upload()
+    {
+        // la propriété « file » peut être vide si le champ n'est pas requis
+        if (null === $this->file) {
+            return;
+        }
+
+        // utilisez le nom de fichier original ici mais
+        // vous devriez « l'assainir » pour au moins éviter
+        // quelconques problèmes de sécurité
+
+        // la méthode « move » prend comme arguments le répertoire cible et
+        // le nom de fichier cible où le fichier doit être déplacé
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+
+        // définit la propriété « path » comme étant le nom de fichier où vous
+        // avez stocké le fichier
+        $this->image = $this->file->getClientOriginalName();
+
+        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
+        $this->file = null;
     }
 
 }

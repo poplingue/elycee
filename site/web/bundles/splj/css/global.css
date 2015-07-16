@@ -98,8 +98,11 @@ h1 {
 /* line 48, src/scss/_common.scss */
 .main-chart a:hover {
   color: #666666; }
+/* line 51, src/scss/_common.scss */
+.main-chart .btn a {
+  color: #fff; }
 
-/* line 52, src/scss/_common.scss */
+/* line 55, src/scss/_common.scss */
 .li-dashboard, span.dashboard {
   display: none; }
 

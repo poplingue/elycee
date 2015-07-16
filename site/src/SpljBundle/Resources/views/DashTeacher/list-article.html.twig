@@ -15,31 +15,32 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
         {% for article in article %}
-            <td><a href="">{{ article.title }}</a></td>
-            <td class="hidden-phone">{{ article.userid }}</td>
-            <td>{{ article.date|date('d/m/Y') }}</td>
-            <td>    
-                <form action="/dashboard-teacher/update-status-article/{{ article.id }}" method="POST" {{ form_enctype(form) }} novalidate>
-                        <select name="status">
-                        {% if article.status == 0 %}
-                            <option selected="selected" value="0">non publié</option>
-                            <option  value="1">publié</option>
-                        {% else %}
-                            <option selected="selected" value="1">publié</option>
-                            <option  value="0">non publié</option>
-                        {% endif %}
-                        </select>
-                       
-                    <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
-                </form>
-            </td>
-            <td>
-                <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-            </td>
-        </tr>
+            {% if article.status < 2  %}
+            <tr>
+                <td><a href="">{{ article.title }}</a></td>
+                <td class="hidden-phone">{{ article.userid }}</td>
+                <td>{{ article.date|date('d/m/Y') }}</td>
+                <td>
+                    <form action="/dashboard-teacher/update-status/{{ article.id }}" method="POST" novalidate>
+                            <select name="status">
+                            {% if article.status == 0 %}
+                                <option selected="selected" value="0">non publié</option>
+                                <option  value="1">publié</option>
+                            {% else %}
+                                <option selected="selected" value="1">publié</option>
+                                <option  value="0">non publié</option>
+                            {% endif %}
+                            </select>
+                        <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
+                    </form>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-xs"><a href="/dashboard-teacher/update-article/{{ article.id }}"><i class="fa fa-pencil"></i></a></button>
+                    <button class="btn btn-danger btn-xs"><a href="/dashboard-teacher/delete-article/{{ article.id }}"><i class="fa fa-trash-o"></i></a></button>
+                </td>
+            </tr>
+            {% endif %}
         {% endfor %}
     </tbody>
 </table>

@@ -6,11 +6,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+
+/**
+ * @Route("/home")
+ */
+
 class WindowController extends Controller
 {
 	/**
     * @Route(
-    * 	"/home",
+    * 	"/",
     * 	name="splj.window.index"
     * )
     *
@@ -23,7 +28,7 @@ class WindowController extends Controller
 
     /**
     * @Route(
-    * 	"/home/login",
+    * 	"/login",
     * 	name="splj.window.login"
     * )
     *
@@ -36,7 +41,7 @@ class WindowController extends Controller
 
       /**
     * @Route(
-    * 	"/home/estate",
+    * 	"/estate",
     * 	name="splj.window.estate"
     * )
     *
@@ -49,7 +54,7 @@ class WindowController extends Controller
 
       /**
     * @Route(
-    * 	"/home/contact",
+    * 	"/contact",
     * 	name="splj.window.contact"
     * )
     *
@@ -62,7 +67,7 @@ class WindowController extends Controller
 
        /**
     * @Route(
-    * 	"/home/titre",
+    * 	"/titre",
     * 	name="splj.window.article"
     * )
     *

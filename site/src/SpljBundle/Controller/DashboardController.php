@@ -10,12 +10,17 @@ use SpljBundle\Entity\Mcq;
 use SpljBundle\Form\McqType;
 use Symfony\Component\HttpFoundation\Request as Request;
 
+
+/**
+ * @Route("/dashboard")
+ */
+
 class DashboardController extends Controller
 {
 
     /**
     * @Route(
-    *   "/dashboard/list-qcm",
+    *   "/list-qcm",
     *   name="splj.dashboard.list-qcm"
     * )
     *
@@ -47,7 +52,7 @@ class DashboardController extends Controller
 
     /**
     * @Route(
-    *   "/dashboard/stats",
+    *   "/stats",
     *   name="splj.stats"
     * )
     *
