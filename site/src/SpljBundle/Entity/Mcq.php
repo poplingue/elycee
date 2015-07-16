@@ -25,7 +25,17 @@ class Mcq
     private $theme;
 
     /**
-     * @var boolean
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var integer
+     */
+    private $nbQuestions;
+
+    /**
+     * @var integer
      */
     private $status;
 
@@ -87,9 +97,55 @@ class Mcq
     }
 
     /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return Article
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+    
+    /**
+     * Set nbQuestions
+     *
+     * @param integer $nbQuestions
+     * @return Mcq
+     */
+    public function setNbQuestions($nbQuestions)
+    {
+        $this->nbQuestions = $nbQuestions;
+
+        return $this;
+    }
+
+    /**
+     * Get nbQuestions
+     *
+     * @return integer 
+     */
+    public function getNbQuestions()
+    {
+        return $this->nbQuestions;
+    }
+
+    /**
      * Set status
      *
-     * @param boolean $status
+     * @param integer $status
      * @return Mcq
      */
     public function setStatus($status)
@@ -102,7 +158,7 @@ class Mcq
     /**
      * Get status
      *
-     * @return boolean 
+     * @return integer 
      */
     public function getStatus()
     {

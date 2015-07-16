@@ -3,7 +3,15 @@
 {% block class %}dashboard mcq{% endblock %}
 {% block h1 %}Créer un QCM{% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
+{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
+    <div class="form-group">
+        <div class="col-sm-10">
+            {{ form_widget(form.user_id, {'value' : 1},
+                { 'attr' : { 'class' : 'form-control' }}
+                 )
+            }}
+        </div>
+    </div>
     <div class="form-group">
         <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
         <div class="col-sm-10">
@@ -21,14 +29,6 @@
         </div>
     </div> 
     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.nbQuestions, "Nombre de questions")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.nbQuestions, 
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
-        </div>
-    </div>
-    <div class="form-group">
         <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.status, "Statut")}}</label>
         <div class="col-sm-10">
             {{ form_widget(form.status, 
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="wrap-submit">
-        <button type="submit" class="btn btn-theme">valider</button> 
+        <button type="submit" class="btn btn-theme">créer</button> 
     </div>
-</form>
+{{ form_end(form) }}
 {% endblock %}

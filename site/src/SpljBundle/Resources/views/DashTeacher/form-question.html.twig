@@ -3,62 +3,11 @@
 {% block class %}dashboard qcm questions{% endblock %}
 {% block h1 %}Les questions du QCM{% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
-    <div class="col-sm-12 form-group">
-        {{ form_label(form.question, "Question", {'label_attr': {'class': 'col-sm-2 control-label'}})}}
-        <div class="col-sm-10">
-            {{ form_widget(form.question,
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
-        </div>
-    </div>
-    <div class="col-sm-12 col-xs-12 form-group">
-        {{ form_label(form.answer1, 'Réponse 1', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-        <div class="col-sm-8 col-xs-10">
-            {{ form_widget(form.answer1.answer,
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
-        </div>
-        <div class="col-sm-2 col-xs-2">
-            <div class="switch has-switch">
-                {{ form_widget(form.answer1.correct,
-                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
-                }}
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xs-12 form-group">
-        {{ form_label(form.answer2, 'Réponse 2', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-        <div class="col-sm-8 col-xs-10">
-            {{ form_widget(form.answer2.answer,
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
-        </div>
-        <div class="col-sm-2 col-xs-2">
-            <div class="switch has-switch">
-                {{ form_widget(form.answer2.correct,
-                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
-                }}
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-12 col-xs-12 form-group">
-        {{ form_label(form.answer3, 'Réponse 3', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
-        <div class="col-sm-8 col-xs-10">
-            {{ form_widget(form.answer3.answer,
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
-        </div>
-        <div class="col-sm-2 col-xs-2">
-            <div class="switch has-switch">
-                {{ form_widget(form.answer3.correct,
-                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
-                }}
-            </div>
-        </div>
-    </div>
+<form class="form-horizontal style-form" data-mcqId="4" method="POST" {{ form_enctype(form) }} novalidate >
+    {% include ('SpljBundle:DashTeacher:question-model.html.twig')%}
     <div class="wrap-submit">
-        <button type="submit" class="btn btn-theme">créer</button>
+        <div class="btn add"><i class="fa fa-plus-square"></i><span>question</span></div>
+        <button type="submit" class="btn btn-theme">valider</button>
     </div>
 </form>
 {% endblock %}

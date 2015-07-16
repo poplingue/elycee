@@ -18,6 +18,7 @@ class McqType extends AbstractType
         $builder
             ->add('title', 'text')
             ->add('theme', 'text')
+            ->add('user_id', 'hidden')
             ->add('nbQuestions', 'choice', array(
             'choices' => array(
                 1 => '1',
@@ -27,6 +28,8 @@ class McqType extends AbstractType
                 5 => '5'
             ),
             'required'    => true,
+            'empty_value' => '',
+            'empty_data'  => null
             ))
              ->add('status', 'choice', array(
             'choices' => array(

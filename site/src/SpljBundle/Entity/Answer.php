@@ -19,7 +19,7 @@ class Answer
     /**
      * @var string
      */
-    private $answer;
+    public $answer;
 
     /**
      * @var boolean

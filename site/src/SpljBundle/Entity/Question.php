@@ -27,17 +27,10 @@ class Question
     private $idQcm;
 
     /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
+     * @Assert\Type(type="SpljBundle\Entity\Answers")
      */
-    protected $answer1;
-     /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
-     */
-    protected $answer2;
-    /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
-     */
-    protected $answer3;
+    private $answers;
+
 
     /**
      * Get id
@@ -95,33 +88,14 @@ class Question
         return $this->idQcm;
     }
 
-    //Methods answer x3
-    public function getAnswer1()
+    //Methods answers
+    public function getAnswers()
     {
-        return $this->answer1;
+        return $this->answers;
     }
 
-    public function setAnswer1(Answer $answer = null)
+    public function setAnswers(ArrayCollection $answers)
     {
-        $this->answer1 = $answer;
-    }
-    //
-    public function getAnswer2()
-    {
-        return $this->answer2;
-    }
-
-    public function setAnswer2(Answer $answer = null)
-    {
-        $this->answer2 = $answer;
-    }
-    public function getAnswer3()
-    {
-        return $this->answer3;
-    }
-
-    public function setAnswer3(Answer $answer = null)
-    {
-        $this->answer3 = $answer;
+        $this->answers = $answers;
     }
 }

@@ -1,10 +1,16 @@
 define('dashboard', function(){
 
+
 	var dashboard = {
+		
+		init: function init(){
+			this.questionsMore();
+			this.customMenu();
+		},
 
-		init: function init() {
+		customMenu: function customMenu() {
+	    	var body = $('body');
 
-		    var body = $('body');
 	    	if (body.hasClass('dashboard')) {
 	    		$('.wrap-logo img').attr('src','/bundles/splj/img/logo_60_grey.jpg');
 	    		$('#main-content .col-lg-3').remove();
@@ -20,7 +26,26 @@ define('dashboard', function(){
 	    	}else if(body.hasClass('stats')){
 	    		$('.sub-menu').eq(7).find('a').addClass('active');
 	    	}
+	    },
+
+	    questionsMore: function questionsMore(){
+
+	    	var mcqId = $('form').attr('data-mcqId');
+	    	// var url = Routing.generate('splj.test-ajax');
+
+	    	$('.questions .add').on('click', function(e){
+	    		e.preventDefault();
+	    		$.ajax({
+	    			type: "POST",
+	    			url: url,
+	    			success: function(data){
+	    				console.log(data);
+	    			}
+	    		});
+	    	});
 	    }
+
+
 	};
 	return dashboard;
 });

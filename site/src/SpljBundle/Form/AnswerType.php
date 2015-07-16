@@ -28,8 +28,7 @@ class AnswerType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SpljBundle\Entity\Answer',
-            'cascade_validation' => true
+            'data_class' => 'SpljBundle\Entity\Answer'
         ));
     }
 

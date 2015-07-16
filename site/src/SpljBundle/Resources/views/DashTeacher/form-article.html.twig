@@ -1,66 +1,82 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %}Nouvel Article{% endblock %}
 {% block class %}dashboard crud-article{% endblock %}
-{% block h1 %}créer/modifier un article{% endblock %}
+{% block h1 %}
+    {% if entity is defined %}
+        modifier l'article
+    {% else %}
+        nouvel article
+    {% endif %}
+{% endblock %}
 {% block body %}
-{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' }  }) }}
-    <div class="form-group">
-        <div class="col-sm-10">
-            {{ form_widget(form.user_id, {'value' : 1},
-                { 'attr' : { 'class' : 'form-control' }}
-                 )
-            }}
+    {{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' }  }) }}
+        <div class="form-group">
+            <div class="col-sm-10">
+                {{ form_widget(form.user_id, {'value' : 1},
+                    { 'attr' : { 'class' : 'form-control' }}
+                     )
+                }}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.title,
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
+        <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.title,
+                    { 'attr' : { 'class' : 'form-control' } } )
+                }}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.date, "date")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.date)}}
+        <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.date, "date")}}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.date)}}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.content, "Contenu")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.content, 
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
+        <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.content, "Contenu")}}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.content, 
+                    { 'attr' : { 'class' : 'form-control' } } )
+                }}
+            </div>
         </div>
-    </div>
-     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.extract, "Extrait")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.extract, 
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
+         <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.extract, "Extrait")}}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.extract, 
+                    { 'attr' : { 'class' : 'form-control' } } )
+                }}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.file, "Illustration")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.file, 
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
+        <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.file, "Illustration")}}</label>
+            {% if entity is defined %}
+                <div class="wrap-img col-sm-3">
+                    <img src="{{ asset('bundles/splj/img/articles/'~ entity.image)}}" alt="">
+                </div>
+            <div class="col-sm-7">
+            {% else %}
+            <div class="col-sm-10">
+            {% endif %}
+                {{ form_widget(form.file, 
+                    { 'attr' : { 'class' : 'form-control' } } )
+                }}
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.status, "Statut")}}</label>
-        <div class="col-sm-10">
-            {{ form_widget(form.status, 
-                { 'attr' : { 'class' : 'form-control' } } )
-            }}
+        <div class="form-group">
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.status, "Statut")}}</label>
+            <div class="col-sm-10">
+                {{ form_widget(form.status, 
+                    { 'attr' : { 'class' : 'form-control' } } )
+                }}
+            </div>
         </div>
-    </div>
-    <div class="wrap-submit">
-        <input type="submit" class="btn btn-theme" value="créer" /> 
-    </div>
-<!-- </form> -->
-{{ form_end(form) }}
+        <div class="wrap-submit">   
+            {% if entity is defined %}
+                <input type="submit" class="btn btn-theme" value="modifier" />
+            {% else %}
+                <input type="submit" class="btn btn-theme" value="créer" />
+            {% endif %}
+        </div>
+    {{ form_end(form) }}
 {% endblock %}

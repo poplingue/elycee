@@ -14,6 +14,12 @@ SpljBundle\Entity\Mcq:
         theme:
             type: string
             length: '100'
+        userId:
+            type: integer
+            column: user_id
+        nbQuestions:
+            type: integer
+            column: nb_questions
         status:
-            type: boolean
+            type: integer
     lifecycleCallbacks: {  }

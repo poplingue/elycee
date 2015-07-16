@@ -10,6 +10,13 @@
 		  width: 80%;
 		  vertical-align: middle;
 		}
+		.wrap-img{
+			img{
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+		}
 	}
 	.sub-menu{
 		display: none;

@@ -15,10 +15,9 @@ class QuestionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('question', 'textarea')
-            ->add('answer1', new AnswerType())
-            ->add('answer2', new AnswerType())
-            ->add('answer3', new AnswerType());
+            ->add('question','textarea')
+            ->add('id_qcm','hidden');
+        $builder->add('answers', 'collection', array('type' => new AnswerType()));
     }
     
     /**

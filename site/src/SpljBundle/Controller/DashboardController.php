@@ -20,33 +20,27 @@ class DashboardController extends Controller
 
     /**
     * @Route(
-    *   "/list-qcm",
-    *   name="splj.dashboard.list-qcm"
+    *   "/list-mcq",
+    *   name="splj.dashboard.list-mcq"
     * )
     *
-    * @Template("SpljBundle:Dashboard:list-qcm.html.twig")
+    * @Template("SpljBundle:Dashboard:list-mcq.html.twig")
     */
-    public function listQcmAction(Request $request)
+    public function listMcqAction(Request $request)
     {
-       $qcm = array(
-         [
-            'id' => '0',
-            'sujet' => 'la procrastination',
-            'theme' => 'branleur',
-            'author' => 'titi',
-            'status' => 'publié'
-
-        ]);
+        $doctrine = $this->getDoctrine();
+        $src = $doctrine->getRepository('SpljBundle:Mcq');
 
         $entity = new Mcq();
         $type = new McqType();
         
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
-        
+
+        $mcq = $src->findAll();
         return array(
-            'form' => $form->createView(),
-            'qcm' => $qcm
+            'mcq' => $mcq,
+            'form' => $form->createView()
         );
     }
 

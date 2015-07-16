@@ -109,7 +109,8 @@ class ArticleController extends Controller
             return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
         }
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'entity' => $entity
         );
     }
 

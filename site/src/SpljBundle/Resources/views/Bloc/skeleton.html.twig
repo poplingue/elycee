@@ -37,7 +37,7 @@
                 </ul>
             </div>
         </header>
-    	{%include ('SpljBundle:Bloc:aside.html.twig') %}
+    	{% include ('SpljBundle:Bloc:aside.html.twig') %}
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <div class="row">
@@ -47,12 +47,12 @@
                     </div>
                     {%  if articleRandom is defined %}
                         <div class="col-lg-3 ds">
-                           {%include ('SpljBundle:Bloc:right-col.html.twig') %}
+                           {% include ('SpljBundle:Bloc:right-col.html.twig') %}
                         </div>
                     {% endif %}
                 </div>
             </section>
         </section>
-        {%include ('SpljBundle:Bloc:bottom.html.twig') %}
+        {% include ('SpljBundle:Bloc:bottom.html.twig') %}
     </body>
 </html>

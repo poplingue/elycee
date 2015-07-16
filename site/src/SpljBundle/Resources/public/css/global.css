@@ -98,8 +98,11 @@ h1 {
 /* line 48, src/scss/_common.scss */
 .main-chart a:hover {
   color: #666666; }
+/* line 51, src/scss/_common.scss */
+.main-chart .btn a {
+  color: #fff; }
 
-/* line 52, src/scss/_common.scss */
+/* line 55, src/scss/_common.scss */
 .li-dashboard, span.dashboard {
   display: none; }
 
@@ -1915,32 +1918,30 @@ label {
   position: relative;
   text-align: left;
   width: 80px;
-  -webkit-mask: url("../img/mask.png") 0 0 no-repeat;
-  mask: url("../img/mask.png") 0 0 no-repeat;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none; }
 
-/* line 1795, src/scss/_theme.scss */
+/* line 1793, src/scss/_theme.scss */
 .has-switch.deactivate {
   opacity: 0.5;
   filter: alpha(opacity=50);
   cursor: default !important; }
 
-/* line 1800, src/scss/_theme.scss */
+/* line 1798, src/scss/_theme.scss */
 .has-switch.deactivate label,
 .has-switch.deactivate span {
   cursor: default !important; }
 
-/* line 1804, src/scss/_theme.scss */
+/* line 1802, src/scss/_theme.scss */
 .has-switch > div {
   width: 162%;
   position: relative;
   top: 0; }
 
-/* line 1809, src/scss/_theme.scss */
+/* line 1807, src/scss/_theme.scss */
 .has-switch > div.switch-animate {
   -webkit-transition: left 0.25s ease-out;
   -moz-transition: left 0.25s ease-out;
@@ -1948,11 +1949,11 @@ label {
   transition: left 0.25s ease-out;
   -webkit-backface-visibility: hidden; }
 
-/* line 1816, src/scss/_theme.scss */
+/* line 1814, src/scss/_theme.scss */
 .has-switch > div.switch-off {
   left: -63%; }
 
-/* line 1819, src/scss/_theme.scss */
+/* line 1817, src/scss/_theme.scss */
 .has-switch > div.switch-off label {
   background-color: #9966FF;
   border-color: #CCCCCC;
@@ -1960,19 +1961,19 @@ label {
   -moz-box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5);
   box-shadow: -1px 0 0 rgba(255, 255, 255, 0.5); }
 
-/* line 1826, src/scss/_theme.scss */
+/* line 1824, src/scss/_theme.scss */
 .has-switch > div.switch-on {
   left: 0%; }
 
-/* line 1829, src/scss/_theme.scss */
+/* line 1827, src/scss/_theme.scss */
 .has-switch > div.switch-on label {
   background-color: #CCCCCC; }
 
-/* line 1832, src/scss/_theme.scss */
+/* line 1830, src/scss/_theme.scss */
 .has-switch input[type=checkbox] {
   display: none; }
 
-/* line 1835, src/scss/_theme.scss */
+/* line 1833, src/scss/_theme.scss */
 .has-switch span {
   cursor: pointer;
   font-size: 14.994px;
@@ -1996,23 +1997,23 @@ label {
   transition: 0.25s ease-out;
   -webkit-backface-visibility: hidden; }
 
-/* line 1858, src/scss/_theme.scss */
+/* line 1856, src/scss/_theme.scss */
 .has-switch span.switch-left {
   background-color: #CCCCCC;
   color: #fff;
   border-left: 1px solid transparent; }
 
-/* line 1863, src/scss/_theme.scss */
+/* line 1861, src/scss/_theme.scss */
 .has-switch span.switch-right {
   background-color: #9966FF;
   color: #ffffff;
   text-indent: 7px; }
 
-/* line 1868, src/scss/_theme.scss */
+/* line 1866, src/scss/_theme.scss */
 .has-switch span.switch-right [class*="fui-"] {
   text-indent: 0; }
 
-/* line 1871, src/scss/_theme.scss */
+/* line 1869, src/scss/_theme.scss */
 .has-switch label {
   border: 3px solid #9966FF;
   float: left;
@@ -2029,41 +2030,39 @@ label {
   transition: 0.25s ease-out;
   -webkit-backface-visibility: hidden; }
 
-/* line 1887, src/scss/_theme.scss */
+/* line 1885, src/scss/_theme.scss */
 .switch-square {
   border-radius: 6px;
-  -webkit-border-radius: 6px;
-  -webkit-mask: url("../img/mask.png") 0 0 no-repeat;
-  mask: url("../img/mask.png") 0 0 no-repeat; }
+  -webkit-border-radius: 6px; }
 
-/* line 1893, src/scss/_theme.scss */
+/* line 1889, src/scss/_theme.scss */
 .switch-square > div.switch-off label {
   border-color: #7f8c9a;
   border-radius: 6px 0 0 6px; }
 
-/* line 1897, src/scss/_theme.scss */
+/* line 1893, src/scss/_theme.scss */
 .switch-square span.switch-left {
   border-radius: 6px 0 0 6px; }
 
-/* line 1900, src/scss/_theme.scss */
+/* line 1896, src/scss/_theme.scss */
 .switch-square span.switch-left [class*="fui-"] {
   text-indent: -10px; }
 
-/* line 1903, src/scss/_theme.scss */
+/* line 1899, src/scss/_theme.scss */
 .switch-square span.switch-right {
   border-radius: 0 6px 6px 0; }
 
-/* line 1906, src/scss/_theme.scss */
+/* line 1902, src/scss/_theme.scss */
 .switch-square span.switch-right [class*="fui-"] {
   text-indent: 5px; }
 
-/* line 1909, src/scss/_theme.scss */
+/* line 1905, src/scss/_theme.scss */
 .switch-square label {
   border-radius: 0 6px 6px 0;
   border-color: #41cac0; }
 
 /*LOGIN CONFIGURATION PAGE*/
-/* line 1917, src/scss/_theme.scss */
+/* line 1913, src/scss/_theme.scss */
 .form-login {
   max-width: 330px;
   margin: 100px auto 0;
@@ -2071,7 +2070,7 @@ label {
   border-radius: 5px;
   -webkit-border-radius: 5px; }
 
-/* line 1925, src/scss/_theme.scss */
+/* line 1921, src/scss/_theme.scss */
 .form-login h2.form-login-heading {
   margin: 0;
   padding: 25px 20px;
@@ -2083,26 +2082,26 @@ label {
   font-size: 20px;
   text-transform: uppercase;
   font-weight: 300; }
-  /* line 1930, src/scss/_theme.scss */
+  /* line 1926, src/scss/_theme.scss */
   .dashboard .form-login h2.form-login-heading {
     background: #9966FF; }
 
-/* line 1941, src/scss/_theme.scss */
+/* line 1937, src/scss/_theme.scss */
 .login-wrap {
   padding: 20px; }
 
-/* line 1944, src/scss/_theme.scss */
+/* line 1940, src/scss/_theme.scss */
 .login-wrap .registration {
   text-align: center; }
 
-/* line 1947, src/scss/_theme.scss */
+/* line 1943, src/scss/_theme.scss */
 .login-social-link {
   display: block;
   margin-top: 20px;
   margin-bottom: 15px; }
 
 /*LOCK SCREEN CONF*/
-/* line 1955, src/scss/_theme.scss */
+/* line 1951, src/scss/_theme.scss */
 #showtime {
   width: 100%;
   color: #fff;
@@ -2113,23 +2112,23 @@ label {
   text-align: center;
   font-weight: 400; }
 
-/* line 1966, src/scss/_theme.scss */
+/* line 1962, src/scss/_theme.scss */
 .lock-screen {
   text-align: center; }
 
-/* line 1970, src/scss/_theme.scss */
+/* line 1966, src/scss/_theme.scss */
 .lock-screen a {
   color: white; }
 
-/* line 1974, src/scss/_theme.scss */
+/* line 1970, src/scss/_theme.scss */
 .lock-screen a:hover {
   color: #48cfad; }
 
-/* line 1978, src/scss/_theme.scss */
+/* line 1974, src/scss/_theme.scss */
 .lock-screen i {
   font-size: 60px; }
 
-/* line 1982, src/scss/_theme.scss */
+/* line 1978, src/scss/_theme.scss */
 .lock-screen .modal-content {
   position: relative;
   background-color: #9966FF;
@@ -2137,17 +2136,17 @@ label {
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px; }
-  /* line 1985, src/scss/_theme.scss */
+  /* line 1981, src/scss/_theme.scss */
   .dashboard .lock-screen .modal-content {
     background-color: #9966FF; }
 
-/* line 1996, src/scss/_theme.scss */
+/* line 1992, src/scss/_theme.scss */
 .btn-facebook {
   color: #fff;
   background-color: #5193ea;
   border-color: #2775e2; }
 
-/* line 2001, src/scss/_theme.scss */
+/* line 1997, src/scss/_theme.scss */
 .btn-facebook:hover,
 .btn-facebook:focus,
 .btn-facebook:active,
@@ -2157,13 +2156,13 @@ label {
   background-color: #2775e2;
   border-color: #2775e2; }
 
-/* line 2011, src/scss/_theme.scss */
+/* line 2007, src/scss/_theme.scss */
 .btn-twitter {
   color: #fff;
   background-color: #44ccfe;
   border-color: #2bb4e8; }
 
-/* line 2016, src/scss/_theme.scss */
+/* line 2012, src/scss/_theme.scss */
 .btn-twitter:hover,
 .btn-twitter:focus,
 .btn-twitter:active,
@@ -2174,69 +2173,69 @@ label {
   border-color: #2bb4e8; }
 
 /*badge*/
-/* line 2028, src/scss/_theme.scss */
+/* line 2024, src/scss/_theme.scss */
 .badge.bg-primary {
   background: #8075c4; }
 
-/* line 2032, src/scss/_theme.scss */
+/* line 2028, src/scss/_theme.scss */
 .badge.bg-success {
   background: #a9d86e; }
 
-/* line 2036, src/scss/_theme.scss */
+/* line 2032, src/scss/_theme.scss */
 .badge.bg-warning {
   background: #FCB322; }
 
-/* line 2040, src/scss/_theme.scss */
+/* line 2036, src/scss/_theme.scss */
 .badge.bg-important {
   background: #ff6c60; }
 
-/* line 2044, src/scss/_theme.scss */
+/* line 2040, src/scss/_theme.scss */
 .badge.bg-info {
   background: #41cac0; }
 
-/* line 2048, src/scss/_theme.scss */
+/* line 2044, src/scss/_theme.scss */
 .badge.bg-inverse {
   background: #2A3542; }
 
 /*easy pie chart*/
-/* line 2054, src/scss/_theme.scss */
+/* line 2050, src/scss/_theme.scss */
 .easy-pie-chart {
   display: inline-block;
   padding: 30px 0; }
 
-/* line 2059, src/scss/_theme.scss */
+/* line 2055, src/scss/_theme.scss */
 .chart-info, .chart-info .increase, .chart-info .decrease {
   display: inline-block; }
 
-/* line 2063, src/scss/_theme.scss */
+/* line 2059, src/scss/_theme.scss */
 .chart-info {
   width: 100%;
   margin-bottom: 5px; }
 
-/* line 2068, src/scss/_theme.scss */
+/* line 2064, src/scss/_theme.scss */
 .chart-position {
   margin-top: 70px; }
 
-/* line 2072, src/scss/_theme.scss */
+/* line 2068, src/scss/_theme.scss */
 .chart-info span {
   margin: 0 3px; }
 
-/* line 2076, src/scss/_theme.scss */
+/* line 2072, src/scss/_theme.scss */
 .chart-info .increase {
   background: #ff6c60;
   width: 10px;
   height: 10px; }
 
-/* line 2082, src/scss/_theme.scss */
+/* line 2078, src/scss/_theme.scss */
 .chart-info .decrease {
   background: #9966FF;
   width: 10px;
   height: 10px; }
-  /* line 2084, src/scss/_theme.scss */
+  /* line 2080, src/scss/_theme.scss */
   .dashboard .chart-info .decrease {
     background: #9966FF; }
 
-/* line 2092, src/scss/_theme.scss */
+/* line 2088, src/scss/_theme.scss */
 .panel-footer.revenue-foot {
   background-color: #e6e7ec;
   -webkit-border-radius: 0px 0px 4px 4px;
@@ -2248,33 +2247,33 @@ label {
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   /* Safari and Chrome */
-  /* line 2104, src/scss/_theme.scss */
+  /* line 2100, src/scss/_theme.scss */
   .panel-footer.revenue-foot {
     margin-bottom: -4px; } }
-/* line 2110, src/scss/_theme.scss */
+/* line 2106, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul {
   margin: 0;
   padding: 0;
   width: 100%;
   display: inline-flex; }
 
-/* line 2117, src/scss/_theme.scss */
+/* line 2113, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li {
   float: left;
   width: 33.33%; }
 
-/* line 2122, src/scss/_theme.scss */
+/* line 2118, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li.first a:hover, .panel-footer.revenue-foot ul li.first a {
   -webkit-border-radius: 0px 0px 0px 4px;
   border-radius: 0px 0px 0px 4px; }
 
-/* line 2127, src/scss/_theme.scss */
+/* line 2123, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li.last a:hover, .panel-footer.revenue-foot ul li.last a {
   -webkit-border-radius: 0px 0px 4px 0px;
   border-radius: 0px 0px 4px 0px;
   border-right: none; }
 
-/* line 2134, src/scss/_theme.scss */
+/* line 2130, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li a {
   display: inline-block;
   width: 100%;
@@ -2283,53 +2282,53 @@ label {
   border-right: 1px solid #d5d8df;
   color: #797979; }
 
-/* line 2143, src/scss/_theme.scss */
+/* line 2139, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li a:hover, .panel-footer.revenue-foot ul li.active a {
   background: #fff;
   position: relative; }
 
-/* line 2148, src/scss/_theme.scss */
+/* line 2144, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li a i {
   color: #c6cad5;
   display: block;
   font-size: 16px; }
 
-/* line 2153, src/scss/_theme.scss */
+/* line 2149, src/scss/_theme.scss */
 .panel-footer.revenue-foot ul li a:hover i, .panel-footer.revenue-foot ul li.active a i {
   color: #ff6c60;
   display: block;
   font-size: 16px; }
 
 /*flot chart*/
-/* line 2161, src/scss/_theme.scss */
+/* line 2157, src/scss/_theme.scss */
 .flot-chart .chart, .flot-chart .pie, .flot-chart .bars {
   height: 300px; }
 
 /*todolist*/
-/* line 2166, src/scss/_theme.scss */
+/* line 2162, src/scss/_theme.scss */
 #sortable {
   list-style-type: none;
   margin: 0 0 20px 0;
   padding: 0;
   width: 100%; }
 
-/* line 2172, src/scss/_theme.scss */
+/* line 2168, src/scss/_theme.scss */
 #sortable li {
   padding-left: 3em;
   font-size: 12px; }
 
-/* line 2176, src/scss/_theme.scss */
+/* line 2172, src/scss/_theme.scss */
 #sortable li i {
   position: absolute;
   left: 6px;
   padding: 4px 10px 0 10px;
   cursor: pointer; }
 
-/* line 2183, src/scss/_theme.scss */
+/* line 2179, src/scss/_theme.scss */
 #sortable li input[type=checkbox] {
   margin-top: 0; }
 
-/* line 2187, src/scss/_theme.scss */
+/* line 2183, src/scss/_theme.scss */
 .ui-sortable > li {
   padding: 15px 0 15px 35px !important;
   position: relative;
@@ -2337,41 +2336,41 @@ label {
   margin-bottom: 2px;
   border-bottom: none !important; }
 
-/* line 2195, src/scss/_theme.scss */
+/* line 2191, src/scss/_theme.scss */
 .ui-sortable li.list-primary {
   border-left: 3px solid #41CAC0; }
 
-/* line 2199, src/scss/_theme.scss */
+/* line 2195, src/scss/_theme.scss */
 .ui-sortable li.list-success {
   border-left: 3px solid #78CD51; }
 
-/* line 2203, src/scss/_theme.scss */
+/* line 2199, src/scss/_theme.scss */
 .ui-sortable li.list-danger {
   border-left: 3px solid #FF6C60; }
 
-/* line 2207, src/scss/_theme.scss */
+/* line 2203, src/scss/_theme.scss */
 .ui-sortable li.list-warning {
   border-left: 3px solid #F1C500; }
 
-/* line 2211, src/scss/_theme.scss */
+/* line 2207, src/scss/_theme.scss */
 .ui-sortable li.list-info {
   border-left: 3px solid #58C9F3; }
 
-/* line 2215, src/scss/_theme.scss */
+/* line 2211, src/scss/_theme.scss */
 .ui-sortable li.list-inverse {
   border-left: 3px solid #BEC3C7; }
 
 /*footer*/
-/* line 2220, src/scss/_theme.scss */
+/* line 2216, src/scss/_theme.scss */
 .site-footer {
   background: #9966FF;
   color: #fff;
   padding: 10px 0; }
-  /* line 2222, src/scss/_theme.scss */
+  /* line 2218, src/scss/_theme.scss */
   .dashboard .site-footer {
     background: #9966FF; }
 
-/* line 2231, src/scss/_theme.scss */
+/* line 2227, src/scss/_theme.scss */
 .go-top {
   margin-right: 1%;
   float: right;
@@ -2381,11 +2380,11 @@ label {
   border-radius: 50%;
   -webkit-border-radius: 50%; }
 
-/* line 2241, src/scss/_theme.scss */
+/* line 2237, src/scss/_theme.scss */
 .go-top i {
   color: #2A3542; }
 
-/* line 2245, src/scss/_theme.scss */
+/* line 2241, src/scss/_theme.scss */
 .site-min-height {
   min-height: 900px; }
 
@@ -2409,14 +2408,17 @@ label {
 .public-window.home .comments {
   text-align: right;
   padding: 4px; }
-/* line 27, src/scss/page/_public.scss */
+/* line 26, src/scss/page/_public.scss */
+.public-window.home .article figure img {
+  max-height: 95px; }
+/* line 32, src/scss/page/_public.scss */
 .public-window.estate #main-content img {
   width: 100%;
   height: auto;
   max-width: 720px;
   margin: 0 auto;
   padding: 15px 0; }
-/* line 34, src/scss/page/_public.scss */
+/* line 39, src/scss/page/_public.scss */
 .public-window.estate .detail span {
   text-transform: italic; }
 
@@ -2429,25 +2431,30 @@ label {
   width: 80%;
   vertical-align: middle; }
 /* line 14, src/scss/page/_dashboard.scss */
+.dashboard .main-chart .wrap-img img {
+  display: block;
+  width: 100%;
+  height: auto; }
+/* line 21, src/scss/page/_dashboard.scss */
 .dashboard .sub-menu {
   display: none; }
-  /* line 16, src/scss/page/_dashboard.scss */
+  /* line 23, src/scss/page/_dashboard.scss */
   .dashboard .sub-menu.li-dashboard {
     display: block; }
-/* line 21, src/scss/page/_dashboard.scss */
+/* line 28, src/scss/page/_dashboard.scss */
 .dashboard span.li-dashboard {
   display: block; }
-/* line 26, src/scss/page/_dashboard.scss */
+/* line 33, src/scss/page/_dashboard.scss */
 .dashboard .nav.pull-right li:nth-child(1) {
   display: none; }
-/* line 30, src/scss/page/_dashboard.scss */
+/* line 37, src/scss/page/_dashboard.scss */
 .dashboard .wrap-submit {
   width: 100%;
   text-align: right; }
-/* line 35, src/scss/page/_dashboard.scss */
+/* line 42, src/scss/page/_dashboard.scss */
 .dashboard .table thead span {
   padding-left: 6px; }
-/* line 41, src/scss/page/_dashboard.scss */
+/* line 48, src/scss/page/_dashboard.scss */
 .dashboard.qcm .form-control#mcq_status,
 .dashboard.qcm .form-control#article_status, .dashboard.article .form-control#mcq_status,
 .dashboard.article .form-control#article_status {
@@ -2456,7 +2463,7 @@ label {
   width: 40%;
   display: inline-block;
   vertical-align: middle; }
-/* line 50, src/scss/page/_dashboard.scss */
+/* line 57, src/scss/page/_dashboard.scss */
 .dashboard.stats .table {
   margin: 50px 0; }
 
