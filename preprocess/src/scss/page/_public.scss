@@ -22,6 +22,11 @@
 			text-align: right;
 			padding: 4px;
 		}
+		.article{
+			figure img{
+				max-height: 95px;
+			}
+		}
 	}
 	&.estate{
 		#main-content img{

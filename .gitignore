@@ -5,6 +5,7 @@
 /site/app/logs/*
 !app/logs/.gitkeep
 /site/app/phpunit.xml
+/site/web/bundles/splj/img/articles/*.jpg
 /site/bin/
 /site/composer.phar
 /vendor/

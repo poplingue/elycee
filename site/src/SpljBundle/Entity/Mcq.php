@@ -29,11 +29,6 @@ class Mcq
      */
     private $status;
 
-    /**
-     * @var integer
-     */
-    private $nbQuestions;
-
 
     /**
      * Get id
@@ -112,28 +107,5 @@ class Mcq
     public function getStatus()
     {
         return $this->status;
-    }
-
-    /**
-     * Set nbQuestions
-     *
-     * @param integer $nbQuestions
-     * @return Mcq
-     */
-    public function setNbQuestions($nbQuestions)
-    {
-        $this->nbQuestions = $nbQuestions;
-
-        return $this;
-    }
-
-    /**
-     * Get nbQuestions
-     *
-     * @return integer 
-     */
-    public function getNbQuestions()
-    {
-        return $this->nbQuestions;
     }
 }

@@ -18,7 +18,7 @@
         {% for article in article %}
             {% if article.status < 2  %}
             <tr>
-                <td><a href="">{{ article.title }}</a></td>
+                <td><a href="/dashboard-teacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
                 <td class="hidden-phone">{{ article.userid }}</td>
                 <td>{{ article.date|date('d/m/Y') }}</td>
                 <td>

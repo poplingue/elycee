@@ -16,7 +16,4 @@ SpljBundle\Entity\Mcq:
             length: '100'
         status:
             type: boolean
-        nbQuestions:
-            type: integer
-            column: nb_questions
     lifecycleCallbacks: {  }

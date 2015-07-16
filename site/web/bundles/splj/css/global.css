@@ -2412,14 +2412,17 @@ label {
 .public-window.home .comments {
   text-align: right;
   padding: 4px; }
-/* line 27, src/scss/page/_public.scss */
+/* line 26, src/scss/page/_public.scss */
+.public-window.home .article figure img {
+  max-height: 95px; }
+/* line 32, src/scss/page/_public.scss */
 .public-window.estate #main-content img {
   width: 100%;
   height: auto;
   max-width: 720px;
   margin: 0 auto;
   padding: 15px 0; }
-/* line 34, src/scss/page/_public.scss */
+/* line 39, src/scss/page/_public.scss */
 .public-window.estate .detail span {
   text-transform: italic; }
 

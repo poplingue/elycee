@@ -47,7 +47,10 @@ h1{
 	}
 	a:hover{
 		color: $grey-dark;
-	}	
+	}
+	.btn a{
+		color: #fff;
+	}
 }
 .li-dashboard, span.dashboard{
 	display: none;

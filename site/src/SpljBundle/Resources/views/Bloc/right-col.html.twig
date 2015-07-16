@@ -1,41 +1,18 @@
 <h3>A lire aussi</h3>
 <ul class="archives">
-	<li>
+{% for articleRandom in articleRandom %}
+		<li>
 		<div class="desc">
 			<div class="thumb">
 				<span class="badge bg-theme"><i class="fa fa-book"></i></span>
 			</div>
 			<div class="details">
-          		<p><span>publié le </span><date>25/05/2015</date></span>
-          		   <a href="#">Tititititttre</a><p>short short short</p>
-          		</p>
+          		<p><span>publié le </span><date>{{ articleRandom.date|date('d/m/Y') }}</date></p>
+      		   <a href="#">{{ articleRandom.title }}</a>
           	</div>
 		</div>
 	</li>
-	<li>
-		<div class="desc">
-			<div class="thumb">
-				<span class="badge bg-theme"><i class="fa fa-book"></i></span>
-			</div>
-			<div class="details">
-          		<p><span>publié le </span><date>25/05/2015</date></span>
-          		   <a href="#">Tititititttre</a><p>short short short</p>
-          		</p>
-          	</div>
-		</div>
-	</li>
-	<li>
-		<div class="desc">
-			<div class="thumb">
-				<span class="badge bg-theme"><i class="fa fa-book"></i></span>
-			</div>
-			<div class="details">
-          		<p><span>publié le </span><date>25/05/2015</date></span>
-          		   <a href="#">Tititititttre</a><p>short short short</p>
-          		</p>
-          	</div>
-		</div>
-	</li>
+{% endfor %}
 </ul>
 <h3>Fil twitter</h3>
 <ul class="twitter">
