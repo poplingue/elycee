@@ -86,4 +86,27 @@ class Answer
     {
         return $this->correct;
     }
+
+    /**
+     * Set idQuestion
+     *
+     * @param integer $idQuestion
+     * @return Answer
+     */
+    public function setIdQuestion($idQuestion)
+    {
+        $this->idQuestion = $idQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get idQuestion
+     *
+     * @return integer 
+     */
+    public function getIdQuestion()
+    {
+        return $this->idQuestion;
+    }
 }

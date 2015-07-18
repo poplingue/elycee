@@ -59,8 +59,6 @@ class QuestionController extends Controller
 
         if($form->isSubmitted())
         {
-            //print_r($mcqCurrent->getId());
-            //$question->setIdQcm($id);
             for ($i=0; $i < $nbQuestion; $i++){
                 $this->onSubmit($form,$mcq->getQuestions()->get($i));
             }
@@ -76,7 +74,15 @@ class QuestionController extends Controller
     public function onSubmit($form,$question)
     {
         $em = $this->getDoctrine()->getManager();
+
+        $answer1 = $question->getAnswer1();
+
         $em->persist($question);
         $em->flush();
+        
+        $answer1->setIdQuestion($question->getId());
+        $em->persist($answer1);
+        $em->flush();
+        
     }
 }
