@@ -129,9 +129,7 @@ define("dashboard", function() {
                 $(".sub-menu").eq(7).find("a").addClass("active");
             }
         },
-        checkForm: function checkForm() {
-            $("#form").checkForm();
-        },
+        checkForm: function checkForm() {},
         questionsMore: function questionsMore() {}
     };
     return dashboard;

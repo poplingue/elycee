@@ -9,7 +9,8 @@
         <tr>
             <th><i class="fa fa-paw"></i><span>Sujet</span></th>
             <th class="hidden-phone"><i class="fa fa-university"></i><span>Thème</span></th>
-            <th><i class="fa fa-male"></i><span>Id</span></th>
+            <th class="centered hidden-phone"><i class="fa fa-question"></i><span>Questions</span></th>
+            <th><i class="fa fa-male"></i><span>Auteur</span></th>
             <th><i class=" fa fa-dot-circle-o"></i><span>Statut</span></th>
             <th></th>
         </tr>
@@ -20,7 +21,8 @@
             <tr>
                 <td><a href="{{ url('splj.dashStudent.question')}}">{{ mcq.title }}</a></td>
                 <td class="hidden-phone">{{ mcq.theme }}</td>
-                <td>{{ mcq.id }}</td>
+                <td class="centered hidden-phone">{{ mcq.nbQuestions }}</td>
+                <td>Jean-Mitch</td>
                 <td>
                     <form action="/dashboard-teacher/update-status-mcq/{{ mcq.id }}" method="POST" novalidate>
                             <select name="status">
@@ -36,6 +38,7 @@
                     </form>
                 </td>
                 <td>
+                    <button class="btn btn-primary btn-xs"><a href="/dashboard-teacher/update-mcq/{{ mcq.id }}"><i class="fa fa-pencil"></i></a></button>
                     <button class="btn btn-danger btn-xs"><a href="/dashboard-teacher/delete-mcq/{{ mcq.id }}"><i class="fa fa-trash-o"></i></a></button>
                 </td>
             </tr>

@@ -30,7 +30,7 @@ define('dashboard', function(){
 	    },
 
 	    checkForm: function checkForm(){
-	    	$('#form').checkForm();
+	    	// $('#form').checkForm();
 	    },
 
 	    questionsMore: function questionsMore(){

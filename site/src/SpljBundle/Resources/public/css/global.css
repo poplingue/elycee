@@ -79,30 +79,34 @@ h1 {
   position: absolute;
   right: 0; }
 
+/* line 28, src/scss/_common.scss */
+.bottom-form {
+  display: none; }
+
 @media screen and (max-width: 640px) {
-  /* line 29, src/scss/_common.scss */
+  /* line 32, src/scss/_common.scss */
   .wrap-logo {
     width: 80%; }
-    /* line 31, src/scss/_common.scss */
+    /* line 34, src/scss/_common.scss */
     .wrap-logo b {
       display: none; } }
-/* line 37, src/scss/_common.scss */
+/* line 40, src/scss/_common.scss */
 .main-chart p {
   color: #9966FF;
   text-indent: 20px;
   padding: 15px 20px;
   line-height: 14px; }
-/* line 44, src/scss/_common.scss */
+/* line 47, src/scss/_common.scss */
 .main-chart a.add span {
   padding-left: 6px; }
-/* line 48, src/scss/_common.scss */
+/* line 51, src/scss/_common.scss */
 .main-chart a:hover {
   color: #666666; }
-/* line 51, src/scss/_common.scss */
+/* line 54, src/scss/_common.scss */
 .main-chart .btn a {
   color: #fff; }
 
-/* line 55, src/scss/_common.scss */
+/* line 58, src/scss/_common.scss */
 .li-dashboard, span.dashboard {
   display: none; }
 
@@ -2458,14 +2462,27 @@ label {
 .dashboard.qcm .form-control#mcq_status,
 .dashboard.qcm .form-control#article_status, .dashboard.article .form-control#mcq_status,
 .dashboard.article .form-control#article_status {
-  height: 20px;
+  /*height: 20px;
   padding: 0px 5px;
   width: 40%;
   display: inline-block;
-  vertical-align: middle; }
+  vertical-align: middle;*/ }
 /* line 57, src/scss/page/_dashboard.scss */
 .dashboard.stats .table {
   margin: 50px 0; }
+/* line 62, src/scss/page/_dashboard.scss */
+.dashboard.questions form .form-group:nth-child(4n+1) {
+  background-color: #FFE2C9;
+  padding: 13px 0 13px 13px; }
+  /* line 65, src/scss/page/_dashboard.scss */
+  .dashboard.questions form .form-group:nth-child(4n+1) .control-label {
+    font-weight: bold; }
+/* line 69, src/scss/page/_dashboard.scss */
+.dashboard.questions form .form-group:nth-child(4n+4) {
+  border-bottom: 1px solid #CCCCCC; }
+/* line 75, src/scss/page/_dashboard.scss */
+.dashboard.form p.bottom-form {
+  display: block; }
 
 /*
 SCSS variables are information about icon's compiled state, stored under its original file name

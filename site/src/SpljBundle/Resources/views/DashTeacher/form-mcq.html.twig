@@ -1,6 +1,6 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %}Nouveau QCM{% endblock %}
-{% block class %}dashboard mcq{% endblock %}
+{% block class %}dashboard form mcq{% endblock %}
 {% block h1 %}Créer un QCM{% endblock %}
 {% block body %}
 {{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
@@ -47,5 +47,5 @@
     <div class="wrap-submit">
         <button type="submit" class="btn btn-theme">créer</button> 
     </div>
-{{ form_end(form) }}
+{{ form_end(form, {'render_rest': false}) }}
 {% endblock %}

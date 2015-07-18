@@ -93,7 +93,6 @@ class ArticleController extends Controller
     {
         $doctrine = $this->getDoctrine();
         $src = $doctrine->getRepository('SpljBundle:Article');
-
         
         $entity = $src->find($id);
         $type = new ArticleType();
