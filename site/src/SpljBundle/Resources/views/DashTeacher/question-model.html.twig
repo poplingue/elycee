@@ -1,10 +1,53 @@
-
-    <div class="col-sm-12 form-group">
-        {{ form_label(form.question, "Question", {'label_attr': {'class': 'col-sm-2 control-label'}})}}
-        <div class="col-sm-10">
-            {{ form_widget(form.question,
+    <div class="col-sm-12 col-xs-12 form-group">
+        {{ form_label(question.question, 'Question', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-8 col-xs-10">
+            {{ form_widget(question.question,
                 { 'attr' : { 'class' : 'form-control' } } )
             }}
         </div>
     </div>
-    
+      <div class="col-sm-12 col-xs-12 form-group">
+        {{ form_label(question.answer1, 'Réponse 1', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-8 col-xs-10">
+            {{ form_widget(question.answer1.answer,
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <div class="switch has-switch">
+                {{ form_widget(question.answer1.correct,
+                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12 form-group">
+        {{ form_label(question.answer2, 'Réponse 2', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-8 col-xs-10">
+            {{ form_widget(question.answer2.answer,
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <div class="switch has-switch">
+                {{ form_widget(question.answer2.correct,
+                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                }}
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12 form-group">
+        {{ form_label(question.answer3, 'Réponse 3', {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        <div class="col-sm-8 col-xs-10">
+            {{ form_widget(question.answer3.answer,
+                { 'attr' : { 'class' : 'form-control' } } )
+            }}
+        </div>
+        <div class="col-sm-2 col-xs-2">
+            <div class="switch has-switch">
+                {{ form_widget(question.answer3.correct,
+                    { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                }}
+            </div>
+        </div>
+    </div>

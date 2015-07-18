@@ -112,6 +112,7 @@ define("dashboard", function() {
         init: function init() {
             this.questionsMore();
             this.customMenu();
+            this.checkForm();
         },
         customMenu: function customMenu() {
             var body = $("body");
@@ -128,20 +129,10 @@ define("dashboard", function() {
                 $(".sub-menu").eq(7).find("a").addClass("active");
             }
         },
-        questionsMore: function questionsMore() {
-            var mcqId = $("form").attr("data-mcqId");
-            // var url = Routing.generate('splj.test-ajax');
-            $(".questions .add").on("click", function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: url,
-                    success: function(data) {
-                        console.log(data);
-                    }
-                });
-            });
-        }
+        checkForm: function checkForm() {
+            $("#form").checkForm();
+        },
+        questionsMore: function questionsMore() {}
     };
     return dashboard;
 });

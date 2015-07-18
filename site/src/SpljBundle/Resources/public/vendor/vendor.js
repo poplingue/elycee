@@ -8739,12 +8739,15 @@ $(function() {
             var self = this, $form = $(cntx);
             this.form = $form;
             $form.submit(function(e) {
+                console.log("test0");
                 var returnValue = self.check(this);
                 var isValidCallBack = true;
                 if ($(this).data("check")) {
+                    console.log("test1");
                     isValidCallBack = $(this).data("check")();
                 }
                 if (!(returnValue["isValid"] && isValidCallBack)) {
+                    console.log("not valid");
                     $(document).trigger("FORM_ERROR", [ {
                         form: $form,
                         ajax: $(this).data("submit") == "ajax" ? true : false,
@@ -8752,12 +8755,14 @@ $(function() {
                     } ]);
                 }
                 if (returnValue["isValid"] && isValidCallBack) {
+                    console.log("isValid");
                     $(document).trigger("FORM_VALID", [ {
                         form: $form,
                         ajax: $(this).data("submit") == "ajax" ? true : false
                     } ]);
                     return false;
                 }
+                console.log("test2");
                 return returnValue["isValid"] && isValidCallBack;
             });
         }
@@ -8828,6 +8833,7 @@ $(function() {
             },
             ajaxSubmit: function(elmt, urlAjax, typeAjax, objAjax) {
                 var $this = $(elmt), self = elmt;
+                console.log("ajax", urlAjax);
                 $.ajax({
                     url: urlAjax,
                     type: typeAjax,

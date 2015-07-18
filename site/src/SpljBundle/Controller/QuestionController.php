@@ -7,8 +7,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SpljBundle\Entity\Question;
+use SpljBundle\Entity\Mcq;
 use SpljBundle\Entity\Answer;
 use SpljBundle\Form\QuestionType;
+use SpljBundle\Form\McqType;
+
 
 use Symfony\Component\HttpFoundation\Request as Request;
 
@@ -32,29 +35,40 @@ class QuestionController extends Controller
      */
     public function addAction(Request $request, $id)
     {
+
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
+        $src = $doctrine->getRepository('SpljBundle:Mcq');
 
-        $question = new Question();
-        $answer1 = new Answer();
-        $question->getAnswers();
-        $form = $this->createForm(new QuestionType(), $question);
+        $mcqCurrent = $src->find($id);
+        $nbQuestion = $mcqCurrent->getNbQuestions();
+
+        $mcq = new Mcq();
         
-        // $form = $this->createForm($type,$question, array(
-        //     'action' => $this->generateUrl('splj.dashTeacher.add-question'),
-        //     'method' => 'POST',
-        // ));
+        for ($i=0; $i < $nbQuestion; $i++){
+            $question = new Question();
+            $question->setIdQcm($mcqCurrent);
+            $mcq->getQuestions()->add($question);
+        }
+
+        $form = $this->createForm(new McqType(), $mcq, array(
+            'action' => $this->generateUrl('splj.dashTeacher.add-question'),
+            'method' => 'POST'
+        ));
         $form->handleRequest($request);
 
         if($form->isSubmitted())
         {
-            $answer->setAnswer('rrrr');
-            $question->setIdQcm($id);
-            $this->onSubmit($form,$question);
+            //print_r($mcqCurrent->getId());
+            //$question->setIdQcm($id);
+            for ($i=0; $i < $nbQuestion; $i++){
+                $this->onSubmit($form,$mcq->getQuestions()->get($i));
+            }
             return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
 
         return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(
+            'nbQuestion' => $nbQuestion,
             'form' => $form->createView()
         ));
     }

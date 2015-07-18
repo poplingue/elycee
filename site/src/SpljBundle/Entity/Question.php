@@ -22,15 +22,24 @@ class Question
     private $question;
 
     /**
-     * @var integer
-     */
+     * @var Mcq $idQcm
+     * @ORM\ManyToOne(targetEntity="Mcq", inversedBy="questions")
+     * @ORM\JoinColumn(name="id_qcm", referencedColumnName="id")
+     * */
     private $idQcm;
 
     /**
-     * @Assert\Type(type="SpljBundle\Entity\Answers")
+     * @Assert\Type(type="SpljBundle\Entity\Answer")
      */
-    private $answers;
-
+    protected $answer1;
+     /**
+     * @Assert\Type(type="SpljBundle\Entity\Answer")
+     */
+    protected $answer2;
+    /**
+     * @Assert\Type(type="SpljBundle\Entity\Answer")
+     */
+    protected $answer3;
 
     /**
      * Get id
@@ -68,8 +77,8 @@ class Question
     /**
      * Set idQcm
      *
-     * @param integer $idQcm
-     * @return Question
+     * @param Mcq $idQcm
+     * 
      */
     public function setIdQcm($idQcm)
     {
@@ -80,22 +89,41 @@ class Question
 
     /**
      * Get idQcm
-     *
-     * @return integer 
+     * 
+     * @return Mcq 
      */
     public function getIdQcm()
     {
         return $this->idQcm;
     }
 
-    //Methods answers
-    public function getAnswers()
+    //Methods answer x3
+    public function getAnswer1()
     {
-        return $this->answers;
+        return $this->answer1;
     }
 
-    public function setAnswers(ArrayCollection $answers)
+    public function setAnswer1(Answer $answer = null)
     {
-        $this->answers = $answers;
+        $this->answer1 = $answer;
+    }
+    //
+    public function getAnswer2()
+    {
+        return $this->answer2;
+    }
+
+    public function setAnswer2(Answer $answer = null)
+    {
+        $this->answer2 = $answer;
+    }
+    public function getAnswer3()
+    {
+        return $this->answer3;
+    }
+
+    public function setAnswer3(Answer $answer = null)
+    {
+        $this->answer3 = $answer;
     }
 }

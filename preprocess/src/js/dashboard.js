@@ -6,6 +6,7 @@ define('dashboard', function(){
 		init: function init(){
 			this.questionsMore();
 			this.customMenu();
+			this.checkForm();
 		},
 
 		customMenu: function customMenu() {
@@ -28,21 +29,24 @@ define('dashboard', function(){
 	    	}
 	    },
 
+	    checkForm: function checkForm(){
+	    	$('#form').checkForm();
+	    },
+
 	    questionsMore: function questionsMore(){
 
-	    	var mcqId = $('form').attr('data-mcqId');
-	    	// var url = Routing.generate('splj.test-ajax');
+	    	// var mcqId = $('form').attr('data-mcqId');
 
-	    	$('.questions .add').on('click', function(e){
-	    		e.preventDefault();
-	    		$.ajax({
-	    			type: "POST",
-	    			url: url,
-	    			success: function(data){
-	    				console.log(data);
-	    			}
-	    		});
-	    	});
+	    	// $('.questions .add').on('click', function(e){
+	    	// 	e.preventDefault();
+	    	// 	$.ajax({
+	    	// 		type: "POST",
+	    	// 		url: url,
+	    	// 		success: function(data){
+	    	// 			console.log(data);
+	    	// 		}
+	    	// 	});
+	    	// });
 	    }
 
 

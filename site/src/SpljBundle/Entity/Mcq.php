@@ -3,6 +3,7 @@
 namespace SpljBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Mcq
@@ -38,6 +39,21 @@ class Mcq
      * @var integer
      */
     private $status;
+
+    /**
+    * Liste des questions du MCQ
+    * @var ArrayCollection $questions
+    * @ORM\OneToMany(targetEntity="Question", mappedBy="idQcm", cascade={"all"})
+    */
+    protected $questions;
+
+    /**
+     * Surcharge du constructeur
+     */
+    public function __construct()
+    {
+        $this->questions = new ArrayCollection();
+    }
 
 
     /**
@@ -163,5 +179,21 @@ class Mcq
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+
+    public function setQuestions(ArrayCollection $questions)
+    {
+        $this->questions = $questions;
+    }
+
+    
+    public function __toString()
+    {
+      return strval( $this->getId() );
     }
 }

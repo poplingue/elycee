@@ -19,6 +19,7 @@ class McqType extends AbstractType
             ->add('title', 'text')
             ->add('theme', 'text')
             ->add('user_id', 'hidden')
+            ->add('questions','collection', array('type' => new QuestionType(), 'allow_add' => true))
             ->add('nbQuestions', 'choice', array(
             'choices' => array(
                 1 => '1',
