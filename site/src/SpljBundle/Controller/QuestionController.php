@@ -6,10 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use SpljBundle\Entity\Question;
+use Doctrine\Common\Collections\ArrayCollection;
+
 use SpljBundle\Entity\Mcq;
-use SpljBundle\Form\QuestionType;
+use SpljBundle\Entity\Question;
+use SpljBundle\Entity\Answer;
 use SpljBundle\Form\McqType;
+use SpljBundle\Form\QuestionType;
+use SpljBundle\Form\AnswerType;
 
 
 use Symfony\Component\HttpFoundation\Request as Request;
@@ -45,8 +49,15 @@ class QuestionController extends Controller
         
         for ($i=0; $i < $nbQuestion; $i++){
             $question = new Question();
+
+            for ($j=0; $j < 3; $j++) {
+                $answer = new Answer();
+                $question->getAnswers()->add($answer);
+            }
+            
             $question->setIdQcm($mcqCurrent);
             $mcq->getQuestions()->add($question);
+
         }
 
         $form = $this->createForm(new McqType(), $mcq, array(
@@ -73,14 +84,15 @@ class QuestionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $answer1 = $question->getAnswer1();
-
         $em->persist($question);
         $em->flush();
-        
-        $answer1->setIdQuestion($question->getId());
-        $em->persist($answer1);
-        $em->flush();
+
+        $answers = $question->getAnswers();
+        for ($i=0; $i < sizeof($answers); $i++) {
+            $answers->get($i)->setIdQuestion($question);
+            $em->persist($answers->get($i));
+            $em->flush();
+        }
         
     }
 
@@ -95,6 +107,31 @@ class QuestionController extends Controller
     */
     public function updateAction(Request $request, $id)
     {   
+        $mcqCurrent = $this->loadMcq($id);
+        $form = $this->createForm(new McqType(),$mcqCurrent, array(
+            'action' => $this->generateUrl('splj.dashTeacher.update-mcq', array('id' => $id)),
+        ));
+
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted()){
+            for ($i=0; $i < sizeof($questions); $i++){
+                $this->onSubmit($form,$mcqCurrent->getQuestions()->get($i));
+            }
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 1)));
+        }
+        return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(
+            'form' => $form->createView(),
+            'mcqCurrent' => $mcqCurrent
+        ));
+    }
+
+    public function loadMcq($id)
+    {   
+        $doctrine = $this->getDoctrine()->getManager();
+        $src = $doctrine->getRepository('SpljBundle:Mcq');
+        $mcqCurrent = $src->find($id);
+        
         $qb = $this->getDoctrine()->getRepository('SpljBundle:Question')->createQueryBuilder('q');
         $qb->select(array('q'))
             ->from('SpljBundle:Question', 'question')
@@ -107,40 +144,31 @@ class QuestionController extends Controller
             ->setParameter('id', $id);
         $query = $qb->getQuery();
         $questions = $query->getResult();
-        var_dump($questions);
 
-        for ($i=0; $i < sizeof($questions); $i++) { 
+        $arrayCollection = new ArrayCollection($questions);
+        $mcqCurrent->setQuestions($arrayCollection);
+
+        for ($i=0; $i < sizeof($questions); $i++) {
+
+            $questionCurrent = $questions[$i]->getId();
+
             $qb = $this->getDoctrine()->getRepository('SpljBundle:Answer')->createQueryBuilder('a');
             $qb->select(array('a'))
-                ->from('SpljBundle:Answer', 'answer1')
+                ->from('SpljBundle:Answer', 'answer')
                 ->leftJoin(
                         'SpljBundle:Question',
                         'q',
                         'WITH',
                         'a.idQuestion = q.id')
-                ->where('a =:id')
-                ->setParameter('id', $i);
+                ->where('q =:id')
+                ->setParameter('id', $questionCurrent);
             $query = $qb->getQuery();
+            $answers = $query->getResult();
+
+            $arrayCollection = new ArrayCollection($answers);
+            $questions[$i]->setAnswers($arrayCollection);
+
         }
-        $answers = $query->getResult();
-        var_dump($answers);
-
-
-
-
-        $form = $this->createForm($type,$question, array(
-            'action' => $this->generateUrl('splj.dashTeacher.update-mcq', array('id' => $id)),
-        ));
-
-        $form->handleRequest($request);
-        
-        if($form->isSubmitted()){
-            $this->onSubmit($form,$mcqCurrent);
-            return $this->redirect($this->generateUrl('splj.dashTeacher.list-mcq'));
-        }
-        return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(
-            'form' => $form->createView(),
-            'mcqCurrent' => $mcqCurrent
-        ));
+        return $mcqCurrent;
     }
 }

@@ -17,18 +17,18 @@ class User
     /**
      * @var string
      */
-    private $name;
+    private $pseudo;
 
     /**
      * @var string
      *
      */
-    private $email;
+    private $password;
 
     /**
-     * @var boolean
+     * @var integer
      */
-    private $type;
+    private $profil;
 
 
     /**
@@ -42,71 +42,71 @@ class User
     }
 
     /**
-     * Set name
+     * Set pseudo
      *
-     * @param string $name
+     * @param string $pseudo
      * @return User
      */
-    public function setName($name)
+    public function setPseudo($pseudo)
     {
-        $this->name = $name;
+        $this->pseudo = $pseudo;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get pseudo
      *
      * @return string 
      */
-    public function getName()
+    public function getPseudo()
     {
-        return $this->name;
+        return $this->pseudo;
     }
 
     /**
-     * Set email
+     * Set password
      *
-     * @param string $email
+     * @param string $password
      * @return User
      */
-    public function setEmail($email)
+    public function setPassword($password)
     {
-        $this->email = $email;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get password
      *
      * @return string 
      */
-    public function getEmail()
+    public function getPassword()
     {
-        return $this->email;
+        return $this->password;
     }
 
     /**
-     * Set type
+     * Set profil
      *
-     * @param boolean $type
+     * @param integer $profil
      * @return User
      */
-    public function setType($type)
+    public function setProfil($profil)
     {
-        $this->type = $type;
+        $this->profil = $profil;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get profil
      *
-     * @return boolean 
+     * @return integer 
      */
-    public function getType()
+    public function getProfil()
     {
-        return $this->type;
+        return $this->profil;
     }
 }

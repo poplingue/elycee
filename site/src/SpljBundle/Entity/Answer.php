@@ -2,9 +2,10 @@
 
 namespace SpljBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Answer
@@ -26,9 +27,11 @@ class Answer
      */
     private $correct;
 
-    /**
-     * @var integer
-     */
+   /**
+     * @var Question $idQuestion
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="answers")
+     * @ORM\JoinColumn(name="id_question", referencedColumnName="id")
+     * */
     private $idQuestion;
 
     /**
@@ -87,11 +90,11 @@ class Answer
         return $this->correct;
     }
 
-    /**
+     /**
      * Set idQuestion
      *
-     * @param integer $idQuestion
-     * @return Answer
+     * @param Question $idQuestion
+     * 
      */
     public function setIdQuestion($idQuestion)
     {
@@ -102,8 +105,8 @@ class Answer
 
     /**
      * Get idQuestion
-     *
-     * @return integer 
+     * 
+     * @return Question 
      */
     public function getIdQuestion()
     {

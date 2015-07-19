@@ -2,8 +2,9 @@
 
 namespace SpljBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Mcq
@@ -54,8 +55,9 @@ class Mcq
     {
         $this->questions = new ArrayCollection();
     }
-
-
+    /*------------------------------------*\
+        #getter setter
+    \*------------------------------------*/
     /**
      * Get id
      *
@@ -74,7 +76,9 @@ class Mcq
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        if($title !== null){
+            $this->title = $title;
+        }
 
         return $this;
     }
@@ -97,7 +101,9 @@ class Mcq
      */
     public function setTheme($theme)
     {
-        $this->theme = $theme;
+        if($theme !== null){
+            $this->theme = $theme;
+        }
 
         return $this;
     }
@@ -120,7 +126,9 @@ class Mcq
      */
     public function setUserId($userId)
     {
-        $this->userId = $userId;
+        if($userId !== null){
+            $this->userId = $userId;
+        }
 
         return $this;
     }
@@ -143,7 +151,9 @@ class Mcq
      */
     public function setNbQuestions($nbQuestions)
     {
-        $this->nbQuestions = $nbQuestions;
+        if($nbQuestions !== null){
+            $this->nbQuestions = $nbQuestions;
+        }
 
         return $this;
     }
@@ -166,7 +176,9 @@ class Mcq
      */
     public function setStatus($status)
     {
-        $this->status = $status;
+        if($status !== null){
+            $this->status = $status;
+        }
 
         return $this;
     }
@@ -181,16 +193,21 @@ class Mcq
         return $this->status;
     }
 
+    /**
+     * Get questions
+     */
     public function getQuestions()
     {
         return $this->questions;
     }
 
+    /**
+     * Set questions
+     */
     public function setQuestions(ArrayCollection $questions)
     {
         $this->questions = $questions;
     }
-
     
     public function __toString()
     {

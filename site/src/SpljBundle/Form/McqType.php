@@ -34,8 +34,8 @@ class McqType extends AbstractType
             ))
              ->add('status', 'choice', array(
             'choices' => array(
-                1 => 'non publié',
-                2 => 'publié',
+                0 => 'non publié',
+                1 => 'publié',
             ),
             'empty_data'  => null
             ));

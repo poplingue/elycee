@@ -20,26 +20,47 @@ class DashboardController extends Controller
 
     /**
     * @Route(
-    *   "/list-mcq",
-    *   name="splj.dashboard.list-mcq"
+    *   "/list-mcq/{id}",
+    *   name="splj.dashboard.list-mcq",
+    *  defaults={"id"=null}
     * )
     *
     * @Template("SpljBundle:Dashboard:list-mcq.html.twig")
     */
-    public function listMcqAction(Request $request)
+    public function listMcqAction(Request $request, $id)
     {
         $doctrine = $this->getDoctrine();
-        $src = $doctrine->getRepository('SpljBundle:Mcq');
+        
+        /** On recupere les parametres de l'utilisateur **/
+        $src = $doctrine->getRepository('SpljBundle:User');
+        $user = $src->find($id);
 
+        /** On recupere la liste des QCM **/
+        $src = $doctrine->getRepository('SpljBundle:Mcq');
         $entity = new Mcq();
         $type = new McqType();
-        
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
-
         $mcq = $src->findAll();
+        
+        $scores = null;
+        /** Si c'est un etudiant **/
+        if($user->getProfil() == 2){
+            /** On recupere la liste des scores de l etudiant **/
+            $qb = $this->getDoctrine()->getRepository('SpljBundle:Score')->createQueryBuilder('s');
+            $qb->select(array('s'))
+                ->from('SpljBundle:Score', 'score')
+                ->where('s.userId = :userId')
+                ->setParameter('userId', $id);
+            $query = $qb->getQuery();
+            $scores = $query->getResult();
+        }
+
+
         return array(
+            'user' => $user,
             'mcq' => $mcq,
+            'scores' => $scores,
             'form' => $form->createView()
         );
     }

@@ -3,6 +3,7 @@
 namespace SpljBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,19 +29,24 @@ class Question
      * */
     private $idQcm;
 
+    
     /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
-     */
-    protected $answer1;
-     /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
-     */
-    protected $answer2;
-    /**
-     * @Assert\Type(type="SpljBundle\Entity\Answer")
-     */
-    protected $answer3;
+    * Liste des reponses a ma question
+    * @var ArrayCollection $answers
+    * @ORM\OneToMany(targetEntity="Answer", mappedBy="idQuestion", cascade={"all"})
+    */
+    protected $answers;
 
+     /**
+     * Surcharge du constructeur
+     */
+    public function __construct()
+    {
+        $this->answers = new ArrayCollection();
+    }
+    /*------------------------------------*\
+        #getter setter
+    \*------------------------------------*/
     /**
      * Get id
      *
@@ -97,33 +103,18 @@ class Question
         return $this->idQcm;
     }
 
-    //Methods answer x3
-    public function getAnswer1()
+    public function getAnswers()
     {
-        return $this->answer1;
+        return $this->answers;
     }
 
-    public function setAnswer1(Answer $answer = null)
+    public function setAnswers(ArrayCollection $answers)
     {
-        $this->answer1 = $answer;
-    }
-    //
-    public function getAnswer2()
-    {
-        return $this->answer2;
+        $this->answers = $answers;
     }
 
-    public function setAnswer2(Answer $answer = null)
+    public function __toString()
     {
-        $this->answer2 = $answer;
-    }
-    public function getAnswer3()
-    {
-        return $this->answer3;
-    }
-
-    public function setAnswer3(Answer $answer = null)
-    {
-        $this->answer3 = $answer;
+      return strval( $this->getId() );
     }
 }

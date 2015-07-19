@@ -1,0 +1,52 @@
+{%extends "SpljBundle:Bloc:skeleton.html.twig"%}
+{% block title %} {{ mcqCurrent.title }} {% endblock %}
+{% block class %}dashboard question{% endblock %}
+{% block h1 %}{{ mcqCurrent.title }}{% endblock %}
+{% block body %}
+<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
+    <div class="col-sm-12 col-xs-12 form-group">
+        {% for question in mcqCurrent.questions %}
+        {% set studentAnswer =  form.studentAnswers[loop.index-1] %}
+        <br/>
+        {{ question.question }}
+        <br />
+            {% for answer in question.answers %}
+                <br />
+                {{ answer.answer }}
+                <div class="switch has-switch">
+                    {% if loop.index == 1 %}
+                        {{ form_widget(studentAnswer.answer1,
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                        }}
+                    {% elseif loop.index == 2 %}
+                        {{ form_widget(studentAnswer.answer2,
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                        }}
+                    {% else %}
+                        {{ form_widget(studentAnswer.answer3,
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                        }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <br /> <br />
+        {% endfor %}
+        {% for studentAnswer in form.studentAnswers %}
+        <div class="col-sm-8 control-label">
+        </div>
+        <div class="col-sm-2 control-label">
+                <div class="col-sm-6 col-xs-2">
+                    <div class="switch has-switch">
+                        {{ form_widget(studentAnswer.answer1,
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
+                        }}
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="wrap-submit">
+        <button type="submit" class="btn btn-theme">valider</button>
+    </div>
+</form>
+{% endblock %}

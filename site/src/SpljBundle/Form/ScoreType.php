@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class QuestionType extends AbstractType
+class ScoreType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -14,13 +14,9 @@ class QuestionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        
-        for ($i=0; $i < $options['nbQuestion']; $i++) {
-            echo 'test';
-        }
-        $builder->add('question','textarea')
-                //->add('id_qcm','hidden')
-                ->add('answers','collection', array('type' => new AnswerType(), 'allow_add' => true));
+
+        $builder
+            ->add('studentAnswers','collection', array('type' => new StudentAnswerType(), 'allow_add' => true));
     }
     
     /**
@@ -29,8 +25,7 @@ class QuestionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SpljBundle\Entity\Question',
-            'nbQuestion' => null
+            'data_class' => 'SpljBundle\Entity\Score'
         ));
     }
 
@@ -39,6 +34,6 @@ class QuestionType extends AbstractType
      */
     public function getName()
     {
-        return 'question';
+        return 'score';
     }
 }
