@@ -71,7 +71,7 @@ class QuestionController extends Controller
             for ($i=0; $i < $nbQuestion; $i++){
                 $this->onSubmit($form,$mcq->getQuestions()->get($i));
             }
-            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 2)));
         }
 
         return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(

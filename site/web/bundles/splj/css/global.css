@@ -53,56 +53,60 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* line 5, src/scss/_common.scss */
+/* line 6, src/scss/_common.scss */
 h1 {
   font-size: 22px;
   padding: 10px 0; }
 
-/* line 9, src/scss/_common.scss */
+/* line 10, src/scss/_common.scss */
 .wrap-logo {
   display: inline-block;
   padding: 10px 0;
   text-align: center;
   width: 90%; }
-  /* line 14, src/scss/_common.scss */
+  /* line 15, src/scss/_common.scss */
   .wrap-logo b, .wrap-logo img {
     display: inline-block;
     vertical-align: middle; }
-  /* line 18, src/scss/_common.scss */
+  /* line 19, src/scss/_common.scss */
   .wrap-logo a.logo {
     font-size: 20px;
     margin-top: 15px; }
 
-/* line 23, src/scss/_common.scss */
+/* line 24, src/scss/_common.scss */
 .top-menu {
   display: inline-block;
   position: absolute;
   right: 0; }
 
+/* line 29, src/scss/_common.scss */
+.bottom-form {
+  display: none; }
+
 @media screen and (max-width: 640px) {
-  /* line 29, src/scss/_common.scss */
+  /* line 33, src/scss/_common.scss */
   .wrap-logo {
     width: 80%; }
-    /* line 31, src/scss/_common.scss */
+    /* line 35, src/scss/_common.scss */
     .wrap-logo b {
       display: none; } }
-/* line 37, src/scss/_common.scss */
+/* line 41, src/scss/_common.scss */
 .main-chart p {
   color: #9966FF;
   text-indent: 20px;
   padding: 15px 20px;
   line-height: 14px; }
-/* line 44, src/scss/_common.scss */
+/* line 48, src/scss/_common.scss */
 .main-chart a.add span {
   padding-left: 6px; }
-/* line 48, src/scss/_common.scss */
+/* line 52, src/scss/_common.scss */
 .main-chart a:hover {
   color: #666666; }
-/* line 51, src/scss/_common.scss */
+/* line 55, src/scss/_common.scss */
 .main-chart .btn a {
   color: #fff; }
 
-/* line 55, src/scss/_common.scss */
+/* line 59, src/scss/_common.scss */
 .li-dashboard, span.dashboard {
   display: none; }
 
@@ -2454,18 +2458,36 @@ label {
 /* line 42, src/scss/page/_dashboard.scss */
 .dashboard .table thead span {
   padding-left: 6px; }
-/* line 48, src/scss/page/_dashboard.scss */
-.dashboard.qcm .form-control#mcq_status,
-.dashboard.qcm .form-control#article_status, .dashboard.article .form-control#mcq_status,
-.dashboard.article .form-control#article_status {
-  height: 20px;
-  padding: 0px 5px;
-  width: 40%;
-  display: inline-block;
-  vertical-align: middle; }
-/* line 57, src/scss/page/_dashboard.scss */
+/* line 52, src/scss/page/_dashboard.scss */
 .dashboard.stats .table {
   margin: 50px 0; }
+/* line 57, src/scss/page/_dashboard.scss */
+.dashboard.questions form .form-group:nth-child(4n+1) {
+  background-color: #FFE2C9;
+  padding: 13px 0 13px 13px; }
+  /* line 60, src/scss/page/_dashboard.scss */
+  .dashboard.questions form .form-group:nth-child(4n+1) .control-label {
+    font-weight: bold; }
+/* line 64, src/scss/page/_dashboard.scss */
+.dashboard.questions form .form-group:nth-child(4n+4) {
+  border-bottom: 2px solid #CCCCCC; }
+/* line 70, src/scss/page/_dashboard.scss */
+.dashboard.answer .question {
+  padding: 20px 15px;
+  background-color: #FFE2C9;
+  border-top: 2px solid #CCCCCC; }
+  /* line 74, src/scss/page/_dashboard.scss */
+  .dashboard.answer .question:first-child {
+    border: none; }
+/* line 78, src/scss/page/_dashboard.scss */
+.dashboard.answer .answers {
+  margin-top: 18px; }
+/* line 81, src/scss/page/_dashboard.scss */
+.dashboard.answer .switch {
+  padding: 15px 0; }
+/* line 86, src/scss/page/_dashboard.scss */
+.dashboard.form p.bottom-form {
+  display: block; }
 
 /*
 SCSS variables are information about icon's compiled state, stored under its original file name

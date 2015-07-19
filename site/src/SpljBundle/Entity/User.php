@@ -3,11 +3,15 @@
 namespace SpljBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
+ * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="SpljBundle\Entity\UserRepository")
  */
-class User
+class User  implements UserInterface
 {
     /**
      * @var integer
@@ -17,7 +21,7 @@ class User
     /**
      * @var string
      */
-    private $pseudo;
+    private $username;
 
     /**
      * @var string
@@ -30,6 +34,27 @@ class User
      */
     private $profil;
 
+  /**
+   * @ORM\Column(name="salt", type="string", length=255)
+   */
+  private $salt;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+   *
+   */
+   private $groups;
+  
+
+  
+  public function eraseCredentials()
+  {
+  }
+
+  public function __construct()
+    {
+        $this->groups = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -42,26 +67,26 @@ class User
     }
 
     /**
-     * Set pseudo
+     * Set username
      *
-     * @param string $pseudo
+     * @param string $username
      * @return User
      */
-    public function setPseudo($pseudo)
+    public function setUsername($username)
     {
-        $this->pseudo = $pseudo;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get pseudo
+     * Get username
      *
      * @return string 
      */
-    public function getPseudo()
+    public function getUsername()
     {
-        return $this->pseudo;
+        return $this->username;
     }
 
     /**
@@ -108,5 +133,50 @@ class User
     public function getProfil()
     {
         return $this->profil;
+    }
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string 
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+     /**
+     * Set salt
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array 
+     */
+    public function getRoles()
+    {
+        return $this->groups->toArray();
     }
 }

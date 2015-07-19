@@ -4,12 +4,22 @@
 {% block body %}
 <div id="login-page">
 	<div class="container">
-		<form class="form-login" action="index.html">
+		 {% if app.session.get('errorlogin') == true  %}
+		 	<p>Login ou mot de passe incorrect</p>
+		 {% endif %}
+		{{ form_start(form, { 'attr' : { 'class' : 'form-login', 'novalidate' : 'novalidate', 'id' : 'form' }  }) }}
 			<h2 class="form-login-heading">sign in now</h2>
 			<div class="login-wrap">
-				<input type="text" class="form-control" placeholder="User ID" autofocus>
+				{{ form_widget(form.username, 
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'username' }}
+                     )
+                }}
+                
 				<br>
-				<input type="password" class="form-control" placeholder="Password">
+				{{ form_widget(form.password,
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'password' }}
+                     )
+                }}
 				<br>
 				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
 				<hr>
@@ -20,7 +30,7 @@
 					</a>
 				</div>
 			</div>
-		</form>	  	
+		{{ form_end(form) }} 	
 	</div>
 </div>
 {% endblock %}

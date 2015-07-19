@@ -1,4 +1,4 @@
-SpljBundle\Entity\User:
+SpljBundle\Entity\Groups:
     type: entity
     table: null
     id:
@@ -8,15 +8,10 @@ SpljBundle\Entity\User:
             generator:
                 strategy: AUTO
     fields:
-        username:
+        name:
             type: string
-            length: '100'
-        password:
+            length: 255
+        role:
             type: string
-            length: '100'
-        profil:
-            profil: integer
-        salt:
-            type: string
-            length: '100'
+            length: 255
     lifecycleCallbacks: {  }

@@ -47,11 +47,6 @@
 	&.article{
 		.form-control#mcq_status,
 		.form-control#article_status{
-			/*height: 20px;
-			padding: 0px 5px;
-			width: 40%;
-			display: inline-block;
-			vertical-align: middle;*/
 		}
 	}
 	&.stats .table{
@@ -60,15 +55,31 @@
 	&.questions{
 		form{
 			.form-group:nth-child(4n+1){
-				background-color: #FFE2C9;
+				background-color: $pink;
 				padding: 13px 0 13px 13px;
 				.control-label{
 					font-weight: bold;
 				}
 			}
 			.form-group:nth-child(4n+4){
-				border-bottom: 1px solid $grey-light;
+				border-bottom: 2px solid $grey-light;
 			}
+		}
+	}
+	&.answer{
+		.question{
+			padding: 20px 15px;
+  			background-color: $pink;
+			border-top: 2px solid $grey-light;
+			&:first-child{
+				border: none;
+			}
+		}
+		.answers{
+			margin-top: 18px;
+		}
+		.switch{
+			padding: 15px 0;
 		}
 	}
 	&.form{

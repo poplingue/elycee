@@ -1,19 +1,21 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %} {{ mcqCurrent.title }} {% endblock %}
-{% block class %}dashboard question{% endblock %}
+{% block class %}dashboard answer{% endblock %}
 {% block h1 %}{{ mcqCurrent.title }}{% endblock %}
 {% block body %}
 <form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
     <div class="col-sm-12 col-xs-12 form-group">
         {% for question in mcqCurrent.questions %}
-        {% set studentAnswer =  form.studentAnswers[loop.index-1] %}
-        <br/>
-        {{ question.question }}
-        <br />
+            {% set studentAnswer =  form.studentAnswers[loop.index-1] %}
+            <div class="col-sm-12 col-xs-12 question">
+                {{ question.question }}
+            </div>
             {% for answer in question.answers %}
-                <br />
-                {{ answer.answer }}
-                <div class="switch has-switch">
+                <div class="col-sm-8 answers">
+                    {{ answer.answer }}
+                </div>
+                <div class="col-sm-4 col-xs-4 ">
+                    <div class="switch has-switch">
                     {% if loop.index == 1 %}
                         {{ form_widget(studentAnswer.answer1,
                             { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
@@ -27,13 +29,11 @@
                             { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
                         }}
                     {% endif %}
+                    </div>
                 </div>
             {% endfor %}
-            <br /> <br />
         {% endfor %}
         {% for studentAnswer in form.studentAnswers %}
-        <div class="col-sm-8 control-label">
-        </div>
         <div class="col-sm-2 control-label">
                 <div class="col-sm-6 col-xs-2">
                     <div class="switch has-switch">

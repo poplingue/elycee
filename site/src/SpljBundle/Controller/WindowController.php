@@ -29,13 +29,12 @@ class WindowController extends Controller
         
         $article = $src->findAll();
        
-        $ids = array_rand($article,3);
+        $ids = array_rand($article,1);
 
         $query = $em->createQueryBuilder();
         $query = $src->createQueryBuilder('a')
             ->where($query->expr()->in('a.id', $ids));
         $articleRandom = $query->getQuery()->getResult();
-
         return array(
             'article' => $article,
             'articleRandom' => $articleRandom
@@ -43,19 +42,6 @@ class WindowController extends Controller
     }
 
     /**
-    * @Route(
-    * 	"/login",
-    * 	name="splj.window.login"
-    * )
-    *
-    * @Template("SpljBundle:Window:login.html.twig")
-    */
-    public function loginAction()
-    {
-       return array();
-    }
-
-      /**
     * @Route(
     * 	"/estate",
     * 	name="splj.window.estate"

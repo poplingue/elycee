@@ -48,6 +48,31 @@ class StudentController extends Controller
 
         $form->handleRequest($request);
 
+        if($form->isSubmitted()){
+            $questions = $mcqCurrent->getQuestions();
+            for ($i=0; $i < sizeof($questions); $i++) { 
+                $answers = $questions->get($i)->getAnswers();
+                $studentAnswer = $score->getStudentAnswers()->get($i);
+                $answer1 = $studentAnswer->getAnswer1();
+                $answer2 = $studentAnswer->getAnswer2();
+                $answer3 = $studentAnswer->getAnswer3();
+
+                if ($answer1 == $answers->get(0)->getCorrect() && $answer2 == $answers->get(1)->getCorrect() && $answer3 == $answers->get(2)->getCorrect()){
+                    $score->setScore($score->getScore()+1);
+                }
+            }
+
+            $score->setScoreMax($nbQuestion);
+            $score->setUserId($userId);
+            $score->setMcqId($mcqId);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($score);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 1)));
+        }
+
         return $this->render('SpljBundle:DashStudent:answer-mcq.html.twig', array(
             'form' => $form->createView(),
             'mcqCurrent' => $mcqCurrent,

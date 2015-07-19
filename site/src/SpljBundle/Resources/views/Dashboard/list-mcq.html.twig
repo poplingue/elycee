@@ -15,8 +15,9 @@
             <th><i class="fa fa-male"></i><span>Auteur</span></th>
             {% if user.profil == 1 %}
                 <th><i class=" fa fa-dot-circle-o"></i><span>Statut</span></th>
+                {% else %}
+                <th></th>
             {% endif %}
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -51,15 +52,23 @@
                     <button class="btn btn-danger btn-xs"><a href="/dashboard-teacher/delete-mcq/{{ mcq.id }}"><i class="fa fa-trash-o"></i></a></button>
                 </td>
                 {% else %}
+                    {% set qcmRepondu = false %}
+                    {% set qcmScore = 0 %}
+                    {% set qcmScoreMax = 0 %}
                     {% for score in scores %}
-                        {% if score.mcqId != mcq.id %}
-                            <td>
-                                <button class="btn btn-success btn-xs"><a href="/dashboard-student/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa "></i>répondre</a></button>
-                            </td>
-                        {% else %}
-                            <td>score : {{ score.score }}/{{ score.scoreMax }}</td>
+                        {% if score.mcqId == mcq.id %}
+                            {% set qcmRepondu = true %}
+                            {% set qcmScore = score.score %}
+                            {% set qcmScoreMax = score.scoreMax %}
                         {% endif %}
                     {% endfor %}
+                    {% if qcmRepondu == false %}
+                        <td>
+                            <button class="btn btn-success btn-xs"><a href="/dashboard-student/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa "></i>répondre</a></button>
+                        </td>
+                    {% else %}
+                        <td>score : {{ qcmScore }}/{{ qcmScoreMax }}</td>
+                    {% endif %}
                 {% endif %}
             </tr>
             {% endif %}
