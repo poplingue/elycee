@@ -2,3 +2,6 @@ services:
 #    splj.example:
 #        class: SpljBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    redirect.after.login:
+        class: SpljBundle\Redirection\AfterLoginRedirection
+        arguments: [@router,@doctrine]

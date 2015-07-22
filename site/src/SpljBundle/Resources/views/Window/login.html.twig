@@ -4,24 +4,21 @@
 {% block body %}
 <div id="login-page">
 	<div class="container">
-		 {% if app.session.get('errorlogin') == true  %}
-		 	<p>Login ou mot de passe incorrect</p>
-		 {% endif %}
 		{{ form_start(form, { 'attr' : { 'class' : 'form-login', 'novalidate' : 'novalidate', 'id' : 'form' }  }) }}
 			<h2 class="form-login-heading">sign in now</h2>
 			<div class="login-wrap">
 				{{ form_widget(form.username, 
-                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'username' }}
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'pseudo' }}
                      )
                 }}
-                
+
 				<br>
 				{{ form_widget(form.password,
-                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'password' }}
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'mot de passe' }}
                      )
                 }}
 				<br>
-				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SIGN IN</button>
+				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> SE CONNECTER</button>
 				<hr>
 				<div class="registration">
 					Don't have an account yet?<br/>
@@ -31,6 +28,9 @@
 				</div>
 			</div>
 		{{ form_end(form) }} 	
+		{% if error %}
+			<p class="centered">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}

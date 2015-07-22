@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SpljBundle\Entity\Mcq;
 use SpljBundle\Form\McqType;
 use Symfony\Component\HttpFoundation\Request as Request;
-
+use Symfony\Component\Security\Http\Firewall\ExceptionListener;
 
 /**
  * @Route("/dashboard")

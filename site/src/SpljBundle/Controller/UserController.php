@@ -28,36 +28,7 @@ class UserController extends Controller
     public function loginAction(Request $request)
     {
     	$doctrine = $this->getDoctrine();
-        $em = $doctrine->getManager();
-
-        
-        
-     //        // Les noms d'utilisateurs à créer
-    	// $listNames = array('Paulette', 'Mitch', 'Bousile');
-
-	    // foreach ($listNames as $name) {
-	    //   // On crée l'utilisateur
-	    //   $user = new User;
-
-	    //   // Le nom d'utilisateur et le mot de passe sont identiques
-	    //   $user->setUsername($name);
-	    //   $user->setPassword($name);
-	    //   $user->setProfil(1);
-
-	    //   // On ne se sert pas du sel pour l'instant
-	    //   $user->setSalt('');
-	    //   // On définit uniquement le role ROLE_USER qui est le role de base
-	    //   $user->setRoles(array('ROLE_ADMIN'));
-
-	    //   // On le persiste
-	    //   $em->persist($user);
-	    // }
-
-	    // // On déclenche l'enregistrement
-	    // $em->flush();
-        
-        
-
+        // $em = $doctrine->getManager();
 
         $entity = new User();
         $type = new UserType();
@@ -68,30 +39,12 @@ class UserController extends Controller
         ));
         $form->handleRequest($request);
 
-        if($form->isSubmitted()){
-        	$qb = $this->getDoctrine()->getRepository('SpljBundle:User')->createQueryBuilder('u');
-            $qb->select(array('u'))
-                ->from('SpljBundle:User', 'user')
-                ->where('u.username = :username')
-                ->andWhere('u.password = :password')
-                ->setParameter('username', $entity->getUsername())
-                ->setParameter('password', $entity->getPassword());
-            $query = $qb->getQuery();
-            $user = $query->getResult();
+        $authenticationUtils = $this->get('security.authentication_utils');
+	    $error = $authenticationUtils->getLastAuthenticationError();
 
-	        $session = new Session();
-            if ($user != null) {
-				$session->set('user', $user);
-				$session->set('errorlogin', false);
-            	return $this->redirect($this->generateUrl('splj.dashboard.list-mcq', array('id'=>$user[0]->getProfil())));
-            }else{
-				$session->set('errorlogin', true);
-            	return $this->redirect($this->generateUrl('splj.window.login'));
-            }
-            
-        }
         return array(
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'error'=> $error
         );
     }
 
@@ -100,6 +53,8 @@ class UserController extends Controller
      */
     public function loginCheckAction()
     {
+    	$form->bind($request->getParameter($form->getUserame()));
+    	print_r($form);
         // this controller will not be executed,
         // as the route is handled by the Security system
     }
