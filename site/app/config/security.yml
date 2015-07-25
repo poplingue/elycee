@@ -16,6 +16,9 @@ security:
                     Eleve:
                         password: pass
                         roles: ROLE_STUDENT
+                    Eleve2:
+                        password: pass
+                        roles: ROLE_STUDENT
 
     firewalls:
         main:
@@ -28,8 +31,10 @@ security:
                 username_parameter: 'user[username]'
                 password_parameter: 'user[password]'
                 success_handler: redirect.after.login
-
+            logout:
+                path: /home/logout
+                target: /home/login
     access_control:
         - { path: ^/dashboard, roles: [ROLE_TEACHER, ROLE_STUDENT] }
-        - { path: ^/dashboard-teacher, roles: ROLE_TEACHER }
-        - { path: ^/dashboard-student, roles: ROLE_STUDENT }
+        - { path: ^/dashteacher, roles: ROLE_TEACHER }
+        - { path: ^/dashstudent, roles: ROLE_STUDENT }

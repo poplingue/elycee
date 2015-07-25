@@ -31,13 +31,19 @@
             </div>
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
-                 <li><a class="logout" href="{{ url('splj.window.login')}}">Login</a></li>
-                 <li><a class="logout" href="{{ url('splj.window.index')}}">Logout</a></li>
+                {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
+                    <li><a class="btn-square" href="{{ url('redirect.after.logout') }}">Déconnexion</a></li>
+                    {% if app.request.attributes.get('_route') starts with 'splj.window' %}
+                        <li><a class="btn-square" href="{{ url('splj.stats') }}">Dashboard</a></li>
+                    {% endif %}
+                {% else %}
+                    <li><a class="btn-square" href="{{ url('splj.window.login')}}">Connexion</a></li>
+                {% endif %}
                 {% block link %}{% endblock %}
                 </ul>
             </div>
         </header>
-    	{% include ('SpljBundle:Bloc:aside.html.twig') %}
+        {% include ('SpljBundle:Bloc:aside.html.twig') %}
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <div class="row">

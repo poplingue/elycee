@@ -2395,56 +2395,62 @@ label {
 /* line 3, src/scss/page/_public.scss */
 .public-window .nav.pull-right li:nth-child(2) {
   display: none; }
-/* line 8, src/scss/page/_public.scss */
+/* line 7, src/scss/page/_public.scss */
+.public-window .dash-menu {
+  display: none; }
+/* line 10, src/scss/page/_public.scss */
+.public-window .public-menu {
+  display: block; }
+/* line 14, src/scss/page/_public.scss */
 .public-window.home .main-chart h3 {
   padding: 10px;
   text-transform: uppercase;
   font-size: 14px; }
-/* line 13, src/scss/page/_public.scss */
+/* line 19, src/scss/page/_public.scss */
 .public-window.home figcaption {
   display: inline-block;
   text-align: left;
   padding: 15px 5px 0 5px; }
-/* line 18, src/scss/page/_public.scss */
+/* line 24, src/scss/page/_public.scss */
 .public-window.home .infos {
   padding: 8px 0; }
-/* line 21, src/scss/page/_public.scss */
+/* line 27, src/scss/page/_public.scss */
 .public-window.home .comments {
   text-align: right;
   padding: 4px; }
-/* line 26, src/scss/page/_public.scss */
+/* line 32, src/scss/page/_public.scss */
 .public-window.home .article figure img {
   max-height: 95px; }
-/* line 32, src/scss/page/_public.scss */
+/* line 38, src/scss/page/_public.scss */
 .public-window.estate #main-content img {
   width: 100%;
   height: auto;
   max-width: 720px;
   margin: 0 auto;
   padding: 15px 0; }
-/* line 39, src/scss/page/_public.scss */
+/* line 45, src/scss/page/_public.scss */
 .public-window.estate .detail span {
   text-transform: italic; }
 
 /* line 3, src/scss/page/_dashboard.scss */
 .dashboard .wrap-logo a.logo {
   color: #CCCCCC; }
-/* line 8, src/scss/page/_dashboard.scss */
+/* line 7, src/scss/page/_dashboard.scss */
+.dashboard .public-menu {
+  display: none; }
+/* line 10, src/scss/page/_dashboard.scss */
+.dashboard .dash-menu {
+  display: block; }
+/* line 14, src/scss/page/_dashboard.scss */
 .dashboard .main-chart h1 {
   display: inline-block;
   width: 80%;
   vertical-align: middle; }
-/* line 14, src/scss/page/_dashboard.scss */
+/* line 20, src/scss/page/_dashboard.scss */
 .dashboard .main-chart .wrap-img img {
   display: block;
   width: 100%;
   height: auto; }
-/* line 21, src/scss/page/_dashboard.scss */
-.dashboard .sub-menu {
-  display: none; }
-  /* line 23, src/scss/page/_dashboard.scss */
-  .dashboard .sub-menu.li-dashboard {
-    display: block; }
 /* line 28, src/scss/page/_dashboard.scss */
 .dashboard span.li-dashboard {
   display: block; }

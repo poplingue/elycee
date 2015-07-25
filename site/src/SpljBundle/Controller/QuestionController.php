@@ -19,7 +19,7 @@ use SpljBundle\Form\AnswerType;
 use Symfony\Component\HttpFoundation\Request as Request;
 
 /**
- * @Route ("/dashboard-teacher")
+ * @Route ("/dashteacher")
  *
  */
 
@@ -111,7 +111,7 @@ class QuestionController extends Controller
         $form = $this->createForm(new McqType(),$mcqCurrent, array(
             'action' => $this->generateUrl('splj.dashTeacher.update-mcq', array('id' => $id)),
         ));
-
+        $questions = $mcqCurrent->getNbQuestions();
         $form->handleRequest($request);
         
         if($form->isSubmitted()){

@@ -1,55 +1,60 @@
 <aside>
     <div id="sidebar"  class="nav-collapse ">
         <ul class="sidebar-menu" id="nav-accordion">
-            <li class="sub-menu li-dashboard">
+            {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
+            <li class="dash-menu">
                 <a class="" href="{{ url('splj.window.index')}}">
-                    <i class="fa fa-home"></i>
-                    <!-- <span>Accueil</span> -->
-                    <span class="dashboard">Retour au site</span>
+                <i class="fa fa-home"></i>
+                <span>Site public</span>
                 </a>
             </li>
-            <li class="sub-menu">
-                <a href="{{ url('splj.window.index')}}">
+            {% endif %}
+            <li class="public-menu">
+                    <a class="" href="{{ url('splj.window.index')}}">
                     <i class="fa fa-rss"></i>
                     <span>Actualités</span>
                 </a>
             </li>
-            <li class="sub-menu">
+            <li class="public-menu">
                 <a href="{{ url('splj.window.estate')}}">
                     <i class="fa fa-building"></i>
                     <span>L'établissement</span>
                 </a>
             </li>
-            <li class="sub-menu">
+            <li class="public-menu">
                 <a href="{{ url('splj.window.contact')}}">
                     <i class="fa fa-users"></i>
                     <span>Contact</span>
                 </a>
             </li>
-            <li class="sub-menu">
+            <li class="public-menu">
                 <a href="">
                     <i class="fa fa-search"></i>
                     <span>Recherche</span>
                 </a>
             </li>
-            <li class="sub-menu li-dashboard">
-                <a href="/dashboard/list-mcq/1">
+            {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
+            <li class="dash-menu">
+                <a href="{{ url('splj.dashboard.list-mcq')}}">
                     <i class="fa fa-question-circle"></i>
                     <span>QCM</span>
                 </a>
             </li>
-            <li class="sub-menu li-dashboard">
+            {% if is_granted('ROLE_TEACHER') %}
+            <li class="dash-menu">
                 <a href="{{ url('splj.dashTeacher.list-article')}}">
                     <i class="fa fa-file-text"></i>
                     <span>Articles</span>
                 </a>
             </li>
-            <li class="sub-menu li-dashboard">
+            {% endif %}
+            <li class="dash-menu">
                 <a href="{{ url('splj.stats')}}">
                     <i class="fa fa-cubes"></i>
                     <span>Statistiques</span>
                 </a>
             </li>
+            {% endif %}
         </ul>
     </div>
 </aside>

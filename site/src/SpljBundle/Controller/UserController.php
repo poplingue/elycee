@@ -11,41 +11,45 @@ use SpljBundle\Form\UserType;
 
 use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\HttpFoundation\Session\Session;
+
 /**
  * @Route("/home")
  */
-
 class UserController extends Controller
 {
-	/**
+    /**
     * @Route(
-    * 	"/login",
-    * 	name="splj.window.login"
+    *   "/login",
+    *   name="splj.window.login"
     * )
     *
     * @Template("SpljBundle:Window:login.html.twig")
     */
     public function loginAction(Request $request)
     {
-    	$doctrine = $this->getDoctrine();
-        // $em = $doctrine->getManager();
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_TEACHER') || $this->get('security.authorization_checker')->isGranted('ROLE_STUDENT'))
+        {
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
+        }else{
+            $doctrine = $this->getDoctrine();
 
-        $entity = new User();
-        $type = new UserType();
-            
-        $form = $this->createForm($type,$entity, array(
-            'action' => $this->generateUrl('login_check'),
-            'method' => 'POST',
-        ));
-        $form->handleRequest($request);
+            $entity = new User();
+            $type = new UserType();
+                
+            $form = $this->createForm($type,$entity, array(
+                'action' => $this->generateUrl('login_check'),
+                'method' => 'POST',
+            ));
+            $form->handleRequest($request);
 
-        $authenticationUtils = $this->get('security.authentication_utils');
-	    $error = $authenticationUtils->getLastAuthenticationError();
+            $authenticationUtils = $this->get('security.authentication_utils');
+            $error = $authenticationUtils->getLastAuthenticationError();
 
-        return array(
-            'form' => $form->createView(),
-            'error'=> $error
-        );
+            return array(
+                'form' => $form->createView(),
+                'error'=> $error
+            );
+        }
     }
 
     /**
@@ -53,9 +57,11 @@ class UserController extends Controller
      */
     public function loginCheckAction()
     {
-    	$form->bind($request->getParameter($form->getUserame()));
-    	print_r($form);
-        // this controller will not be executed,
-        // as the route is handled by the Security system
+        $form->bind($request->getParameter($form->getUserame()));
     }
+
+    /**
+     * @Route("/logout", name="redirect.after.logout")
+     */
+    public function logoutAction(){}
 }

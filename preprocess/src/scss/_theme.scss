@@ -171,14 +171,14 @@ hr {
     background-color: $blue;
 }
 
-ul.top-menu > li > .logout {
+ul.top-menu .btn-square {
     background: $blue;
     color: $grey-light;
     font-size: 12px;
     border: 1px solid $grey-light !important;
     padding: 5px 15px;
     margin-right: 15px;
-    margin-top: 15px;
+    margin-top: 10px;
     .dashboard & {
         color: $blue;
         background: $grey-light;
@@ -399,15 +399,14 @@ a.logo:hover, a.logo:focus {
 a.logo span {
     color: $blue;
     .dashboard & {
-
-    color: $blue;
+        color: $blue;
     }
 }
 
 
 /*notification*/
 #top_menu .nav > li, ul.top-menu > li {
-    float: left;
+   text-align: center;
 }
 
 .notify-row {
@@ -558,7 +557,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     margin-top: 7px;
 }
 
-.top-nav ul.top-menu > li .dropdown-menu.logout {
+.top-nav ul.top-menu li .dropdown-menu.btn-square {
     width: 268px !important;
 
 }
@@ -569,13 +568,13 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     left: auto;
 }
 
-.dropdown-menu.extended.logout > li {
+.dropdown-menu.extended.btn-square > li {
     float: left;
     text-align: center;
     width: 33.3%;
 }
 
-.dropdown-menu.extended.logout > li:last-child {
+.dropdown-menu.extended.btn-square > li:last-child {
     float: left;
     text-align: center;
     width: 100%;
@@ -583,39 +582,39 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     border-radius: 0 0 3px 3px;
 }
 
-.dropdown-menu.extended.logout > li:last-child > a, .dropdown-menu.extended.logout > li:last-child > a:hover {
+.dropdown-menu.extended.btn-square > li:last-child > a, .dropdown-menu.extended.btn-square > li:last-child > a:hover {
     color: #fff;
     border-bottom: none !important;
     text-transform: uppercase;
 }
 
-.dropdown-menu.extended.logout > li:last-child > a:hover > i{
+.dropdown-menu.extended.btn-square > li:last-child > a:hover > i{
     color: #fff;
 }
 
-.dropdown-menu.extended.logout > li > a {
+.dropdown-menu.extended.btn-square > li > a {
     color: #a4abbb;
     border-bottom: none !important;
 }
 
-.full-width .dropdown-menu.extended.logout > li > a:hover {
+.full-width .dropdown-menu.extended.btn-square > li > a:hover {
     background: none !important;
     color: #50c8ea !important;
 }
 
-.dropdown-menu.extended.logout > li > a:hover {
+.dropdown-menu.extended.btn-square > li > a:hover {
     background: none !important;
 }
 
-.dropdown-menu.extended.logout > li > a:hover i {
+.dropdown-menu.extended.btn-square > li > a:hover i {
     color: #50c8ea;
 }
 
-.dropdown-menu.extended.logout > li > a i {
+.dropdown-menu.extended.btn-square > li > a i {
     font-size: 17px;
 }
 
-.dropdown-menu.extended.logout > li > a > i {
+.dropdown-menu.extended.btn-square > li > a > i {
     display: block;
 }
 
@@ -637,7 +636,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 }
 
-.top-nav .dropdown-menu.extended.logout {
+.top-nav .dropdown-menu.extended.btn-square {
     top: 50px;
 }
 

@@ -11,8 +11,8 @@ use SpljBundle\Entity\User;
 
 use Symfony\Component\HttpFoundation\Request as Request;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
  
 class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface 
 {
@@ -20,16 +20,11 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
      * @var \Symfony\Component\Routing\RouterInterface
      */
     private $router;
- 	
- 	/** 
- 	*	@var \Doctrine\ORM\EntityManager
- 	*/
-	private $em;
 
     /**
-     * @param RouterInterface $router
-     * @param Doctrine $doctrine
+     * @var \Doctrine\ORM\EntityManager
      */
+    private $em;
 
     public function __construct(RouterInterface $router, Doctrine $doctrine)
     {
@@ -43,25 +38,36 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
      * @param TokenInterface $token
      * @return RedirectResponse
      */
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token) 
     {
-    	$entity = new User();
+    	
+        $roles = $token->getRoles();
+        $rolesTab = array_map(function($role){ 
+        	return $role->getRole(); 
+        }, $roles);
 
-    	$qb = $this->em->getRepository('SpljBundle:User')->createQueryBuilder('u');
+        $user = new User();
+        // $userToken = $this->get('security.token_storage')->getToken()->getUser();
+
+        $qb = $this->em->getRepository('SpljBundle:User')->createQueryBuilder('u');
         $qb->select(array('u'))
-            ->from('SpljBundle:User', 'user')
+           ->from('SpljBundle:User', 'user')
             ->where('u.username = :username')
-            ->andWhere('u.password = :password')
-            ->setParameter('username', $username)
-            ->setParameter('password', $password);
+            ->setParameter('username', $token->getUsername());
         $query = $qb->getQuery();
         $user = $query->getResult();
-        print_r($user);
-        $session = new Session();
+       
+        
+        $session = $request->getSession();
+        $session->set('user',$user[0]);
 
-        if ($user[0]->getProfil() != 0) {
-	    	$redirection = new RedirectResponse($this->router->generate('splj.dashboard.list-mcq', array('id'=>$user[0]->getProfil())));
-	    	return $redirection;
+        if (in_array('ROLE_TEACHER', $rolesTab, true)){
+
+            $redirection = new RedirectResponse($this->router->generate('splj.dashboard.list-mcq'));
+        }else if(in_array('ROLE_STUDENT', $rolesTab, true)){
+        	
+            $redirection = new RedirectResponse($this->router->generate('splj.dashboard.list-mcq'));
         }
+	    return $redirection;
     }
 }

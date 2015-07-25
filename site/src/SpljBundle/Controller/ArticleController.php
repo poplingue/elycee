@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request as Request;
 use Doctrine\Common\Util\Debug as Debug;
 
 /**
- * @Route("/dashboard-teacher")
+ * @Route("/dashteacher")
  */
 
 class ArticleController extends Controller

@@ -11,7 +11,7 @@ use SpljBundle\Form\McqType;
 use Symfony\Component\HttpFoundation\Request as Request;
 
 /**
- * @Route("/dashboard-teacher")
+ * @Route("/dashteacher")
  */
 
 class McqController extends Controller
@@ -44,7 +44,7 @@ class McqController extends Controller
 
         if($form->isSubmitted()){
             $this->onSubmit($form,$entity);
-            return $this->redirect('/dashboard-teacher/add-question/'.$entity->getId());
+            return $this->redirect('/dashteacher/add-question/'.$entity->getId());
         }
         return array(
             'form' => $form->createView()
@@ -67,7 +67,7 @@ class McqController extends Controller
         $mcq->setStatus($newStatus);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
+        return $this->redirect($this->generateUrl('splj.dashboard.list-mcq', array('id'=>1)));
 
     }
 

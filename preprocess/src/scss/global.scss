@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
-@import "helpers/_reset";
-@import "_common";
-@import "_theme";
+@import "helpers/reset";
+@import "common";
+@import "theme";
 
-@import "page/_public";
-@import "page/_dashboard";
+@import "page/public";
+@import "page/dashboard";
 
 
-@import "templates/_sprite";
-@import "sprite/built/_@1x";
-@import "sprite/built/_@2x";
-@import "sprite/_icons";
+@import "templates/sprite";
+@import "sprite/built/@1x";
+@import "sprite/built/@2x";
+@import "sprite/icons";

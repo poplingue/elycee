@@ -15,7 +15,7 @@ use SpljBundle\Form\ScoreType;
 use Symfony\Component\HttpFoundation\Request as Request;
 
 /**
- * @Route("/dashboard-student")
+ * @Route("/dashstudent")
  */
 
 class StudentController extends Controller
@@ -36,7 +36,7 @@ class StudentController extends Controller
         $nbQuestion = $mcqCurrent->getNbQuestions();
         $score = new Score();
 
-        for ($i=0; $i < $nbQuestion; $i++) { 
+        for ($i=0; $i < $nbQuestion; $i++) {
             $studentAnswer = new StudentAnswer();
             $score->getStudentAnswers()->add($studentAnswer);
         }
@@ -47,8 +47,9 @@ class StudentController extends Controller
         ));
 
         $form->handleRequest($request);
-
-        if($form->isSubmitted()){
+        
+        if($form->isValid()){
+            
             $questions = $mcqCurrent->getQuestions();
             for ($i=0; $i < sizeof($questions); $i++) { 
                 $answers = $questions->get($i)->getAnswers();
@@ -61,6 +62,9 @@ class StudentController extends Controller
                     $score->setScore($score->getScore()+1);
                 }
             }
+            if ($score->getScore() == null) {
+                $score->setScore(0);
+            }
 
             $score->setScoreMax($nbQuestion);
             $score->setUserId($userId);
@@ -70,7 +74,7 @@ class StudentController extends Controller
             $em->persist($score);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 1)));
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
 
         return $this->render('SpljBundle:DashStudent:answer-mcq.html.twig', array(

@@ -5,3 +5,6 @@ services:
     redirect.after.login:
         class: SpljBundle\Redirection\AfterLoginRedirection
         arguments: [@router,@doctrine]
+    redirect.after.logout:
+        class: SpljBundle\Redirection\AfterLogoutRedirection
+        arguments: [@router, @security.context]

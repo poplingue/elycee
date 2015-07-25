@@ -4,6 +4,12 @@
 			color: $grey-light;
 		}
 	}
+	.public-menu{
+		display: none;
+	}
+	.dash-menu{
+		display: block;
+	}
 	.main-chart{
 		h1{
 		  display: inline-block;
@@ -18,20 +24,9 @@
 			}
 		}
 	}
-	.sub-menu{
-		display: none;
-		&.li-dashboard{
-			display: block;
-		}
-	}
 	span{
 		&.li-dashboard{
 			display: block;
-		}
-	}
-	.nav.pull-right{
-		li:nth-child(1){
-			display: none;
 		}
 	}
 	.wrap-submit{

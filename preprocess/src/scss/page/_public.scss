@@ -1,8 +1,9 @@
 .public-window{
-	.nav.pull-right{
-		li:nth-child(2){
-			display: none;
-		}
+	.dash-menu{
+		display: none;
+	}
+	.public-menu{
+		display: block;
 	}
 	&.home{
 		.main-chart h3{

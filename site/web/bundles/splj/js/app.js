@@ -110,27 +110,28 @@ var Script = function() {
 define("dashboard", function() {
     var dashboard = {
         init: function init() {
-            this.questionsMore();
             this.customMenu();
             this.checkForm();
         },
         customMenu: function customMenu() {
             var body = $("body");
             if (body.hasClass("dashboard")) {
+                $(".public-menu").remove();
+            }
+            if (body.hasClass("dashboard")) {
                 $(".wrap-logo img").attr("src", "/bundles/splj/img/logo_60_grey.jpg");
                 $("#main-content .col-lg-3").remove();
                 $("#main-content .col-lg-9").removeClass().addClass("col-lg-12 main-chart");
             }
             if (body.hasClass("qcm")) {
-                $(".sub-menu").eq(5).find("a").addClass("active");
+                $(".dash-menu").eq(1).find("a").addClass("active");
             } else if (body.hasClass("article")) {
-                $(".sub-menu").eq(6).find("a").addClass("active");
+                $(".dash-menu").eq(2).find("a").addClass("active");
             } else if (body.hasClass("stats")) {
-                $(".sub-menu").eq(7).find("a").addClass("active");
+                $(".dash-menu").last().find("a").addClass("active");
             }
         },
-        checkForm: function checkForm() {},
-        questionsMore: function questionsMore() {}
+        checkForm: function checkForm() {}
     };
     return dashboard;
 });
@@ -143,13 +144,19 @@ define("main", [ "publicWindow", "dashboard" ], function(publicWindow, dashboard
 define("publicWindow", function() {
     var publicWindow = {
         init: function init() {
+            this.listActiv();
+        },
+        listActiv: function listActiv() {
             var body = $("body");
-            if (body.hasClass("public-window home")) {
-                $(".sub-menu").eq(1).find("a").addClass("active");
-            } else if (body.hasClass("public-window estate")) {
-                $(".sub-menu").eq(2).find("a").addClass("active");
-            } else if (body.hasClass("public-window contact")) {
-                $(".sub-menu").eq(3).find("a").addClass("active");
+            if (body.hasClass("public-window")) {
+                $(".dash-menu").remove();
+            }
+            if (body.hasClass("home")) {
+                $(".public-menu").first().find("a").addClass("active");
+            } else if (body.hasClass("estate")) {
+                $(".sidebar-menu").find("li:eq(1)").find("a").addClass("active");
+            } else if (body.hasClass("contact")) {
+                $(".sidebar-menu").find("li:eq(2)").find("a").addClass("active");
             }
         }
     };
