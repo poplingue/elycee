@@ -33,6 +33,7 @@
                 <ul class="nav pull-right top-menu">
                 {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
                     <li><a class="btn-square" href="{{ url('redirect.after.logout') }}">Déconnexion</a></li>
+                    <li><p class="username">Bonjour {{ app.session.get('user').username }} !</p></li>
                     {% if app.request.attributes.get('_route') starts with 'splj.window' %}
                         <li><a class="btn-square" href="{{ url('splj.stats') }}">Dashboard</a></li>
                     {% endif %}

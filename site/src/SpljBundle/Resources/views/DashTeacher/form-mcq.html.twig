@@ -4,20 +4,17 @@
 {% block h1 %}Créer un QCM{% endblock %}
 {% block body %}
 {{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
-    <div class="form-group">
-        <div class="col-sm-10">
-            {{ form_widget(form.user_id, {'value' : 1},
-                { 'attr' : { 'class' : 'form-control' }}
-                 )
-            }}
-        </div>
-    </div>
+    {{ form_widget(form.user_id, {'value' : app.session.get('user').id},
+        { 'attr' : { 'class' : 'form-control' }}
+         )
+    }}
     <div class="form-group">
         <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre*")}}</label>
         <div class="col-sm-10">
             {{ form_widget(form.title,
                 { 'attr' : { 'class' : 'form-control' } } )
             }}
+            {{ form_errors(form.title)}}
         </div>
     </div>
     <div class="form-group">
@@ -26,6 +23,7 @@
             {{ form_widget(form.theme,
                 { 'attr' : { 'class' : 'form-control' } } )
             }}
+            {{ form_errors(form.theme)}}
         </div>
     </div>
     <div class="form-group">
@@ -34,6 +32,7 @@
             {{ form_widget(form.nbQuestions, 
                 { 'attr' : { 'class' : 'form-control' } } )
             }}
+            {{ form_errors(form.nbQuestions)}}
         </div>
     </div>
     <div class="form-group">
@@ -44,8 +43,10 @@
             }}
         </div>
     </div>
+    {{ form_widget(form._token) }}
     <div class="wrap-submit">
         <button type="submit" class="btn btn-theme">créer</button> 
     </div>
 {{ form_end(form, {'render_rest': false}) }}
+
 {% endblock %}

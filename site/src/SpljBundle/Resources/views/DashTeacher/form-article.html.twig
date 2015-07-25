@@ -24,6 +24,7 @@
                 {{ form_widget(form.title,
                     { 'attr' : { 'class' : 'form-control form-item'} } )
                 }}
+                {{ form_errors(form.title)}}
             </div>
         </div>
         <div class="form-group">
@@ -38,6 +39,7 @@
                 {{ form_widget(form.content, 
                     { 'attr' : { 'class' : 'form-control' } } )
                 }}
+                {{ form_errors(form.content)}}
             </div>
         </div>
          <div class="form-group">
@@ -46,6 +48,7 @@
                 {{ form_widget(form.extract, 
                     { 'attr' : { 'class' : 'form-control' } } )
                 }}
+                {{ form_errors(form.extract)}}
             </div>
         </div>
         <div class="form-group">

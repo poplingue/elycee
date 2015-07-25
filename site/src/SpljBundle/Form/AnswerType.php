@@ -17,9 +17,7 @@ class AnswerType extends AbstractType
 
         $builder
         	->add('answer', 'textarea')
-        	->add('correct', 'checkbox', array(
-			    'required'  => false,
-			));
+        	->add('correct', 'checkbox');
     }
     
     /**

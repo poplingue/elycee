@@ -2,9 +2,9 @@
 
 namespace SpljBundle\Entity;
 
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,6 +19,7 @@ class Question
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $question;
 

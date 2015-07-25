@@ -19,7 +19,11 @@ class McqType extends AbstractType
             ->add('title', 'text')
             ->add('theme', 'text')
             ->add('user_id', 'hidden')
-            ->add('questions','collection', array('type' => new QuestionType(), 'allow_add' => true))
+            ->add('questions','collection', array(
+                'type' => new QuestionType(),
+                'allow_add' => true,
+                'cascade_validation' => true
+            ))
             ->add('nbQuestions', 'choice', array(
             'choices' => array(
                 1 => '1',
@@ -47,7 +51,8 @@ class McqType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SpljBundle\Entity\Mcq'
+            'data_class' => 'SpljBundle\Entity\Mcq',
+            'cascade_validation' => true
         ));
     }
 

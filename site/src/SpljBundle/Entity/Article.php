@@ -20,6 +20,7 @@ class Article
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $title;
 
@@ -46,11 +47,13 @@ class Article
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $content;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $extract;
 

@@ -6,13 +6,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 use SpljBundle\Entity\StudentAnswer;
 use SpljBundle\Entity\Score;
 use SpljBundle\Form\StudentAnswerType;
 use SpljBundle\Form\ScoreType;
+
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\Request as Request;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @Route("/dashstudent")
@@ -48,7 +49,7 @@ class StudentController extends Controller
 
         $form->handleRequest($request);
         
-        if($form->isValid()){
+        if($form->isSubmitted()){
             
             $questions = $mcqCurrent->getQuestions();
             for ($i=0; $i < sizeof($questions); $i++) { 
@@ -69,6 +70,8 @@ class StudentController extends Controller
             $score->setScoreMax($nbQuestion);
             $score->setUserId($userId);
             $score->setMcqId($mcqId);
+            $date = new \DateTime('now');
+            $score->setDate($date);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($score);

@@ -16,4 +16,6 @@ SpljBundle\Entity\Score:
             type: integer
         scoreMax:
             type: integer
+        date:
+            type: date
     lifecycleCallbacks: {  }

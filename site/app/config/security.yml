@@ -13,6 +13,9 @@ security:
                     Prof:
                         password: pass
                         roles: ROLE_TEACHER
+                    JeanMitch:
+                        password: pass
+                        roles: ROLE_TEACHER
                     Eleve:
                         password: pass
                         roles: ROLE_STUDENT

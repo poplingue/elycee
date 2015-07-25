@@ -46,32 +46,20 @@ class QuestionController extends Controller
         $nbQuestion = $mcqCurrent->getNbQuestions();
 
         $mcq = new Mcq();
-        
-        for ($i=0; $i < $nbQuestion; $i++){
-            $question = new Question();
-
-            for ($j=0; $j < 3; $j++) {
-                $answer = new Answer();
-                $question->getAnswers()->add($answer);
-            }
-            
-            $question->setIdQcm($mcqCurrent);
-            $mcq->getQuestions()->add($question);
-
-        }
+        $mcq = $this->initMcq($mcqCurrent);
 
         $form = $this->createForm(new McqType(), $mcq, array(
-            'action' => $this->generateUrl('splj.dashTeacher.add-question'),
+            'action' => $this->generateUrl('splj.dashTeacher.add-question', array('id'=>$mcqCurrent->getId())),
             'method' => 'POST'
         ));
         $form->handleRequest($request);
 
-        if($form->isSubmitted())
+        if($form->isSubmitted() && $form->isValid())
         {
             for ($i=0; $i < $nbQuestion; $i++){
                 $this->onSubmit($form,$mcq->getQuestions()->get($i));
             }
-            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 2)));
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
 
         return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(
@@ -108,17 +96,24 @@ class QuestionController extends Controller
     public function updateAction(Request $request, $id)
     {   
         $mcqCurrent = $this->loadMcq($id);
+
+        $questions = $mcqCurrent->getQuestions();
+        if (sizeof($questions) == 0) {
+            $mcqCurrent = $this->initMcq($mcqCurrent);
+        }
+
         $form = $this->createForm(new McqType(),$mcqCurrent, array(
-            'action' => $this->generateUrl('splj.dashTeacher.update-mcq', array('id' => $id)),
+            'action' => $this->generateUrl('splj.dashTeacher.update-mcq', array('id'=>$id)),
+            'method' => 'POST'
         ));
-        $questions = $mcqCurrent->getNbQuestions();
+
         $form->handleRequest($request);
         
         if($form->isSubmitted()){
             for ($i=0; $i < sizeof($questions); $i++){
                 $this->onSubmit($form,$mcqCurrent->getQuestions()->get($i));
             }
-            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq',array('id' => 1)));
+            return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
         return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(
             'form' => $form->createView(),
@@ -168,6 +163,27 @@ class QuestionController extends Controller
             $arrayCollection = new ArrayCollection($answers);
             $questions[$i]->setAnswers($arrayCollection);
 
+        }
+        return $mcqCurrent;
+    }
+
+    public function initMcq($mcqCurrent)
+    {
+        if ($mcqCurrent->getQuestions() == null) {
+            $mcqCurrent->setQuestions(new ArrayCollection());
+        }
+        $nbQuestion = $mcqCurrent->getNbQuestions();
+        
+        for ($i=0; $i < $nbQuestion; $i++){
+            $question = new Question();
+
+            for ($j=0; $j < 3; $j++) {
+                $answer = new Answer();
+                $question->getAnswers()->add($answer);
+            }
+            
+            $question->setIdQcm($mcqCurrent);
+            $mcqCurrent->getQuestions()->add($question);
         }
         return $mcqCurrent;
     }

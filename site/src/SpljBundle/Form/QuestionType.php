@@ -19,8 +19,11 @@ class QuestionType extends AbstractType
             echo 'test';
         }
         $builder->add('question','textarea')
-                //->add('id_qcm','hidden')
-                ->add('answers','collection', array('type' => new AnswerType(), 'allow_add' => true));
+                ->add('answers','collection', array(
+                    'type' => new AnswerType(),
+                    'cascade_validation' => true,
+                    'allow_add' => true
+                ));
     }
     
     /**
@@ -30,7 +33,8 @@ class QuestionType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'SpljBundle\Entity\Question',
-            'nbQuestion' => null
+            'nbQuestion' => null,
+            'cascade_validation' => true
         ));
     }
 

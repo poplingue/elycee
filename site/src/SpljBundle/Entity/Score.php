@@ -36,6 +36,11 @@ class Score
      */
     private $scoreMax;
 
+      /**
+     * @var date
+     */
+    private $date;
+
     /**
      * 
      */
@@ -152,6 +157,29 @@ class Score
     public function getScoreMax()
     {
         return $this->scoreMax;
+    }
+
+     /**
+     * Set date
+     *
+     * @param integer $date
+     * @return Score
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return integer 
+     */
+    public function getDate()
+    {
+        return $this->date;
     }
 
      /**

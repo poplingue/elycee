@@ -110,6 +110,16 @@ h1 {
 .li-dashboard, span.dashboard {
   display: none; }
 
+/* line 62, src/scss/_common.scss */
+.error {
+  color: crimson;
+  padding: 5px 3px;
+  position: absolute;
+  bottom: -20px; }
+  /* line 67, src/scss/_common.scss */
+  .error li {
+    font-size: 11px; }
+
 /*
 Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
 Template Version: 1.0
@@ -2488,6 +2498,11 @@ label {
 /* line 81, src/scss/page/_dashboard.scss */
 .dashboard.form p.bottom-form {
   display: block; }
+/* line 85, src/scss/page/_dashboard.scss */
+.dashboard p.username {
+  padding: 15px 5px;
+  margin-right: 15px;
+  color: #fff; }
 
 /*
 SCSS variables are information about icon's compiled state, stored under its original file name

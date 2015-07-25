@@ -42,7 +42,7 @@ class McqController extends Controller
         ));
         $form->handleRequest($request);
 
-        if($form->isSubmitted()){
+        if($form->isValid() && $form->isSubmitted()){
             $this->onSubmit($form,$entity);
             return $this->redirect('/dashteacher/add-question/'.$entity->getId());
         }
@@ -67,7 +67,7 @@ class McqController extends Controller
         $mcq->setStatus($newStatus);
         $em->flush();
 
-        return $this->redirect($this->generateUrl('splj.dashboard.list-mcq', array('id'=>1)));
+        return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
 
     }
 
@@ -76,6 +76,7 @@ class McqController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($entity);
         $em->flush();
+        // $request->getSession()->getFlashBag()->set('notice',$message);
     }
 
      /**

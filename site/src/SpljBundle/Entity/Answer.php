@@ -19,6 +19,7 @@ class Answer
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     public $answer;
 

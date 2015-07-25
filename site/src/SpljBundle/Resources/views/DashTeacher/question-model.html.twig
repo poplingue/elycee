@@ -4,6 +4,7 @@
         {{ form_widget(question.question,
             { 'attr' : { 'class' : 'form-control' } } )
         }}
+        {{ form_errors(question.question)}}
     </div>
 </div>
 {% for answer in question.answers %}
@@ -13,6 +14,7 @@
             {{ form_widget(answer.answer,
                 { 'attr' : { 'class' : 'form-control' } } )
             }}
+            {{ form_errors(answer.answer)}}
         </div>
         <div class="col-sm-2 col-xs-2">
             <div class="switch has-switch">

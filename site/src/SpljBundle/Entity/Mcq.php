@@ -4,6 +4,8 @@ namespace SpljBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use SpljBundle\Validator\Constraints as AssertSplj;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,11 +20,13 @@ class Mcq
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $theme;
 
@@ -33,6 +37,7 @@ class Mcq
 
     /**
      * @var integer
+     * @Assert\NotBlank()
      */
     private $nbQuestions;
 
@@ -42,9 +47,16 @@ class Mcq
     private $status;
 
     /**
+    * @var string
+    */
+    private $username;
+
+    /**
     * Liste des questions du MCQ
     * @var ArrayCollection $questions
     * @ORM\OneToMany(targetEntity="Question", mappedBy="idQcm", cascade={"all"})
+    * 
+    * 
     */
     protected $questions;
 
@@ -212,5 +224,21 @@ class Mcq
     public function __toString()
     {
       return strval( $this->getId() );
+    }
+
+    /**
+     * Get username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
     }
 }

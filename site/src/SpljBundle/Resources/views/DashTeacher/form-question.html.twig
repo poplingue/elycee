@@ -3,15 +3,14 @@
 {% block class %}dashboard form questions{% endblock %}
 {% block h1 %} Question du QCM {{ mcqCurrent.title }} {% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" data-mcqId="4" method="POST" novalidate >
-		{# itère sur chaque question existante #}
-        {% for question in form.questions %}
-			{% include ('SpljBundle:Dashteacher:question-model.html.twig') %}
-        {% endfor %}
-    <div class="wrap-submit">
-        <!-- <div class="btn add"><i class="fa fa-plus-square"></i><span>question</span></div> -->
-        <button type="submit" class="btn btn-theme">valider</button>
-    </div>
-</form>
-
+	{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
+			{# itère sur chaque question existante #}
+	        {% for question in form.questions %}
+				{% include ('SpljBundle:Dashteacher:question-model.html.twig') %}
+				
+	        {% endfor %}
+	    <div class="wrap-submit">
+	        <button type="submit" class="btn btn-theme">valider</button>
+	    </div>
+	{{ form_end(form, {'render_rest': false}) }}
 {% endblock %}
