@@ -54,6 +54,7 @@ class DashboardController extends Controller
             $scores = $query->getResult();
         }
 
+        // username list
         $em = $doctrine->getManager();
         $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, SpljBundle:User u WHERE m.userId = u.id ORDER BY m.id ASC');
         $users = $query->getResult();

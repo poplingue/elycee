@@ -31,6 +31,7 @@ class Article
 
     /**
      * @var \DateTime
+     * @Assert\NotBlank()
      */
     private $date;
 
@@ -62,6 +63,10 @@ class Article
      */
     private $status;
 
+     /**
+    * @var string
+    */
+    private $username;
 
     public function getAbsolutePath()
     {
@@ -75,14 +80,11 @@ class Article
 
     protected function getUploadRootDir()
     {
-        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
         return __DIR__.'/../../../../site/web/bundles/splj/img'.$this->getUploadDir();
     }
 
     protected function getUploadDir()
     {
-        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
-        // le document/image dans la vue.
          return '/articles';
     }
     /**
@@ -255,28 +257,31 @@ class Article
     {
         return $this->status;
     }
-/****************************************/
 
+    /**
+     * Get username
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Set username
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+    }
+    
+    // upload file
     public function upload()
     {
-        // la propriété « file » peut être vide si le champ n'est pas requis
         if (null === $this->file) {
             return;
         }
-
-        // utilisez le nom de fichier original ici mais
-        // vous devriez « l'assainir » pour au moins éviter
-        // quelconques problèmes de sécurité
-
-        // la méthode « move » prend comme arguments le répertoire cible et
-        // le nom de fichier cible où le fichier doit être déplacé
         $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
-
-        // définit la propriété « path » comme étant le nom de fichier où vous
-        // avez stocké le fichier
         $this->image = $this->file->getClientOriginalName();
-
-        // « nettoie » la propriété « file » comme vous n'en aurez plus besoin
         $this->file = null;
     }
 

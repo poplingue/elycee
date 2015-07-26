@@ -18,11 +18,12 @@
         {% for article in article %}
             {% if article.status < 2  %}
             <tr>
-                <td><a href="/dashboard-teacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
-                <td class="hidden-phone">{{ article.userid }}</td>
+                <td><a href="/dashteacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
+                <td class="hidden-phone">{{ article.username }}</td>
                 <td>{{ article.date|date('d/m/Y') }}</td>
                 <td>
-                    <form action="/dashboard-teacher/update-status/{{ article.id }}" method="POST" novalidate>
+                {% if app.session.get('user').id == article.userId %}
+                    <form action="/dashteacher/update-status/{{ article.id }}" method="POST" novalidate>
                             <select name="status">
                             {% if article.status == 0 %}
                                 <option selected="selected" value="0">non publié</option>
@@ -34,10 +35,19 @@
                             </select>
                         <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
                     </form>
+                {% else %}
+                    {% if article.status == 0 %}
+                        non publié
+                    {% else %}
+                        publié
+                    {% endif %}
+                {% endif %}
                 </td>
                 <td>
-                    <button class="btn btn-primary btn-xs"><a href="/dashboard-teacher/update-article/{{ article.id }}"><i class="fa fa-pencil"></i></a></button>
-                    <button class="btn btn-danger btn-xs"><a href="/dashboard-teacher/delete-article/{{ article.id }}"><i class="fa fa-trash-o"></i></a></button>
+                    {% if app.session.get('user').id == article.userId %}
+                        <button class="btn btn-primary btn-xs"><a href="/dashteacher/update-article/{{ article.id }}"><i class="fa fa-pencil"></i></a></button>
+                        <button class="btn btn-danger btn-xs"><a href="/dashteacher/delete-article/{{ article.id }}"><i class="fa fa-trash-o"></i></a></button>
+                    {% endif %}
                 </td>
             </tr>
             {% endif %}

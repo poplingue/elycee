@@ -12,14 +12,14 @@
     {{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate', 'id' : 'form' }  }) }}
         <div class="form-group">
             <div class="col-sm-10">
-                {{ form_widget(form.user_id, {'value' : 1},
+                {{ form_widget(form.user_id, {'value' : app.session.get('user').id},
                     { 'attr' : { 'class' : 'form-control' }}
                      )
                 }}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre*")}}</label>
             <div class="col-sm-10">
                 {{ form_widget(form.title,
                     { 'attr' : { 'class' : 'form-control form-item'} } )
@@ -28,13 +28,13 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.date, "date")}}</label>
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.date, "date*")}}</label>
             <div class="col-sm-10">
                 {{ form_widget(form.date)}}
             </div>
         </div>
         <div class="form-group">
-            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.content, "Contenu")}}</label>
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.content, "Contenu*")}}</label>
             <div class="col-sm-10">
                 {{ form_widget(form.content, 
                     { 'attr' : { 'class' : 'form-control' } } )
@@ -43,7 +43,7 @@
             </div>
         </div>
          <div class="form-group">
-            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.extract, "Extrait")}}</label>
+            <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.extract, "Extrait*")}}</label>
             <div class="col-sm-10">
                 {{ form_widget(form.extract, 
                     { 'attr' : { 'class' : 'form-control' } } )
@@ -81,5 +81,6 @@
                 <input type="submit" class="btn btn-theme" value="créer" />
             {% endif %}
         </div>
+    {{ form_widget(form._token) }}
     {{ form_end(form) }}
 {% endblock %}

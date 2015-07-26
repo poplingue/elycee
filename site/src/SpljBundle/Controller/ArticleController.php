@@ -41,6 +41,16 @@ class ArticleController extends Controller
         
         $article = $src->findAll();
 
+        // username list
+        $em = $doctrine->getManager();
+        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
+        $users = $query->getResult();
+
+        for ($i=0; $i < sizeof($article); $i++) { 
+            $arrayTmp = $users[$i];
+            $article[$i]->setUsername($arrayTmp['username']);
+        }
+
         return array(
             'article' => $article,
             'form' => $form->createView()
@@ -70,7 +80,7 @@ class ArticleController extends Controller
         ));
         $form->handleRequest($request);
 
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             
             $this->onSubmit($form,$entity);
             return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
@@ -104,7 +114,7 @@ class ArticleController extends Controller
 
         $form->handleRequest($request);
         
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             $this->onSubmit($form,$entity);
             return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
         }
