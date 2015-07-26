@@ -6,20 +6,20 @@
 <table class="table table-bordered table-striped table-condensed">
 	<thead>
 		<tr>
-			<th>Total Articles</th>
-			<th>Total commentaires</th>
-			<th>Total QCM</th>
-			<th>Total Questions</th>
-			<th>Total Étudiants</th>
+			<th>Total des articles</th>
+			<th>Total des QCM</th>
+			<th>Total des questions</th>
+			<th>Total des étudiants</th>
+			<th>Total des enseignants</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr>
-			<td>28</td>
-			<td>5</td>
-			<td>12</td>
-			<td>26</td>
-			<td>125</td>
+			<td>{{ stats.totalArticle }}</td>
+			<td>{{ stats.totalMcq }}</td>
+			<td>{{ stats.totalQuestion }}</td>
+			<td>{{ stats.totalStudent }}</td>
+			<td>{{ stats.totalTeacher }}</td>
 		</tr>
 	</tbody>
 </table>
@@ -27,67 +27,38 @@
 	<thead>
 		<tr>
 			<th>Enseignant</th>
-			<th>Total Articles</th>
-			<th>Total QCM</th>
-			<th>Total Questions</th>
+			<th>Nombre d'articles</th>
+			<th>Nombre de QCM</th>
+			<th>Nombre de questions</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>a</td>
-			<td>16</td>
-			<td>5</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>b</td>
-			<td>16</td>
-			<td>7</td>
-			<td>55</td>
-		</tr>
-		<tr>
-			<td>c</td>
-			<td>1</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>d</td>
-			<td>16</td>
-			<td>5</td>
-			<td>5</td>
-		</tr>
+		{% for teacher in stats.teacherArray %}
+			<tr>
+				<td>{{ teacher.username }}</td>
+				<td>{{ teacher.articles }}</td>
+				<td>{{ teacher.mcqs }}</td>
+				<td>{{ teacher.questions }}</td>
+			</tr>
+			{% endfor %}
 	</tbody>
 </table>
 <table class="table table-bordered table-striped table-condensed">
 	<thead>
 		<tr>
 			<th>Étudiant</th>
-			<th>QCM répondu</th>
-			<th>QCM réussi</th>
+			<th>Nombre de QCM répondus</th>
+			<th>Score total / score max</th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<td>A</td>
-			<td>16</td>
-			<td>5</td>
-		</tr>
-		<tr>
-			<td>B</td>
-			<td>16</td>
-			<td>7</td>
-		</tr>
-		<tr>
-			<td>C</td>
-			<td>0</td>
-			<td>0</td>
-		</tr>
-		<tr>
-			<td>D</td>
-			<td>5</td>
-			<td>5</td>
-		</tr>
+		{% for student in stats.studentArray %}
+			<tr>
+				<td>{{ student.username }}</td>
+				<td>{{ student.mcqs }}</td>
+				<td>{{ student.score }} / {{ student.scoreMax }}</td>
+			</tr>
+			{% endfor %}
 	</tbody>
 </table>
 {% endblock %}

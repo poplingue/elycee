@@ -71,17 +71,4 @@ class DashboardController extends Controller
             'form' => $form->createView()
         );
     }
-
-    /**
-    * @Route(
-    *   "/stats",
-    *   name="splj.stats"
-    * )
-    *
-    * @Template("SpljBundle:Dashboard:stats.html.twig")
-    */
-    public function statsAction(Request $request)
-    {
-       return array();
-    }
 }
