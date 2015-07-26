@@ -10,7 +10,7 @@ use SpljBundle\Entity\Stats;
 
 use Symfony\Component\HttpFoundation\Request as Request;
 
-/*
+/**
  * @Route("/dashboard")
  */
 

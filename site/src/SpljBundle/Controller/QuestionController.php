@@ -59,6 +59,9 @@ class QuestionController extends Controller
             for ($i=0; $i < $nbQuestion; $i++){
                 $this->onSubmit($form,$mcq->getQuestions()->get($i));
             }
+
+            $message = "Le QCM a été ajouté";
+            $request->getSession()->getFlashBag()->set('message',$message);
             return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
 
@@ -98,6 +101,9 @@ class QuestionController extends Controller
             for ($i=0; $i < sizeof($questions); $i++){
                 $this->onSubmit($form,$mcqCurrent->getQuestions()->get($i));
             }
+
+            $message = "Le QCM a été mis à jour";
+            $request->getSession()->getFlashBag()->set('message',$message);
             return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
         return $this->render('SpljBundle:DashTeacher:form-question.html.twig', array(

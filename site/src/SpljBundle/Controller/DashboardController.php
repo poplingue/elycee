@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request as Request;
 use Symfony\Component\Security\Http\Firewall\ExceptionListener;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-/*
+/**
  * @Route("/dashboard")
  */
 

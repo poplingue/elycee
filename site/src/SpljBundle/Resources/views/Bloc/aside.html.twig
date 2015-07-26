@@ -27,12 +27,6 @@
                     <span>Contact</span>
                 </a>
             </li>
-            <li class="public-menu">
-                <a href="">
-                    <i class="fa fa-search"></i>
-                    <span>Recherche</span>
-                </a>
-            </li>
             {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
             <li class="dash-menu">
                 <a href="{{ url('splj.dashboard.list-mcq')}}">

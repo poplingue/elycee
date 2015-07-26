@@ -44,6 +44,7 @@ class McqController extends Controller
 
         if($form->isValid() && $form->isSubmitted()){
             $this->onSubmit($form,$entity);
+
             return $this->redirect('/dashteacher/add-question/'.$entity->getId());
         }
         return array(
@@ -58,7 +59,7 @@ class McqController extends Controller
     * )
     * 
     */
-    public function updateStatusMcq($id)
+    public function updateStatusMcq(Request $request, $id)
     {
         $newStatus = $_POST["status"];
         $em = $this->getDoctrine()->getManager();
@@ -67,6 +68,8 @@ class McqController extends Controller
         $mcq->setStatus($newStatus);
         $em->flush();
 
+        $message = "Le statut a été mis à jour";
+        $request->getSession()->getFlashBag()->set('message',$message);
         return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
 
     }
@@ -76,7 +79,6 @@ class McqController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($entity);
         $em->flush();
-        // $request->getSession()->getFlashBag()->set('notice',$message);
     }
 
      /**
@@ -95,6 +97,8 @@ class McqController extends Controller
         $mcq->setStatus(2);
         $em->flush();
         
+        $message = "Le QCM a été supprimé";
+        $request->getSession()->getFlashBag()->set('message',$message);
         return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
     }
 }

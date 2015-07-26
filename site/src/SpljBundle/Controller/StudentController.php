@@ -77,6 +77,8 @@ class StudentController extends Controller
             $em->persist($score);
             $em->flush();
 
+            $message = "Merci d'avoir répondu au QCM";
+            $request->getSession()->getFlashBag()->set('message',$message);
             return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
         }
 

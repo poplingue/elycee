@@ -83,6 +83,9 @@ class ArticleController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             
             $this->onSubmit($form,$entity);
+
+            $message = "L'article a été créé";
+            $request->getSession()->getFlashBag()->set('message',$message);
             return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
         }
         return array(
@@ -116,6 +119,9 @@ class ArticleController extends Controller
         
         if($form->isSubmitted() && $form->isValid()){
             $this->onSubmit($form,$entity);
+
+            $message = "L'article a été mis à jour";
+            $request->getSession()->getFlashBag()->set('message',$message);
             return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
         }
         return array(
@@ -140,6 +146,8 @@ class ArticleController extends Controller
         $article->setStatus($newStatus);
         $em->flush();
 
+        $message = "Le statut a été mis à jour";
+        $request->getSession()->getFlashBag()->set('message',$message);
         return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
 
     }
@@ -168,6 +176,8 @@ class ArticleController extends Controller
         $article->setStatus(2);
         $em->flush();
         
+        $message = "L'article a été supprimé";
+        $request->getSession()->getFlashBag()->set('message',$message);
         return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
     }
 }

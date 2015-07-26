@@ -48,15 +48,22 @@
         <section id="main-content">
             <section class="wrapper site-min-height">
                 <div class="row">
+                    {%  if articleRandom is defined %}
                     <div class="col-lg-9 main-chart">
+                    {% else %}
+                    <div class="col-lg-12 main-chart">
+                    {% endif %}
+                        {% for message in app.session.flashbag.get('message')%}
+                            <p class="message">{{ message }} ! </p>
+                        {% endfor %}
                         <h1>{% block h1 %}{% endblock %}</h1>
                         {% block body %}{% endblock %}
                         <p class="bottom-form">*champs obligatoires</p>
                     </div>
                     {%  if articleRandom is defined %}
-                        <div class="col-lg-3 ds">
-                           {% include ('SpljBundle:Bloc:right-col.html.twig') %}
-                        </div>
+                    <div class="col-lg-3 ds">
+                       {% include ('SpljBundle:Bloc:right-col.html.twig') %}
+                    </div>
                     {% endif %}
                 </div>
             </section>
