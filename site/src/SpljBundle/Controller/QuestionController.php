@@ -68,21 +68,6 @@ class QuestionController extends Controller
         ));
     }
 
-    public function onSubmit($form,$question)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $em->persist($question);
-        $em->flush();
-
-        $answers = $question->getAnswers();
-        for ($i=0; $i < sizeof($answers); $i++) {
-            $answers->get($i)->setIdQuestion($question);
-            $em->persist($answers->get($i));
-            $em->flush();
-        }
-        
-    }
 
     /**
     * @Route(
@@ -109,7 +94,7 @@ class QuestionController extends Controller
 
         $form->handleRequest($request);
         
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             for ($i=0; $i < sizeof($questions); $i++){
                 $this->onSubmit($form,$mcqCurrent->getQuestions()->get($i));
             }
@@ -121,6 +106,22 @@ class QuestionController extends Controller
         ));
     }
 
+    public function onSubmit($form,$question)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($question);
+        $em->flush();
+
+        $answers = $question->getAnswers();
+        for ($i=0; $i < sizeof($answers); $i++) {
+            $answers->get($i)->setIdQuestion($question);
+            $em->persist($answers->get($i));
+            $em->flush();
+        }
+        
+    }
+    
     public function loadMcq($id)
     {   
         $doctrine = $this->getDoctrine()->getManager();

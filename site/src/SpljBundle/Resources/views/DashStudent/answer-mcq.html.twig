@@ -3,7 +3,7 @@
 {% block class %}dashboard answer{% endblock %}
 {% block h1 %}{{ mcqCurrent.title }}{% endblock %}
 {% block body %}
-<form class="form-horizontal style-form" method="POST" {{ form_enctype(form) }} novalidate >
+    {{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
     <div class="col-sm-12 col-xs-12 form-group">
         {% for question in mcqCurrent.questions %}
             {% set studentAnswer =  form.studentAnswers[loop.index-1] %}
@@ -48,5 +48,7 @@
     <div class="wrap-submit">
         <button type="submit" class="btn btn-theme">valider</button>
     </div>
-</form>
+    {{ form_widget(form._token) }}
+    {{ form_errors(form)}}
+{{ form_end(form, {'render_rest': false}) }}
 {% endblock %}

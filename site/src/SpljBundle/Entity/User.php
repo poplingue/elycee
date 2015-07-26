@@ -3,7 +3,7 @@
 namespace SpljBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="SpljBundle\Entity\UserRepository")
  */
-class User  implements UserInterface
+class User 
 {
     /**
      * @var integer
@@ -39,22 +39,7 @@ class User  implements UserInterface
    */
   private $salt;
 
-  /**
-   * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
-   *
-   */
-   private $groups;
   
-
-  
-  public function eraseCredentials()
-  {
-  }
-
-  public function __construct()
-    {
-        $this->groups = new ArrayCollection();
-    }
 
     /**
      * Get id
@@ -159,7 +144,7 @@ class User  implements UserInterface
     }
 
      /**
-     * Set salt
+     * Set roles
      *
      * @return User
      */

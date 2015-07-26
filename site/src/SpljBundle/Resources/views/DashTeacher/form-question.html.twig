@@ -7,7 +7,7 @@
 			{# itère sur chaque question existante #}
 	        {% for question in form.questions %}
 				{% include ('SpljBundle:Dashteacher:question-model.html.twig') %}
-				
+				{{ form_widget(form._token) }}
 	        {% endfor %}
 	    <div class="wrap-submit">
 	        <button type="submit" class="btn btn-theme">valider</button>

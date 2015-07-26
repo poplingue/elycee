@@ -54,22 +54,15 @@ class DashboardController extends Controller
             $scores = $query->getResult();
         }
 
-        
-        $qb = $this->getDoctrine()->getRepository('SpljBundle:User')->createQueryBuilder('u');
-        $qb->select(array('u','m'))
-            ->from('SpljBundle:User', 'username')
-            ->leftJoin(
-                    'SpljBundle:Mcq',
-                    'm',
-                    'WITH',
-                    'm.userId = u.id');
-
-        $query = $qb->getQuery();
+        $em = $doctrine->getManager();
+        $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, SpljBundle:User u WHERE m.userId = u.id ORDER BY m.id ASC');
         $users = $query->getResult();
+
         for ($i=0; $i < sizeof($mcq); $i++) { 
-            $mcq[$i]->setUsername($users[$i]);
+            $arrayTmp = $users[$i];
+            $mcq[$i]->setUsername($arrayTmp['username']);
         }
-        
+
         return array(
             'user' => $user,
             'mcq' => $mcq,

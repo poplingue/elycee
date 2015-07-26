@@ -32,7 +32,7 @@
                     {% endif %}
                     <td class="hidden-phone">{{ mcq.theme }}</td>
                     <td class="centered hidden-phone">{{ mcq.nbQuestions }}</td>
-                    <td>{{ mcq.username.username }}</td>
+                    <td>{{ mcq.username }}</td>
                     {% if is_granted('ROLE_TEACHER') %}
                     <td>
                         {% if app.session.get('user').id == mcq.userId %}

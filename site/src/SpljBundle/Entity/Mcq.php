@@ -31,7 +31,7 @@ class Mcq
     private $theme;
 
     /**
-     * @var integer
+     * @var integer 
      */
     private $userId;
 

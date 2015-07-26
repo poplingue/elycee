@@ -43,13 +43,13 @@ class StudentController extends Controller
         }
             
         $form = $this->createForm(new ScoreType(), $score, array(
-            'action' => $this->generateUrl('splj.dashStudent.answer-mcq'),
+            'action' => $this->generateUrl('splj.dashStudent.answer-mcq', array('userId'=>$userId, 'mcqId'=> $mcqId)),
             'method' => 'POST'
         ));
 
         $form->handleRequest($request);
         
-        if($form->isSubmitted()){
+        if($form->isSubmitted() && $form->isValid()){
             
             $questions = $mcqCurrent->getQuestions();
             for ($i=0; $i < sizeof($questions); $i++) { 
