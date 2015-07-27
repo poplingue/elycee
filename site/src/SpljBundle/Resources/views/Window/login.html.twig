@@ -10,13 +10,13 @@
 			<h2 class="form-login-heading">sign in now</h2>
 			<div class="login-wrap">
 				{{ form_widget(form.username, 
-                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'pseudo' }}
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'pseudo', 'data-error' : 'pseudo' }}
                      )
                 }}
 
 				<br>
 				{{ form_widget(form.password,
-                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'mot de passe' }}
+                    { 'attr' : { 'class' : 'form-control', 'placeholder': 'mot de passe', 'data-error' : 'mot de passe' }}
                      )
                 }}
 				<br>

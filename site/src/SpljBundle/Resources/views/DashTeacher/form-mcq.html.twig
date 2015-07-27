@@ -9,28 +9,28 @@
          )
     }}
     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre*")}}</label>
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.title, "Titre")}}</label>
         <div class="col-sm-10">
             {{ form_widget(form.title,
-                { 'attr' : { 'class' : 'form-control' } } )
+                { 'attr' : { 'class' : 'form-control','data-error': 'titre' } } )
             }}
             {{ form_errors(form.title)}}
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.theme, "Thème*")}}</label>
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.theme, "Thème")}}</label>
         <div class="col-sm-10">
             {{ form_widget(form.theme,
-                { 'attr' : { 'class' : 'form-control' } } )
+                { 'attr' : { 'class' : 'form-control','data-error' : 'thème' } } )
             }}
             {{ form_errors(form.theme)}}
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.nbQuestions, "Nombre de questions*")}}</label>
+        <label class="col-sm-2 col-sm-2 control-label">{{ form_label(form.nbQuestions, "Nombre de questions")}}</label>
         <div class="col-sm-10">
             {{ form_widget(form.nbQuestions, 
-                { 'attr' : { 'class' : 'form-control' } } )
+                { 'attr' : { 'class' : 'form-control','data-error' : 'nombre de questions' } } )
             }}
             {{ form_errors(form.nbQuestions)}}
         </div>

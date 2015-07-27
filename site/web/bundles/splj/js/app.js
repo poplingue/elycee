@@ -145,6 +145,7 @@ define("publicWindow", function() {
     var publicWindow = {
         init: function init() {
             this.listActiv();
+            this.checkForm();
         },
         listActiv: function listActiv() {
             var body = $("body");
@@ -158,6 +159,27 @@ define("publicWindow", function() {
             } else if (body.hasClass("contact")) {
                 $(".sidebar-menu").find("li:eq(2)").find("a").addClass("active");
             }
+        },
+        checkForm: function checkForm() {
+            $("form").validateForm();
+            console.log("checkform ready");
+            // which side of website
+            if (".dashboard") {
+                $("form").after('<span class="error-js"></span>');
+            } else {
+                $("form").before('<span class="bottom-form error-js"></span>');
+            }
+            // remove class
+            $("input select, textarea").on("click", function() {
+                if ($(this).is(".error")) {
+                    $(this).removeClass("error");
+                }
+            });
+            // on error 
+            $("input, select, textarea").on("error", function() {
+                $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
+                setTimeout(function() {}, 2e3);
+            });
         }
     };
     return publicWindow;

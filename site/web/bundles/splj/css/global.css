@@ -111,14 +111,28 @@ h1 {
   display: none; }
 
 /* line 62, src/scss/_common.scss */
-.error {
+p.error {
   color: crimson;
   padding: 5px 3px;
   position: absolute;
   bottom: -20px; }
   /* line 67, src/scss/_common.scss */
-  .error li {
+  p.error li {
     font-size: 11px; }
+
+/* line 71, src/scss/_common.scss */
+.error-js {
+  position: absolute;
+  width: 100%; }
+  /* line 74, src/scss/_common.scss */
+  .error-js p.error {
+    position: relative; }
+
+/* line 81, src/scss/_common.scss */
+input.error,
+select.error,
+textarea.error {
+  border-color: crimson; }
 
 /*
 Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
