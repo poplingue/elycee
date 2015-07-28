@@ -1,17 +1,16 @@
 <?php
 
 namespace SpljBundle\Controller;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
-use SpljBundle\Entity\Article;
-use SpljBundle\Form\ArticleType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request as Request;
 
-use Doctrine\Common\Util\Debug as Debug;
+use SpljBundle\Entity\Article;
+use SpljBundle\Form\ArticleType;
 
 /**
  * @Route("/dashteacher")

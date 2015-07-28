@@ -41,9 +41,7 @@ var Script = function() {
             $("#main-content").css({
                 "margin-left": "0px"
             });
-            $("#sidebar").css({
-                "margin-left": "-210px"
-            });
+            $("#sidebar").hide();
             $("#sidebar > ul").hide();
             $("#container").addClass("sidebar-closed");
         } else {
@@ -51,9 +49,7 @@ var Script = function() {
                 "margin-left": "210px"
             });
             $("#sidebar > ul").show();
-            $("#sidebar").css({
-                "margin-left": "0"
-            });
+            $("#sidebar").show();
             $("#container").removeClass("sidebar-closed");
         }
     });
@@ -131,7 +127,29 @@ define("dashboard", function() {
                 $(".dash-menu").last().find("a").addClass("active");
             }
         },
-        checkForm: function checkForm() {}
+        checkForm: function checkForm() {
+            $("form").validateForm();
+            console.log("checkform ready");
+            // which side of website
+            if (".dashboard") {
+                $("form").after('<span class="error-js"></span>');
+            } else {
+                $("form").before('<span class="bottom-form error-js"></span>');
+            }
+            // remove class
+            $("input select textarea").on("click", function() {
+                if ($(this).is(".error")) {
+                    $(this).removeClass("error");
+                }
+            });
+            // on error 
+            $("input, select, textarea").on("error", function() {
+                $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
+                setTimeout(function() {
+                    $(".error-js").empty();
+                }, 2e3);
+            });
+        }
     };
     return dashboard;
 });
@@ -145,7 +163,7 @@ define("publicWindow", function() {
     var publicWindow = {
         init: function init() {
             this.listActiv();
-            this.checkForm();
+            this.contact();
         },
         listActiv: function listActiv() {
             var body = $("body");
@@ -160,25 +178,20 @@ define("publicWindow", function() {
                 $(".sidebar-menu").find("li:eq(2)").find("a").addClass("active");
             }
         },
-        checkForm: function checkForm() {
-            $("form").validateForm();
-            console.log("checkform ready");
-            // which side of website
-            if (".dashboard") {
-                $("form").after('<span class="error-js"></span>');
-            } else {
-                $("form").before('<span class="bottom-form error-js"></span>');
-            }
-            // remove class
-            $("input select, textarea").on("click", function() {
-                if ($(this).is(".error")) {
-                    $(this).removeClass("error");
-                }
-            });
-            // on error 
-            $("input, select, textarea").on("error", function() {
-                $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
-                setTimeout(function() {}, 2e3);
+        contact: function contact() {
+            $(".form-contact").submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: Routing.generate("splj.window.contact"),
+                    data: $(".form-contact").serialize(),
+                    success: function(output) {
+                        console.log(output);
+                        $(".form-contact").remove();
+                        $(".centered").append("<p>Merci " + output.name + ". Votre message a été envoyé !</p>");
+                    }
+                });
+                return false;
             });
         }
     };

@@ -3,6 +3,10 @@
 		<a href="" class="bottom">mentions légales</a>
 	</div>
 </footer>
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+
 <script type="text/javascript" src="{{ asset('bundles/splj/vendor/vendor.js') }}"></script>
 <script type="text/javascript" src="{{ asset('bundles/splj/js/app.js') }}"></script>
 <script>requirejs(['main']);</script>
+
+<script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>

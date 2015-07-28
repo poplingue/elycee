@@ -1,0 +1,19 @@
+SpljBundle\Entity\Contact:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        email:
+            type: string
+            length: '100'
+        name:
+            type: string
+            length: '100'
+        message:
+            type: text
+    lifecycleCallbacks: {  }

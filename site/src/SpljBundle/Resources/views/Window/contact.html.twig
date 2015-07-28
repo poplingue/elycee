@@ -1,14 +1,28 @@
 {%extends "SpljBundle:Bloc:skeleton.html.twig"%}
 {% block title %}Contact{% endblock %}
+{% block h1 %}Nous contacter{% endblock %}
 {% block class %}public-window contact{% endblock %}
 {% block body %}
 	<div class="centered">
 		<p>Collège Saint Paul le Jeune</p><p>tel: 04 75 39 00 25</p>
 		<p>Lycée Saint Paul le Jeune</p><p>tel: 04 75 39 80 14</p>
 		<p>Adresse : 5, place de l'Eglise 07460 Saint Paul le Jeune</p>
-		<address>contact@splj.com</address>
-		<address>administration@splj.com</address>
+		<!-- <address>contact@splj.com</address> -->
+		<!-- <address>administration@splj.com</address> -->
 	</div>
+	<form class="form-login form-contact" method="post" action="" class="form-login" novalidate="novalidate" id="form">
+		<h2 class="form-login-heading">nous écrire</h2>
+		<div class="login-wrap">
+			<input type="text" id="name" name="name" required="required" class="form-control" placeholder="nom / prénom" data-error="name">
+			<br>
+			<input type="email" id="email" name="email" required="required" class="form-control" placeholder="email" data-error="email">
+			<br>
+			<textarea id="message" name="message" required="required" class="form-control" placeholder="message" data-error="message"></textarea>
+			<br>
+			<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>ENVOYER</button>
+			<hr>
+		</div>
+	</form>
 {% endblock %}
 {% block rightCol %}
 	<h3>à lire aussi...</h3>
