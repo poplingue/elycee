@@ -102,27 +102,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // SPRITES
-        sprite:{
-           "@1x": {
-                src: '<%= config.img_path %>/sprite/@1x/*.{png,jpg,gif}',
-                dest: '<%= config.public_path %>/img/sprite/@1x.png',
-                destCss: '<%= config.sass_path %>/sprite/built/_@1x.scss',
-                cssFormat: 'scss',
-                imgPath: '../../img/sprite/@1x.png'
-            },
-            "@2x": {
-                src: '<%= config.img_path %>/sprite/@2x/*.{png,jpg,gif}',
-                dest: '<%= config.public_path %>/img/sprite/@2x.png',
-                destCss: '<%= config.sass_path %>/sprite/built/_@2x.scss',
-                cssFormat: 'scss',
-                imgPath: '../../img/sprite/@2x.png',
-                cssVarMap: function (sprite) {
-                    sprite.name = 'at2x-' + sprite.name;
-                }
-            }
-        },
-
         // WATCHER
         watch: {
             options: {
@@ -152,10 +131,6 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true
                 }
-            },
-            sprite: {
-                files: ['<%= config.img_path %>/sprite/**/*.{png,jpg,gif}'],
-                tasks: ['sprite']
             },
             bower: {
                 files: ['<%= config.bower_path %>/**/*.js'],
@@ -194,12 +169,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-bower-concat');
-    grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadTasks('./tasks');
 
     // Tasks
-    grunt.registerTask('prod_compile', ["jshint", "bower_concat:prod", "uglify:prod", "sprite", "sass:prod"]);
-    grunt.registerTask('dev_compile', ["jshint", "bower_concat:dev", "uglify:dev", "sprite", "sass:dev"]);
+    grunt.registerTask('prod_compile', ["jshint", "bower_concat:prod", "uglify:prod", "sass:prod"]);
+    grunt.registerTask('dev_compile', ["jshint", "bower_concat:dev", "uglify:dev", "sass:dev"]);
     grunt.registerTask('watching', ["dev_compile", "watch"]);
     grunt.registerTask('test', ["jshint", "bower_concat:dev", "uglify:dev", "mocha", "watch"]);
     grunt.registerTask('docs', ["doxx"]);

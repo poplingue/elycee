@@ -2298,7 +2298,7 @@ legend {
   line-height: inherit;
   color: #333;
   border: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $grey-light;
 }
 label {
   display: inline-block;
@@ -3137,7 +3137,7 @@ tbody.collapse.in {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: $grey-light;
 }
 .dropdown-menu > li > a {
   display: block;
@@ -3590,7 +3590,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: $grey-light;
 }
 .nav > li > a > img {
   max-width: none;
@@ -5269,17 +5269,16 @@ button.close {
   overflow-y: auto;
 }
 .modal-dialog {
-  position: relative;
-  width: auto;
-  margin: 10px;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    margin: -92px 0 0 -150px;
 }
 .modal-content {
   position: relative;
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, .2);
   outline: 0;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
@@ -5304,7 +5303,7 @@ button.close {
 .modal-header {
   min-height: 16.42857143px;
   padding: 15px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $grey-light;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5314,13 +5313,14 @@ button.close {
   line-height: 1.42857143;
 }
 .modal-body {
-  position: relative;
-  padding: 15px;
+    font-size: 15px;
+    color: $grey-dark;
+    padding: 17px 0 0px 17px;
 }
 .modal-footer {
   padding: 15px;
   text-align: right;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid $grey-light;
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
@@ -5341,8 +5341,7 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 600px;
-    margin: 30px auto;
+    width: 300px;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);

@@ -178,7 +178,7 @@ ul.top-menu .btn-square {
     border: 1px solid $grey-light !important;
     padding: 5px 15px;
     margin-right: 15px;
-    margin-top: 10px;
+    margin-top: 3px;
     .dashboard & {
         color: $blue;
         background: $grey-light;
@@ -194,6 +194,10 @@ ul.top-menu .btn-square {
     }
 }
 #sidebar{
+    border-right: 3px solid $blue;
+    .dashboard &{
+        border-color: $grey-light !important;
+    }
     height: 100%;
     ul{
         height: 100%;
@@ -350,7 +354,6 @@ ul.sidebar-menu li a.active i {
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
     background: #f2f2f2;
-    margin-left: 210px;
 }
 
 .header, .footer {
@@ -363,6 +366,10 @@ ul.sidebar-menu li a.active i {
     left: 0;
     right: 0;
     z-index: 1002;
+}
+.header + aside{
+    position: relative;
+    z-index: 10;
 }
 
 .black-bg {

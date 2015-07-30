@@ -26,10 +26,10 @@
             {% if mcq.status != 2  %}
                 {% if mcq.status == 1 and is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER')  %}
                 <tr>
-                    {% if is_granted('ROLE_STUDENT') %}
-                        <td>{{ mcq.title }}</a></td>
-                    {% elseif is_granted('ROLE_TEACHER') %}
+                    {% if is_granted('ROLE_TEACHER') and app.session.get('user').id == mcq.userId %}
                         <td><a href="/dashteacher/update-mcq/{{ mcq.id }}">{{ mcq.title }}</a></td>
+                    {% else %}
+                        <td>{{ mcq.title }}</td>
                     {% endif %}
                     <td class="hidden-phone">{{ mcq.theme }}</td>
                     <td class="centered hidden-phone">{{ mcq.nbQuestions }}</td>
@@ -59,8 +59,12 @@
                     </td>
                     <td>
                          {% if app.session.get('user').id == mcq.userId %}
-                            <button class="btn btn-primary btn-xs"><a href="/dashteacher/update-mcq/{{ mcq.id }}"><i class="fa fa-pencil"></i></a></button>
-                            <button class="btn btn-danger btn-xs"><a href="/dashteacher/delete-mcq/{{ mcq.id }}"><i class="fa fa-trash-o"></i></a></button>
+                            <button class="btn btn-primary btn-xs">
+                                <a href="{{ path('splj.dashTeacher.update-mcq', {id: mcq.id}) }}"><i class="fa fa-pencil"></i></a>
+                            </button>
+                            <button class="btn btn-danger btn-xs">
+                                <a href="{{ path('splj.dashTeacher.delete-mcq', {id: mcq.id}) }}"><i class="fa fa-trash-o"></i></a>
+                            </button>
                         {% endif %}
                     </td>
                     {% else %}

@@ -25,6 +25,11 @@ h1{
 	display: inline-block;
 	position: absolute;
 	right: 0;
+	p.username{
+		padding-top: 5px;
+	    margin-right: 15px;
+		color: #fff;
+	}
 }
 .bottom-form{
 	display: none;
@@ -71,7 +76,11 @@ p.error{
 .error-js{
 	position: absolute;
 	width: 100%;
+	left: 0;
+	top: 10px;
 	p.error{
+		width: 100%;
+		color: crimson;
 		position: relative;
 	}
 }

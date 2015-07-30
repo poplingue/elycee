@@ -6,6 +6,7 @@ define('dashboard', function(){
 		init: function init(){
 			this.customMenu();
 			this.checkForm();
+			this.confirmDialog();
 		},
 
 		customMenu: function customMenu() {
@@ -33,7 +34,6 @@ define('dashboard', function(){
 
 	   	checkForm: function checkForm(){
 			$('form').validateForm();
-			console.log('checkform ready');
 
 			// which side of website
 			if ('.dashboard') {
@@ -41,7 +41,7 @@ define('dashboard', function(){
 			}else{
 				$('form').before('<span class="bottom-form error-js"></span>');
 			}
-			// remove class
+			// remove border input
 			$('input, select, textarea').on('click', function(){
 				if ($(this).is('.error')) {
 					$(this).removeClass('error');
@@ -51,9 +51,13 @@ define('dashboard', function(){
 			$('input, select, textarea').on('error', function() {
 				$('.error-js').append('<p class="centered error">Le champ ' + $(this).attr('data-error') + ' est obligatoire</p>');
 				setTimeout(function(){
-					$('.error-js').empty();
+					// $('.error-js').empty();
 				},2000);
 			});
+		},
+
+		confirmDialog: function confirm(){
+			$('.btn-danger a').confirm();
 		}
 	};
 	return dashboard;

@@ -36,16 +36,16 @@ define('publicWindow', function(){
 		        	url: Routing.generate('splj.window.contact-save'),            
 		            data:  $('.form-contact').serializeArray(),
 		            success: function(data){
-		            	$('.loading').addClass('off').removeClass('on');
+		            	$('.loading').addClass('inactive off').removeClass('active on');
 		            	$('.centered').addClass('w100');
 		            	$('.form-contact').remove();
 		            	$('.centered').append('<p>Merci '+ data.name +'. Votre message a été envoyé !</p>');
 		            },
 		            error: function(error){
-		            	$('.loading').addClass('off').removeClass('on');
+		            	$('.loading').addClass('inactive off').removeClass('active on');
 		            	$('.centered').addClass('w100');
 		            	$('.form-contact').remove();
-		            	$('.centered').append('<p>Une erreur est survenue. Tu sais pas compter ?!</p>');
+		            	$('.centered').append('<div class="error-js"><p class="error">Une erreur est survenue. Tu sais pas compter ?!</p><div>');
 		            	
 		            	
 		            }

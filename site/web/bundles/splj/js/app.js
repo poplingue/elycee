@@ -45,9 +45,6 @@ var Script = function() {
             $("#sidebar > ul").hide();
             $("#container").addClass("sidebar-closed");
         } else {
-            $("#main-content").css({
-                "margin-left": "210px"
-            });
             $("#sidebar > ul").show();
             $("#sidebar").show();
             $("#container").removeClass("sidebar-closed");
@@ -108,6 +105,7 @@ define("dashboard", function() {
         init: function init() {
             this.customMenu();
             this.checkForm();
+            this.confirmDialog();
         },
         customMenu: function customMenu() {
             var body = $("body");
@@ -129,14 +127,13 @@ define("dashboard", function() {
         },
         checkForm: function checkForm() {
             $("form").validateForm();
-            console.log("checkform ready");
             // which side of website
             if (".dashboard") {
                 $("form").after('<span class="error-js"></span>');
             } else {
                 $("form").before('<span class="bottom-form error-js"></span>');
             }
-            // remove class
+            // remove border input
             $("input, select, textarea").on("click", function() {
                 if ($(this).is(".error")) {
                     $(this).removeClass("error");
@@ -145,10 +142,11 @@ define("dashboard", function() {
             // on error 
             $("input, select, textarea").on("error", function() {
                 $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
-                setTimeout(function() {
-                    $(".error-js").empty();
-                }, 2e3);
+                setTimeout(function() {}, 2e3);
             });
+        },
+        confirmDialog: function confirm() {
+            $(".btn-danger a").confirm();
         }
     };
     return dashboard;
@@ -188,16 +186,16 @@ define("publicWindow", function() {
                     url: Routing.generate("splj.window.contact-save"),
                     data: $(".form-contact").serializeArray(),
                     success: function(data) {
-                        $(".loading").addClass("off").removeClass("on");
+                        $(".loading").addClass("inactive off").removeClass("active on");
                         $(".centered").addClass("w100");
                         $(".form-contact").remove();
                         $(".centered").append("<p>Merci " + data.name + ". Votre message a été envoyé !</p>");
                     },
                     error: function(error) {
-                        $(".loading").addClass("off").removeClass("on");
+                        $(".loading").addClass("inactive off").removeClass("active on");
                         $(".centered").addClass("w100");
                         $(".form-contact").remove();
-                        $(".centered").append("<p>Une erreur est survenue. Tu sais pas compter ?!</p>");
+                        $(".centered").append('<div class="error-js"><p class="error">Une erreur est survenue. Tu sais pas compter ?!</p><div>');
                     }
                 });
             });

@@ -1,5 +1,4 @@
 .public-window{
-
 	.dash-menu{
 		display: none;
 	}
@@ -49,19 +48,25 @@
 		.centered, .form-contact{
 			@include inlineblock(middle);
 		}
-		.centered{
+		div.centered{
 			width: 40%;
 			&.w100{
 				width: 100%;
 			}
 		}
 		.form-contact{
-			width: 49%;
+			width: 60%;
 		}
 		.loading{
 			@include opacity(1);
 	        -webkit-transition: opacity 0.6s ease-out 0s;
 	        transition: opacity 0.6s ease-out 0s;
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			top: 0;
+			left: 0;
+			background: rgba(0, 0, 0, .5);
 			i{
 				font-size: 50px;
 				color: $pink;
@@ -70,16 +75,31 @@
 				left: 50%;
 				margin: -25px 0 0 -25px;
 			}
+			&.active{
+				display: block;
+			}
+			&.inactive{
+				display: none;
+			}
 			&.on{
 				@include opacity(1);
 				-webkit-transition: opacity 0.6s ease-out 0s;
 	        	transition: opacity 0.6s ease-out 0s;
-
 			}
 			&.off{
 				@include opacity(0);
 				-webkit-transition: opacity 0.6s ease-out 0s;
 	        	transition: opacity 0.6s ease-out 0s;
+			}
+		}
+	}
+}
+@media screen and(max-width: 768px){
+	.public-window{
+		&.contact{
+			.centered, .form-contact{
+				display: block;
+				width: 100%;
 			}
 		}
 	}

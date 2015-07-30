@@ -18,7 +18,11 @@
         {% for article in article %}
             {% if article.status < 2  %}
             <tr>
-                <td><a href="/dashteacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
+                {% if app.session.get('user').id == article.userId %}
+                    <td><a href="/dashteacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
+                {% else %}
+                    <td>{{ article.title }}</td>
+                {% endif %}
                 <td class="hidden-phone">{{ article.username }}</td>
                 <td>{{ article.date|date('d/m/Y') }}</td>
                 <td>
@@ -45,8 +49,12 @@
                 </td>
                 <td>
                     {% if app.session.get('user').id == article.userId %}
-                        <button class="btn btn-primary btn-xs"><a href="/dashteacher/update-article/{{ article.id }}"><i class="fa fa-pencil"></i></a></button>
-                        <button class="btn btn-danger btn-xs"><a href="/dashteacher/delete-article/{{ article.id }}"><i class="fa fa-trash-o"></i></a></button>
+                        <button class="btn btn-primary btn-xs">
+                            <a href="{{ path('splj.dashTeacher.update-article', {id: article.id}) }}"><i class="fa fa-pencil"></i></a>
+                        </button>
+                        <button class="btn btn-danger btn-xs">
+                            <a href="{{ path('splj.dashTeacher.delete-article', {id: article.id}) }}"><i class="fa fa-trash-o"></i></a>
+                        </button>
                     {% endif %}
                 </td>
             </tr>
