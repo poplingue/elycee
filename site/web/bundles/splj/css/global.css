@@ -143,6 +143,17 @@ select.error,
 textarea.error {
   border-color: crimson; }
 
+/* line 95, src/scss/_common.scss */
+.twitter iframe {
+  width: 100%; }
+/* line 98, src/scss/_common.scss */
+.twitter timeline {
+  width: 100%;
+  max-width: 100%; }
+/* line 102, src/scss/_common.scss */
+.twitter .timeline-header {
+  display: n; }
+
 /*
 Template Name: DASHGUM FREE - Bootstrap 3.2 Admin Theme
 Template Version: 1.0
