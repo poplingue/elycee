@@ -31,10 +31,30 @@ define('dashboard', function(){
 	    	}
 	    },
 
-	    checkForm: function checkForm(){
-	    	// $('#form').checkForm();
-	    }
+	   	checkForm: function checkForm(){
+			$('form').validateForm();
+			console.log('checkform ready');
 
+			// which side of website
+			if ('.dashboard') {
+				$('form').after('<span class="error-js"></span>');
+			}else{
+				$('form').before('<span class="bottom-form error-js"></span>');
+			}
+			// remove class
+			$('input, select, textarea').on('click', function(){
+				if ($(this).is('.error')) {
+					$(this).removeClass('error');
+				}
+			});
+			// on error 
+			$('input, select, textarea').on('error', function() {
+				$('.error-js').append('<p class="centered error">Le champ ' + $(this).attr('data-error') + ' est obligatoire</p>');
+				setTimeout(function(){
+					$('.error-js').empty();
+				},2000);
+			});
+		}
 	};
 	return dashboard;
 });

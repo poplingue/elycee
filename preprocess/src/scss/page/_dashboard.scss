@@ -83,8 +83,22 @@
 		}
 	}
 	p.username{
-		padding: 15px 5px;
+		padding: 15px 0px;
 	    margin-right: 15px;
 		color: #fff;
+	}
+	table{
+		thead{
+			background: $grey-light;
+			color: $grey-dark;
+		}
+		tr,th{
+			border-color: $grey-light;
+		}
+	}
+	p.message{
+		padding: 15px 0;
+		margin: 0;
+		text-indent: 0;
 	}
 }

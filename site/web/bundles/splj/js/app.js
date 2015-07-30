@@ -137,7 +137,7 @@ define("dashboard", function() {
                 $("form").before('<span class="bottom-form error-js"></span>');
             }
             // remove class
-            $("input select textarea").on("click", function() {
+            $("input, select, textarea").on("click", function() {
                 if ($(this).is(".error")) {
                     $(this).removeClass("error");
                 }
@@ -179,19 +179,27 @@ define("publicWindow", function() {
             }
         },
         contact: function contact() {
-            $(".form-contact").submit(function(e) {
-                e.preventDefault();
+            $(".form-contact").data("beforesend", function() {
+                $(".loading").addClass("on").removeClass("off");
+            });
+            $(".form-contact").data("onsuccess", function() {
                 $.ajax({
-                    type: "POST",
-                    url: Routing.generate("splj.window.contact"),
-                    data: $(".form-contact").serialize(),
-                    success: function(output) {
-                        console.log(output);
+                    method: "POST",
+                    url: Routing.generate("splj.window.contact-save"),
+                    data: $(".form-contact").serializeArray(),
+                    success: function(data) {
+                        $(".loading").addClass("off").removeClass("on");
+                        $(".centered").addClass("w100");
                         $(".form-contact").remove();
-                        $(".centered").append("<p>Merci " + output.name + ". Votre message a été envoyé !</p>");
+                        $(".centered").append("<p>Merci " + data.name + ". Votre message a été envoyé !</p>");
+                    },
+                    error: function(error) {
+                        $(".loading").addClass("off").removeClass("on");
+                        $(".centered").addClass("w100");
+                        $(".form-contact").remove();
+                        $(".centered").append("<p>Une erreur est survenue. Tu sais pas compter ?!</p>");
                     }
                 });
-                return false;
             });
         }
     };

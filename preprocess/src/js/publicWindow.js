@@ -4,6 +4,7 @@ define('publicWindow', function(){
 
 		init: function init(){
 			this.listActiv();
+			this.contact();
 		},
 
 		listActiv: function listActiv(){
@@ -21,6 +22,35 @@ define('publicWindow', function(){
 			else if(body.hasClass('contact')){
 				$('.sidebar-menu').find('li:eq(2)').find('a').addClass('active');
 			}
+		},
+
+		contact: function contact(){
+
+			$('.form-contact').data('beforesend', function() {
+				$('.loading').addClass('on').removeClass('off');
+			});
+
+			$('.form-contact').data('onsuccess', function() {
+		        $.ajax({
+		        	method: 'POST',
+		        	url: Routing.generate('splj.window.contact-save'),            
+		            data:  $('.form-contact').serializeArray(),
+		            success: function(data){
+		            	$('.loading').addClass('off').removeClass('on');
+		            	$('.centered').addClass('w100');
+		            	$('.form-contact').remove();
+		            	$('.centered').append('<p>Merci '+ data.name +'. Votre message a été envoyé !</p>');
+		            },
+		            error: function(error){
+		            	$('.loading').addClass('off').removeClass('on');
+		            	$('.centered').addClass('w100');
+		            	$('.form-contact').remove();
+		            	$('.centered').append('<p>Une erreur est survenue. Tu sais pas compter ?!</p>');
+		            	
+		            	
+		            }
+	        	});   
+			});
 		}
 	};
 	return publicWindow;

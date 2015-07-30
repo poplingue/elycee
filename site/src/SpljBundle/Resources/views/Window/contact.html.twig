@@ -3,23 +3,28 @@
 {% block h1 %}Nous contacter{% endblock %}
 {% block class %}public-window contact{% endblock %}
 {% block body %}
-	<div class="centered">
-		<p>Collège Saint Paul le Jeune</p><p>tel: 04 75 39 00 25</p>
-		<p>Lycée Saint Paul le Jeune</p><p>tel: 04 75 39 80 14</p>
-		<p>Adresse : 5, place de l'Eglise 07460 Saint Paul le Jeune</p>
-		<!-- <address>contact@splj.com</address> -->
-		<!-- <address>administration@splj.com</address> -->
+	<div class="loading off">
+		<i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
 	</div>
-	<form class="form-login form-contact" method="post" action="" class="form-login" novalidate="novalidate" id="form">
+	<div class="centered">
+		<p>Collège Saint-Paul-le-Jeune</p><p>tel: 04 75 39 00 25</p>
+		<p>Lycée Saint-Paul-le-Jeune</p><p>tel: 04 75 39 80 14</p>
+		<p>Adresse : 5, place de l'Eglise 07460 Saint-Paul-le-Jeune</p>
+	</div>
+	<form class="form-contact" data-ajax="true" method="POST" action="" novalidate="novalidate">
 		<h2 class="form-login-heading">nous écrire</h2>
 		<div class="login-wrap">
-			<input type="text" id="name" name="name" required="required" class="form-control" placeholder="nom / prénom" data-error="name">
+			<input type="text" id="name" name="name" required class="form-control" placeholder="nom / prénom" data-error="name">
 			<br>
-			<input type="email" id="email" name="email" required="required" class="form-control" placeholder="email" data-error="email">
+			<input type="email" id="email" name="email" required class="form-control" placeholder="email" data-error="email">
 			<br>
-			<textarea id="message" name="message" required="required" class="form-control" placeholder="message" data-error="message"></textarea>
+			<textarea id="message" name="message" required class="form-control" placeholder="message" data-error="message"></textarea>
 			<br>
-			<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i>ENVOYER</button>
+			<input type="hidden" name="random1" id="random1" value="{{ random1 }}" class="form-control">
+			<input type="hidden" name="random2" id="random2" value="{{ random2 }}" class="form-control">
+			<input type="text" name="random" id="random" class="form-control" placeholder="Si vous n'êtes pas un robot, calculez {{ random1 }} + {{ random2 }} = ">
+			<br>
+			<input class="btn btn-theme btn-block" type="submit" value="envoyer">
 			<hr>
 		</div>
 	</form>

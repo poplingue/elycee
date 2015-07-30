@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request as Request;
 use SpljBundle\Entity\Contact;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/home")
@@ -63,18 +64,48 @@ class WindowController extends Controller
     /**
     * @Route(
     * 	"/contact",
-    * 	name="splj.window.contact",
-    *   options={"expose"=true}
+    * 	name="splj.window.contact"
     * )
     *
     * @Template("SpljBundle:Window:contact.html.twig")
     */
     public function contact(Request $request)
     {
+
+        if (!isset($_POST['random1'])) {
+            $random1 = rand(0,10);
+            $random2 = rand(0,10);
+         
+            return array(
+                'random1' => $random1,
+                'random2' => $random2
+            );
+        }
+
+        $data = $request->request->all();
+        return new JsonResponse($data);
+    }
+
+    /**
+    * @Route(
+    *   "/contact-save",
+    *   name="splj.window.contact-save",
+    *   options={"expose"=true}
+    * )
+    *
+    */
+    public function contactSaveAction(Request $request)
+    {
+
+        $random1 = $_POST['random1'];
+        $random2 = $_POST['random2'];
+        
         if ($request->isXmlHttpRequest()){
-            
             $data = $request->request->all();
-            if ($data['email'] != 0 && $data['message']!= 0 && $data['name'] != 0) {
+            $randSum = $random1 + $random2;
+            
+            if ($data['random'] == $randSum && $data['email'] != null && $data['name'] != null && $data['message'] != null) {
+            
                 $contact = new Contact();
                 $contact->setEmail($data['email']);
                 $contact->setName($data['name']);
@@ -83,13 +114,21 @@ class WindowController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($contact);
                 $em->flush();
+                
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Splj a un message')
+                    ->setFrom($data['email'])
+                    ->setTo('p.gaudetchah@gmail.com')
+                    ->setBody('Vous avez une message de la part de ['.$data['name'].' - '.$data['email'].'] : '.$data['message'])
+                    ->setContentType('text/html');
 
-                return new JsonResponse(
-                    array('output' => $data)
-                );
+                $this->get('mailer')->send($message);
+
+                return new JsonResponse($data);
+            }else{
+                return new JsonResponse(array('message' => ''), 500);
             }
         }
-        return array();
     }
 
     /**

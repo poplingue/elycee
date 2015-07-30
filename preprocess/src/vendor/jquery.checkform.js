@@ -47,7 +47,7 @@
         CheckForm.prototype={
 
             check : function(formElmt) {
-console.log('test');
+
                 var self = this,
                     returnValue = [],
                     $form = $(formElmt);
@@ -86,6 +86,7 @@ console.log('test');
 
 
                 $form.find('input[data-type=email]:visible').each(function() {
+                    console.log('email');
                     if($(this).val() != '' && $(this).val() != $(this).attr('placeholder')) {
                         if(!self.validEmail($(this).val())) {
                             returnValue['isValid'] = false;

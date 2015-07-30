@@ -8763,7 +8763,6 @@ $(function() {
         }
         CheckForm.prototype = {
             check: function(formElmt) {
-                console.log("test");
                 var self = this, returnValue = [], $form = $(formElmt);
                 returnValue["isValid"] = true, returnValue["statusError"] = undefined;
                 $form.find(".form-item, label, input, select, textarea").removeClass("error");
@@ -8791,6 +8790,7 @@ $(function() {
                     }
                 });
                 $form.find("input[data-type=email]:visible").each(function() {
+                    console.log("email");
                     if ($(this).val() != "" && $(this).val() != $(this).attr("placeholder")) {
                         if (!self.validEmail($(this).val())) {
                             returnValue["isValid"] = false;

@@ -59,12 +59,26 @@ h1{
 .li-dashboard, span.dashboard{
 	display: none;
 }
-.error{
+p.error{
 	color: crimson;
 	padding: 5px 3px;
 	position: absolute;
 	bottom: -20px;
 	li{
 		font-size: 11px;
+	}
+}
+.error-js{
+	position: absolute;
+	width: 100%;
+	p.error{
+		position: relative;
+	}
+}
+input,
+select,
+textarea{
+	&.error{
+		border-color: crimson;
 	}
 }

@@ -1,8 +1,4 @@
 splj_homepage:
     path:     /hello/{name}
     defaults: { _controller: SpljBundle:Default:index }
-contact:
-    pattern:  /home/contact
-    defaults: { _controller: SpljBundle:Window:contact }
-    options:
-        expose: true
+

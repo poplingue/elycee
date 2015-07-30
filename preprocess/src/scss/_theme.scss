@@ -253,11 +253,6 @@ ul.sidebar-menu li ul.sub li{
     margin-right: 0;
 }
 
-ul.sidebar-menu li ul.sub li:last-child{
-    border-radius: 0 0 4px 4px;
-    -webkit-border-radius: 0 0 4px 4px;
-}
-
 ul.sidebar-menu li ul.sub li a {
     font-size: 12px;
     padding: 6px 0;
@@ -453,8 +448,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     padding: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.176) !important;
     border: none !important;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
@@ -469,8 +462,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     color: #666666;
     margin: 0;
     padding: 10px;
-    border-radius: 4px 4px 0px 0px;
-    -webkit-border-radius: 4px 4px 0px 0px;
 }
 
 .dropdown-menu.extended li p.green {
@@ -524,7 +515,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 .dropdown-menu.inbox li a .photo img {
-    border-radius: 2px 2px 2px 2px;
     float: left;
     height: 40px;
     margin-right: 4px;
@@ -579,7 +569,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     text-align: center;
     width: 100%;
     background: #a9d96c;
-    border-radius: 0 0 3px 3px;
 }
 
 .dropdown-menu.extended.btn-square > li:last-child > a, .dropdown-menu.extended.btn-square > li:last-child > a:hover {
@@ -620,8 +609,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 .top-nav ul.top-menu > li > a {
     border: 1px solid #eeeeee;
-    border-radius: 4px;
-    -webkit-border-radius: 4px;
     padding: 6px;
     background: none;
     margin-right: 0;
@@ -875,9 +862,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
     color: $blue;
     }
     width: 100%;
-    -webkit-border-radius: 5px 5px 0 0;
-    -moz-border-radius: 5px 5px 0 0;
-    border-radius: 5px 5px 0 0;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
@@ -1569,8 +1553,6 @@ PANELS CONFIGURATIONS
     font-weight:normal;
     background: #99c262;
     width: 100%;
-    -webkit-border-radius: 0px 0px 4px 4px;
-    border-radius: 0px 0px 4px 4px;
 }
 #barchart {
     margin-bottom: -15px;
@@ -1611,8 +1593,7 @@ PANELS CONFIGURATIONS
     font-weight:normal;
     background: #39b7ac;
     width: 100%;
-    -webkit-border-radius: 0px 0px 4px 4px;
-    border-radius: 0px 0px 4px 4px;
+
 }
 .inline-block {
     display: inline-block;
@@ -1881,43 +1862,36 @@ label {
     transition: 0.25s ease-out;
     -webkit-backface-visibility: hidden;
 }
-.switch-square {
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-}
 .switch-square > div.switch-off label {
     border-color: #7f8c9a;
-    border-radius: 6px 0 0 6px;
-}
-.switch-square span.switch-left {
-    border-radius: 6px 0 0 6px;
 }
 .switch-square span.switch-left [class*="fui-"] {
     text-indent: -10px;
-}
-.switch-square span.switch-right {
-    border-radius: 0 6px 6px 0;
 }
 .switch-square span.switch-right [class*="fui-"] {
     text-indent: 5px;
 }
 .switch-square label {
-    border-radius: 0 6px 6px 0;
     border-color: #41cac0;
 }
 
 
 
 /*LOGIN CONFIGURATION PAGE*/
-.form-login {
+.form-login,.form-contact {
 	max-width: 330px;
 	margin: 100px auto 0;
 	background: #fff;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
+    .contact &{
+        max-width: 550px;
+    }
+}
+.form-contact{
+    margin-top: 70px;
 }
 
-.form-login h2.form-login-heading {
+.form-login h2.form-login-heading,
+.form-contact h2.form-login-heading {
 	margin: 0;
 	padding: 25px 20px;
 	text-align: center;
@@ -1926,8 +1900,6 @@ label {
 
     background: $blue;
     }
-	border-radius: 5px 5px 0 0;
-	-webkit-border-radius: 5px 5px 0 0;
 	color: #fff;
 	font-size: 20px;
 	text-transform: uppercase;
@@ -1984,7 +1956,6 @@ label {
 	background-clip: padding-box;
 	border: 1px solid #999;
 	border: 1px solid rgba(0, 0, 0, .2);
-	border-radius: 5px;
 }
 
 
@@ -2086,8 +2057,6 @@ label {
 
 .panel-footer.revenue-foot {
     background-color: #e6e7ec;
-    -webkit-border-radius: 0px 0px 4px 4px;
-    border-radius: 0px 0px 4px 4px;
     border: none;
     padding: 0;
     width: 100%;
@@ -2114,14 +2083,7 @@ label {
     width: 33.33%;
 }
 
-.panel-footer.revenue-foot ul li.first a:hover, .panel-footer.revenue-foot ul li.first a {
-    -webkit-border-radius: 0px 0px 0px 4px;
-    border-radius: 0px 0px 0px 4px;
-}
-
 .panel-footer.revenue-foot ul li.last a:hover, .panel-footer.revenue-foot ul li.last a {
-    -webkit-border-radius: 0px 0px 4px 0px;
-    border-radius: 0px 0px 4px 0px;
     border-right: none;
 
 }
@@ -2213,30 +2175,18 @@ label {
 
 /*footer*/
 .site-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
     background: $blue;
     .dashboard & {
-
-    background: $blue;
+        background: $blue;
     }
-    color: #fff;
-    padding: 10px 0;
+    a.bottom {
+        color: $grey-light;
+    }
 }
-
-
-.go-top {
-    margin-right: 1%;
-    float: right;
-    background: rgba(255,255,255,.5);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-}
-
-.go-top i {
-    color: #2A3542;
-}
-
 .site-min-height {
     min-height: 900px;
 }

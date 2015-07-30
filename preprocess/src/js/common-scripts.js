@@ -52,9 +52,7 @@ var Script = function () {
             $('#main-content').css({
                 'margin-left': '0px'
             });
-            $('#sidebar').css({
-                'margin-left': '-210px'
-            });
+            $('#sidebar').hide();
             $('#sidebar > ul').hide();
             $("#container").addClass("sidebar-closed");
         } else {
@@ -62,9 +60,7 @@ var Script = function () {
                 'margin-left': '210px'
             });
             $('#sidebar > ul').show();
-            $('#sidebar').css({
-                'margin-left': '0'
-            });
+            $('#sidebar').show();
             $("#container").removeClass("sidebar-closed");
         }
     });
