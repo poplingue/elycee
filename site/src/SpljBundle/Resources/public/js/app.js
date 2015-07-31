@@ -1,129 +1,3 @@
-/* ---------------------------------- */
-/* CheckForm */
-(function($) {
-    var CheckForm = function() {
-        function CheckForm(cntx) {
-            var self = this, $form = $(cntx);
-            this.form = $form;
-            $form.submit(function(e) {
-                var returnValue = self.check(this);
-                var isValidCallBack = true;
-                if ($(this).data("check")) {
-                    console.log("check");
-                    isValidCallBack = $(this).data("check")();
-                }
-                if (!(returnValue["isValid"] && isValidCallBack)) {
-                    console.log("!valid");
-                    $(document).trigger("FORM_ERROR", [ {
-                        form: $form,
-                        ajax: $(this).data("submit") == "ajax" ? true : false,
-                        status: returnValue["statusError"]
-                    } ]);
-                }
-                if (returnValue["isValid"] && isValidCallBack) {
-                    $(document).trigger("FORM_VALID", [ {
-                        form: $form,
-                        ajax: $(this).data("submit") == "ajax" ? true : false
-                    } ]);
-                    return false;
-                }
-                return returnValue["isValid"] && isValidCallBack;
-            });
-        }
-        CheckForm.prototype = {
-            check: function(formElmt) {
-                var self = this, returnValue = [], $form = $(formElmt);
-                returnValue["isValid"] = true, returnValue["statusError"] = undefined;
-                $form.find(".form-item, label, input, select, textarea").removeClass("error");
-                $form.find("input:visible").each(function() {
-                    if (!$(this).is("label") && !$(this).is("input[type=checkbox]")) {
-                        if ($(this).val() == "" || $(this).val() == $(this).attr("placeholder")) {
-                            returnValue["isValid"] = false;
-                            returnValue["statusError"] = "empty";
-                            self.applyError(this);
-                        }
-                    }
-                });
-                $form.find("input[type=checkbox].required:visible").each(function() {
-                    if (!$(this).is(":checked")) {
-                        returnValue["isValid"] = false;
-                        returnValue["statusError"] = "empty";
-                        self.applyError(this);
-                    }
-                });
-                $form.find("input[data-type=confirm]:visible").each(function() {
-                    if ($(this).val() != $($(this).data("ref")).val()) {
-                        returnValue["isValid"] = false;
-                        returnValue["statusError"] = "invalid";
-                        self.applyError(this);
-                    }
-                });
-                $form.find("input[data-type=email]:visible").each(function() {
-                    if ($(this).val() != "" && $(this).val() != $(this).attr("placeholder")) {
-                        if (!self.validEmail($(this).val())) {
-                            returnValue["isValid"] = false;
-                            returnValue["statusError"] = "invalid";
-                            self.applyError(this);
-                        }
-                    }
-                });
-                $form.find("input[data-regexp]:visible").each(function() {
-                    var value = $(this).val();
-                    if (value != "" && value != $(this).attr("placeholder")) {
-                        if (!self.validRegExp(value, $(this).data("regexp"))) {
-                            returnValue["isValid"] = false;
-                            returnValue["statusError"] = "invalid";
-                            self.applyError(this);
-                        }
-                    }
-                });
-                return returnValue;
-            },
-            validRegExp: function(val, reg) {
-                var regExp = new RegExp(reg);
-                return val.match(regExp);
-            },
-            validEmail: function(email) {
-                var mailExp = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
-                return email.match(mailExp);
-            },
-            applyError: function(elmt) {
-                console.log("error");
-                $(elmt).addClass("error").closest(".form-item").addClass("error");
-                if ($(elmt).data("error")) {
-                    App.log($(elmt).data("error"));
-                    $($(elmt).data("error")).show();
-                }
-                $("label[for=" + $(elmt).attr("id") + "]").addClass("error");
-            },
-            ajaxSubmit: function(elmt, urlAjax, typeAjax, objAjax) {
-                console.log("ajax");
-                var $this = $(elmt), self = elmt;
-                $.ajax({
-                    url: urlAjax,
-                    type: typeAjax,
-                    data: objAjax.serialize(),
-                    success: function(data, textStatus, XMLHttpRequest) {
-                        if ($this.data("success")) {
-                            $this.data("success").call(self, data);
-                        }
-                    }
-                });
-            }
-        };
-        return CheckForm;
-    }();
-    $.fn.checkForm = function() {
-        var pluginName = "CheckForm";
-        return this.each(function() {
-            var $self = $(this);
-            if ($self.data(pluginName)) return;
-            var instance = new CheckForm(this);
-            $self.data(pluginName, instance);
-        });
-    };
-})(jQuery);
-
 /*---LEFT BAR ACCORDION----*/
 $(function() {
     $("#nav-accordion").dcAccordion({
@@ -162,24 +36,18 @@ var Script = function() {
         $(window).on("load", responsiveView);
         $(window).on("resize", responsiveView);
     });
+    $("#sidebar").hide();
     $(".fa-bars").click(function() {
         if ($("#sidebar > ul").is(":visible") === true) {
             $("#main-content").css({
                 "margin-left": "0px"
             });
-            $("#sidebar").css({
-                "margin-left": "-210px"
-            });
+            $("#sidebar").hide();
             $("#sidebar > ul").hide();
             $("#container").addClass("sidebar-closed");
         } else {
-            $("#main-content").css({
-                "margin-left": "210px"
-            });
             $("#sidebar > ul").show();
-            $("#sidebar").css({
-                "margin-left": "0"
-            });
+            $("#sidebar").show();
             $("#container").removeClass("sidebar-closed");
         }
     });
@@ -236,27 +104,59 @@ var Script = function() {
 define("dashboard", function() {
     var dashboard = {
         init: function init() {
-            this.questionsMore();
             this.customMenu();
             this.checkForm();
+            this.confirmDialog();
+            this.customPaginator();
         },
         customMenu: function customMenu() {
             var body = $("body");
+            if (body.hasClass("dashboard")) {
+                $(".public-menu").remove();
+            }
             if (body.hasClass("dashboard")) {
                 $(".wrap-logo img").attr("src", "/bundles/splj/img/logo_60_grey.jpg");
                 $("#main-content .col-lg-3").remove();
                 $("#main-content .col-lg-9").removeClass().addClass("col-lg-12 main-chart");
             }
             if (body.hasClass("qcm")) {
-                $(".dash-menu").eq(2).find("a").addClass("active");
+                $(".dash-menu").eq(1).find("a").addClass("active");
             } else if (body.hasClass("article")) {
-                $(".dash-menu").eq(3).find("a").addClass("active");
+                $(".dash-menu").eq(2).find("a").addClass("active");
             } else if (body.hasClass("stats")) {
-                $(".dash-menu").eq(4).find("a").addClass("active");
+                $(".dash-menu").last().find("a").addClass("active");
             }
         },
-        checkForm: function checkForm() {},
-        questionsMore: function questionsMore() {}
+        checkForm: function checkForm() {
+            $("form").validateForm();
+            // which side of website
+            if (".dashboard") {
+                $("form").after('<span class="error-js"></span>');
+            } else {
+                $("form").before('<span class="bottom-form error-js"></span>');
+            }
+            // remove border input
+            $("input, select, textarea").on("click", function() {
+                if ($(this).is(".error")) {
+                    $(this).removeClass("error");
+                }
+            });
+            // on error 
+            $("input, select, textarea").on("error", function() {
+                $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
+                setTimeout(function() {}, 2e3);
+            });
+        },
+        confirmDialog: function confirm() {
+            $(".btn-danger a").confirm();
+        },
+        customPaginator: function customPaginator() {
+            var pagination = $(".pagination");
+            pagination.find(".first a").html('<i class="fa fa-fast-backward"></i>');
+            pagination.find(".last a").html('<i class="fa fa-fast-forward"></i>');
+            pagination.find(".next a").html('<i class="fa fa-forward"></i>');
+            pagination.find(".previous a").html('<i class="fa fa-backward"></i>');
+        }
     };
     return dashboard;
 });
@@ -269,14 +169,45 @@ define("main", [ "publicWindow", "dashboard" ], function(publicWindow, dashboard
 define("publicWindow", function() {
     var publicWindow = {
         init: function init() {
+            this.listActiv();
+            this.ajaxContact();
+        },
+        listActiv: function listActiv() {
             var body = $("body");
-            if (body.hasClass("public-window home")) {
-                $(".public-menu").eq(1).find("a").addClass("active");
-            } else if (body.hasClass("public-window estate")) {
-                $(".public-menu").eq(2).find("a").addClass("active");
-            } else if (body.hasClass("public-window contact")) {
-                $(".public-menu").eq(3).find("a").addClass("active");
+            if (body.hasClass("public-window")) {
+                $(".dash-menu").remove();
             }
+            if (body.hasClass("home")) {
+                $(".public-menu").first().find("a").addClass("active");
+            } else if (body.hasClass("estate")) {
+                $(".sidebar-menu").find("li:eq(1)").find("a").addClass("active");
+            } else if (body.hasClass("contact")) {
+                $(".sidebar-menu").find("li:eq(2)").find("a").addClass("active");
+            }
+        },
+        ajaxContact: function contact() {
+            $(".form-contact").data("beforesend", function() {
+                $(".loading").addClass("on").removeClass("off");
+            });
+            $(".form-contact").data("onsuccess", function() {
+                $.ajax({
+                    method: "POST",
+                    url: Routing.generate("splj.window.contact-save"),
+                    data: $(".form-contact").serializeArray(),
+                    success: function(data) {
+                        $(".loading").addClass("off").removeClass("on");
+                        $(".centered").addClass("w100");
+                        $(".form-contact").remove();
+                        $(".centered").append("<p>Merci " + data.name + ". Votre message a été envoyé !</p>");
+                    },
+                    error: function(error) {
+                        $(".loading").addClass("off").removeClass("on");
+                        $(".centered").addClass("w100");
+                        $(".form-contact").remove();
+                        $(".centered").append('<div class="error-js"><p class="error">Une erreur est survenue. Tu sais pas compter ?!</p><div>');
+                    }
+                });
+            });
         }
     };
     return publicWindow;

@@ -32,13 +32,13 @@
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                 {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
-                    <li><a class="btn-square" href="{{ url('redirect.after.logout') }}">Déconnexion</a></li>
+                    <li><a class="btn-square" href="{{ url('redirect.after.logout') }}"><i class="fa fa-sign-out"></i></a></li>
                     <li><p class="username">Bonjour {{ app.session.get('user').username }} !</p></li>
                     {% if app.request.attributes.get('_route') starts with 'splj.window' %}
-                        <li><a class="btn-square" href="{{ url('splj.stats') }}">Dashboard</a></li>
+                        <li><a class="btn-square" href="{{ url('splj.stats') }}"><i class="fa fa-hand-o-right"></i></a></li>
                     {% endif %}
                 {% else %}
-                    <li><a class="btn-square" href="{{ url('splj.window.login')}}">Connexion</a></li>
+                    <li><a class="btn-square" href="{{ url('splj.window.login')}}"><i class="fa fa-sign-in"></i></a></li>
                 {% endif %}
                 {% block link %}{% endblock %}
                 </ul>

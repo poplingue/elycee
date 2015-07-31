@@ -47,7 +47,9 @@
                                     <option  value="0">non publié</option>
                                 {% endif %}
                                 </select>
-                                <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
+                                <button type="submit" class="btn btn-success btn-xs">
+                                    <i class="fa fa-check"></i>
+                                </button>
                         </form>
                         {% else %}
                             {% if mcq.status == 0 %}
@@ -60,7 +62,7 @@
                     <td>
                          {% if app.session.get('user').id == mcq.userId %}
                             <button class="btn btn-primary btn-xs">
-                                <a href="{{ path('splj.dashTeacher.update-mcq', {id: mcq.id}) }}"><i class="fa fa-pencil"></i></a>
+                                <a href="{{ path('splj.dashTeacher.update-mcq', {id: mcq.id}) }}"><i class="fa fa-wrench"></i></a>
                             </button>
                             <button class="btn btn-danger btn-xs">
                                 <a href="{{ path('splj.dashTeacher.delete-mcq', {id: mcq.id}) }}"><i class="fa fa-trash-o"></i></a>

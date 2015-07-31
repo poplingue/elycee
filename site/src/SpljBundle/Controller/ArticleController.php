@@ -25,7 +25,7 @@ class ArticleController extends Controller
     *   name="splj.dashTeacher.list-article",
     * )
     *
-    * @Template("SpljBundle:DashTeacher:list-article.html.twig")
+    * 
     */
     public function listAction(Request $request)
     {
@@ -50,10 +50,17 @@ class ArticleController extends Controller
             $article[$i]->setUsername($arrayTmp['username']);
         }
 
-        return array(
+        $articlesPerPage = sizeof($article)/3;
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $article,
+            $request->query->getInt('page',3),3);
+
+        return $this->render('SpljBundle:DashTeacher:list-article.html.twig', array(
+            'pagination' => $pagination,
             'article' => $article,
             'form' => $form->createView()
-        );
+        ));
     }
 
     /**

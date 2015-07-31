@@ -46,7 +46,8 @@ var Script = function () {
         $(window).on('load', responsiveView);
         $(window).on('resize', responsiveView);
     });
-
+    
+    $('#sidebar').hide();
     $('.fa-bars').click(function () {
         if ($('#sidebar > ul').is(":visible") === true) {
             $('#main-content').css({

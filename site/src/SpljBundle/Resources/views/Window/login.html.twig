@@ -7,7 +7,7 @@
 <div id="login-page">
 	<div class="container">
 		{{ form_start(form, { 'attr' : { 'class' : 'form-login', 'novalidate' : 'novalidate', 'id' : 'form' }  }) }}
-			<h2 class="form-login-heading">sign in now</h2>
+			<h2 class="form-login-heading">se connecter</h2>
 			<div class="login-wrap">
 				{{ form_widget(form.username, 
                     { 'attr' : { 'class' : 'form-control', 'placeholder': 'pseudo', 'data-error' : 'pseudo' }}
@@ -20,7 +20,7 @@
                      )
                 }}
 				<br>
-				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> CONNEXION</button>
+				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i></button>
 				<hr>
 			</div>
 		{{ form_end(form) }} 	

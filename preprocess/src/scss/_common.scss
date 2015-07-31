@@ -2,7 +2,6 @@ $grey-light: #CCCCCC;
 $blue: #9966FF;
 $grey-dark: #666666;
 $pink: #FFE2C9;
-
 h1{
 	font-size: 22px;
 	padding: 10px 0;
@@ -24,10 +23,14 @@ h1{
 .top-menu{
 	display: inline-block;
 	position: absolute;
-	right: 0;
+	right: 5px;
+	top: 4px;
+	min-width: 30%;
 	p.username{
-		padding-top: 5px;
-	    margin-right: 15px;
+		color: #fff;
+	}
+	i.fa{
+		font-size: 21px;
 		color: #fff;
 	}
 }
@@ -91,15 +94,12 @@ textarea{
 		border-color: crimson;
 	}
 }
-.twitter{
-	iframe{
-		width: 100%;
-	}
-	timeline{
-		width: 100%;
-		max-width: 100%;
-	}
-	.timeline-header{
-		display: none;
-	}
+#twitter-widget-0{
+	width: 100%!important;
+}
+.timeline{
+	max-width: 100%!important;
+}
+.timeline-header{
+	display: none!important;
 }

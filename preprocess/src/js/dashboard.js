@@ -7,6 +7,7 @@ define('dashboard', function(){
 			this.customMenu();
 			this.checkForm();
 			this.confirmDialog();
+			this.customPaginator();
 		},
 
 		customMenu: function customMenu() {
@@ -58,6 +59,14 @@ define('dashboard', function(){
 
 		confirmDialog: function confirm(){
 			$('.btn-danger a').confirm();
+		}, 
+
+		customPaginator: function customPaginator(){
+			var pagination = $('.pagination');
+			pagination.find('.first a').html('<i class="fa fa-fast-backward"></i>');
+			pagination.find('.last a').html('<i class="fa fa-fast-forward"></i>');
+			pagination.find('.next a').html('<i class="fa fa-forward"></i>');
+			pagination.find('.previous a').html('<i class="fa fa-backward"></i>');
 		}
 	};
 	return dashboard;

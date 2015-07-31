@@ -15,8 +15,9 @@
         </tr>
     </thead>
     <tbody>
-        {% for article in article %}
+        {% for article in pagination %}
             {% if article.status < 2  %}
+    
             <tr>
                 {% if app.session.get('user').id == article.userId %}
                     <td><a href="/dashteacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
@@ -37,7 +38,9 @@
                                 <option  value="0">non publié</option>
                             {% endif %}
                             </select>
-                        <button type="submit" class="btn btn-success btn-xs">mettre à jour</button>
+                        <button type="submit" class="btn btn-success btn-xs">
+                            <i class="fa fa-check"></i>
+                        </button>
                     </form>
                 {% else %}
                     {% if article.status == 0 %}
@@ -50,7 +53,7 @@
                 <td>
                     {% if app.session.get('user').id == article.userId %}
                         <button class="btn btn-primary btn-xs">
-                            <a href="{{ path('splj.dashTeacher.update-article', {id: article.id}) }}"><i class="fa fa-pencil"></i></a>
+                            <a href="{{ path('splj.dashTeacher.update-article', {id: article.id}) }}"><i class="fa fa-wrench"></i></a>
                         </button>
                         <button class="btn btn-danger btn-xs">
                             <a href="{{ path('splj.dashTeacher.delete-article', {id: article.id}) }}"><i class="fa fa-trash-o"></i></a>
@@ -59,7 +62,10 @@
                 </td>
             </tr>
             {% endif %}
-        {% endfor %}
+    {% endfor %}
     </tbody>
 </table>
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
 {% endblock %}

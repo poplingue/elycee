@@ -29,7 +29,7 @@
     #sidebar {
         height: auto;
         overflow: hidden;
-        position: absolute;
+        position: fixed;
         width: 100%;
         z-index: 1001;
     }
@@ -46,7 +46,7 @@
     }
 
     #sidebar > ul > li {
-        margin: 0 10px 5px 10px;
+        margin: 10px 0px;
     }
     #sidebar > ul > li > a {
         height:35px;

@@ -172,17 +172,10 @@ hr {
 }
 
 ul.top-menu .btn-square {
-    background: $blue;
-    color: $grey-light;
     font-size: 12px;
-    border: 1px solid $grey-light !important;
-    padding: 5px 15px;
-    margin-right: 15px;
+    padding: 2px 3px;
+    margin-right: 4px;
     margin-top: 3px;
-    .dashboard & {
-        color: $blue;
-        background: $grey-light;
-    }
 }
 
 
@@ -290,7 +283,6 @@ ul.sidebar-menu li ul.sub li.active a {
 }
 
 ul.sidebar-menu li{
-    /*line-height: 20px !important;*/
     margin-bottom: 5px;
 }
 
@@ -333,7 +325,7 @@ ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
 
 
 ul.sidebar-menu li a i {
-    font-size: 15px;
+    font-size: 17px;
     padding-right: 6px;
 }
 
@@ -408,7 +400,14 @@ a.logo span {
 
 /*notification*/
 #top_menu .nav > li, ul.top-menu > li {
-   text-align: center;
+    @include inlineblock(middle);
+    text-align: right;
+    &:first-child{
+        display: block;
+    }
+    .dashboard &{
+        width: 100%;
+    }
 }
 
 .notify-row {
@@ -427,17 +426,8 @@ a.logo span {
 ul.top-menu > li > a {
     color: #666666;
     font-size: 16px;
-    border:1px solid #666666 !important;
     padding: 2px 6px;
     margin-right: 15px;
-}
-
-ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
-    border:1px solid $grey-dark !important;
-    background-color: transparent !important;
-    border-color: $grey-dark !important;
-    text-decoration: none;
-    color: $grey-dark !important;
 }
 
 .notify-row .badge {
@@ -687,7 +677,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .sidebar-toggle-box .fa-bars {
     cursor: pointer;
     display: inline-block;
-    font-size: 20px;
+    font-size: 21px;
 }
 
 
