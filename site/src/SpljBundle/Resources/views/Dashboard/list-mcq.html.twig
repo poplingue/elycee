@@ -23,75 +23,73 @@
     </thead>
     <tbody>
         {% for mcq in mcq %}
-            {% if mcq.status != 2  %}
-                {% if mcq.status == 1 and is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER')  %}
-                <tr>
-                    {% if is_granted('ROLE_TEACHER') and app.session.get('user').id == mcq.userId %}
-                        <td><a href="/dashteacher/update-mcq/{{ mcq.id }}">{{ mcq.title }}</a></td>
-                    {% else %}
-                        <td>{{ mcq.title }}</td>
-                    {% endif %}
-                    <td class="hidden-phone">{{ mcq.theme }}</td>
-                    <td class="centered hidden-phone">{{ mcq.nbQuestions }}</td>
-                    <td>{{ mcq.username }}</td>
-                    {% if is_granted('ROLE_TEACHER') %}
-                    <td>
-                        {% if app.session.get('user').id == mcq.userId %}
-                        <form action="/dashteacher/update-status-mcq/{{ mcq.id }}" method="POST" novalidate>
-                                <select name="status">
-                                {% if mcq.status == 0 %}
-                                    <option selected="selected" value="0">non publié</option>
-                                    <option  value="1">publié</option>
-                                {% else %}
-                                    <option selected="selected" value="1">publié</option>
-                                    <option  value="0">non publié</option>
-                                {% endif %}
-                                </select>
-                                <button type="submit" class="btn btn-success btn-xs">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                        </form>
-                        {% else %}
-                            {% if mcq.status == 0 %}
-                                non publié
-                            {% else %}
-                                publié
-                            {% endif %}
-                        {% endif %}
-                    </td>
-                    <td>
-                         {% if app.session.get('user').id == mcq.userId %}
-                            <button class="btn btn-primary btn-xs">
-                                <a href="{{ path('splj.dashTeacher.update-mcq', {id: mcq.id}) }}"><i class="fa fa-wrench"></i></a>
-                            </button>
-                            <button class="btn btn-danger btn-xs">
-                                <a href="{{ path('splj.dashTeacher.delete-mcq', {id: mcq.id}) }}"><i class="fa fa-trash-o"></i></a>
-                            </button>
-                        {% endif %}
-                    </td>
-                    {% else %}
-                        {% set qcmRepondu = false %}
-                        {% set qcmScore = 0 %}
-                        {% set qcmScoreMax = 0 %}
-                        {% set qcmScoreDate = 0 %}
-                        {% for score in scores %}
-                            {% if score.mcqId == mcq.id %}
-                                {% set qcmRepondu = true %}
-                                {% set qcmScore = score.score %}
-                                {% set qcmScoreMax = score.scoreMax %}
-                                {% set qcmScoreDate =  score.date|date('d/m/Y') %}
-                            {% endif %}
-                        {% endfor %}
-                        {% if qcmRepondu == false %}
-                            <td>
-                                <button class="btn btn-success btn-xs"><a href="/dashstudent/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa "></i>répondre</a></button>
-                            </td>
-                        {% else %}
-                            <td>score : {{ qcmScore }}/{{ qcmScoreMax }} | Le : {{ qcmScoreDate }}</td>
-                        {% endif %}
-                    {% endif %}
-                </tr>
+            {% if mcq.status == 1 and is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER')  %}
+            <tr>
+                {% if is_granted('ROLE_TEACHER') and app.session.get('user').id == mcq.userId %}
+                    <td><a href="/dashteacher/update-mcq/{{ mcq.id }}">{{ mcq.title }}</a></td>
+                {% else %}
+                    <td>{{ mcq.title }}</td>
                 {% endif %}
+                <td class="hidden-phone">{{ mcq.theme }}</td>
+                <td class="centered hidden-phone">{{ mcq.nbQuestions }}</td>
+                <td>{{ mcq.username }}</td>
+                {% if is_granted('ROLE_TEACHER') %}
+                <td>
+                    {% if app.session.get('user').id == mcq.userId %}
+                    <form action="/dashteacher/update-status-mcq/{{ mcq.id }}" method="POST" novalidate>
+                            <select name="status">
+                            {% if mcq.status == 0 %}
+                                <option selected="selected" value="0">non publié</option>
+                                <option  value="1">publié</option>
+                            {% else %}
+                                <option selected="selected" value="1">publié</option>
+                                <option  value="0">non publié</option>
+                            {% endif %}
+                            </select>
+                            <button type="submit" class="btn btn-success btn-xs">
+                                <i class="fa fa-check"></i>
+                            </button>
+                    </form>
+                    {% else %}
+                        {% if mcq.status == 0 %}
+                            non publié
+                        {% else %}
+                            publié
+                        {% endif %}
+                    {% endif %}
+                </td>
+                <td>
+                     {% if app.session.get('user').id == mcq.userId %}
+                        <button class="btn btn-primary btn-xs">
+                            <a href="{{ path('splj.dashTeacher.update-mcq', {id: mcq.id}) }}"><i class="fa fa-wrench"></i></a>
+                        </button>
+                        <button class="btn btn-danger btn-xs">
+                            <a href="{{ path('splj.dashTeacher.delete-mcq', {id: mcq.id}) }}"><i class="fa fa-trash-o"></i></a>
+                        </button>
+                    {% endif %}
+                </td>
+                {% else %}
+                    {% set qcmRepondu = false %}
+                    {% set qcmScore = 0 %}
+                    {% set qcmScoreMax = 0 %}
+                    {% set qcmScoreDate = 0 %}
+                    {% for score in scores %}
+                        {% if score.mcqId == mcq.id %}
+                            {% set qcmRepondu = true %}
+                            {% set qcmScore = score.score %}
+                            {% set qcmScoreMax = score.scoreMax %}
+                            {% set qcmScoreDate =  score.date|date('d/m/Y') %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if qcmRepondu == false %}
+                        <td>
+                            <button class="btn btn-success btn-xs"><a href="/dashstudent/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa "></i>répondre</a></button>
+                        </td>
+                    {% else %}
+                        <td>score : {{ qcmScore }}/{{ qcmScoreMax }} | Le : {{ qcmScoreDate }}</td>
+                    {% endif %}
+                {% endif %}
+            </tr>
             {% endif %}
         {% endfor %}
     </tbody>

@@ -18,10 +18,10 @@ class ArticleType extends AbstractType
         $builder
             ->add('title', 'text')
         	->add('user_id', 'hidden')
-        	->add('date', 'datetime', array(
+        	->add('date', 'date', array(
                 'data' => new \DateTime("now"),
-                'format' => 'dd-MMM-yyyy',
-                'input' => 'datetime'
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy'
             ))
         	->add('content', 'textarea')
         	->add('extract', 'textarea')

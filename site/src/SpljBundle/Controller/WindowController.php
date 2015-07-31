@@ -31,10 +31,14 @@ class WindowController extends Controller
     public function indexAction(Request $request)
     {
         $doctrine = $this->getDoctrine();
-        $em = $this->getDoctrine()->getManager();
+        $em = $doctrine->getManager();
         $src = $doctrine->getRepository('SpljBundle:Article');
         
-        $article = $src->findAll();
+        $qb = $src->createQueryBuilder('a');
+        $qb->select(array('a'))
+            ->orderBy('a.date', 'DESC');
+        $query = $qb->getQuery();
+        $article = $query->getResult();
        
         $ids = array_rand($article,1);
 
@@ -42,6 +46,7 @@ class WindowController extends Controller
         $query = $src->createQueryBuilder('a')
             ->where($query->expr()->in('a.id', $ids));
         $articleRandom = $query->getQuery()->getResult();
+
         return array(
             'article' => $article,
             'articleRandom' => $articleRandom

@@ -131,10 +131,10 @@
                 return this.validRegExp(email, /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
             },
             
-            validTime: function(time) {
+            validDate: function(time) {
                 return this.validRegExp(time, /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/);
             },
-            
+
             validURL: function(url) {
                 return this.validRegExp(url, /^(https?|ftp|file):\/\/.+$/);
             },

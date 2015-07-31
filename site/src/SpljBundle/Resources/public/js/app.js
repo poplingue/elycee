@@ -106,7 +106,6 @@ define("dashboard", function() {
         init: function init() {
             this.customMenu();
             this.checkForm();
-            this.confirmDialog();
             this.customPaginator();
         },
         customMenu: function customMenu() {
@@ -129,6 +128,16 @@ define("dashboard", function() {
         },
         checkForm: function checkForm() {
             $("form").validateForm();
+            $('form[name="article"]').data("check", function() {
+                var form = this;
+                var isValid = true;
+                var dateReg = /^\d{2}([./])\d{2}\1\d{4}$/;
+                if (!$("#article_date").val().match(dateReg)) {
+                    isValid = false;
+                    $('form[name="article"]').data("ValidateForm").applyError($("#article_date")[0]);
+                }
+                return isValid;
+            });
             // which side of website
             if (".dashboard") {
                 $("form").after('<span class="error-js"></span>');
@@ -144,11 +153,10 @@ define("dashboard", function() {
             // on error 
             $("input, select, textarea").on("error", function() {
                 $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
-                setTimeout(function() {}, 2e3);
+                setTimeout(function() {
+                    $(".error-js").empty();
+                }, 2e3);
             });
-        },
-        confirmDialog: function confirm() {
-            $(".btn-danger a").confirm();
         },
         customPaginator: function customPaginator() {
             var pagination = $(".pagination");
@@ -164,6 +172,12 @@ define("dashboard", function() {
 define("main", [ "publicWindow", "dashboard" ], function(publicWindow, dashboard) {
     dashboard.init();
     publicWindow.init();
+    // modal
+    $(".btn-danger a").confirm();
+    // datepicker
+    $(function() {
+        $(".datepicker").datepicker($.datepicker.regional["fr"]);
+    });
 });
 
 define("publicWindow", function() {

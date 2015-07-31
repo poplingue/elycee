@@ -24,13 +24,16 @@ class ArticleController extends Controller
     *   "/list-article",
     *   name="splj.dashTeacher.list-article",
     * )
-    *
     * 
     */
     public function listAction(Request $request)
     {
         $doctrine = $this->getDoctrine();
-        $src = $doctrine->getRepository('SpljBundle:Article');
+        $qb = $doctrine->getRepository('SpljBundle:Article')->createQueryBuilder('a');
+        $qb->select(array('a'))
+            ->orderBy('a.date', 'DESC');
+        $query = $qb->getQuery();
+        $article = $query->getResult();
        
         $entity = new Article();
         $type = new ArticleType();
@@ -38,7 +41,6 @@ class ArticleController extends Controller
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
         
-        $article = $src->findAll();
 
         // username list
         $em = $doctrine->getManager();
@@ -50,11 +52,10 @@ class ArticleController extends Controller
             $article[$i]->setUsername($arrayTmp['username']);
         }
 
-        $articlesPerPage = sizeof($article)/3;
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $article,
-            $request->query->getInt('page',3),3);
+            $request->query->getInt('page',1),5);
 
         return $this->render('SpljBundle:DashTeacher:list-article.html.twig', array(
             'pagination' => $pagination,
