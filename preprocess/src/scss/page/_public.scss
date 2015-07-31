@@ -17,15 +17,31 @@
 			padding: 15px 5px 0 5px;
 		}
 		.infos{
-			padding: 8px 0;
+			font-size: 13px;
+			padding: 8px;
 		}
 		.comments{
 			text-align: right;
 			padding: 4px;
 		}
-		.article{
-			figure img{
-				max-height: 95px;
+		.wrap-list{
+			font-size: 0;
+			.article{
+				figure{
+					@include inlineblock(middle);
+					width: 40%;
+					a{
+						display: block;
+					}
+					img{
+						max-height: 150px;
+					}
+				}
+				figure+div{
+					@include inlineblock(middle);
+					font-size: 14px;
+					width: 59%;
+				}
 			}
 		}
 	}

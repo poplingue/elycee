@@ -3,10 +3,12 @@
 {% block class %}article public-window{% endblock %}
 {% block body %}
 	<div class="col-lg-12 text-center">
-		<h1><a href="">{{ article.title }}</a></h1>
-		<figure>
-			<img class="img-responsive" src="{{ asset('bundles/splj/img/articles/'~ article.image)}}" alt="">
-		</figure>
+		<h1>{{ article.title }}</h1>
+		{% if article.image != null %}
+			<figure>
+				<img class="img-responsive" src="{{ asset('bundles/splj/img/articles/'~ article.image)}}" alt="">
+			</figure>
+		{% endif %}
 	</div>
 	<div class="col-lg-12">
 		<p>{{ article.content }}</p>

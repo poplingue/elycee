@@ -40,16 +40,17 @@ class WindowController extends Controller
         $query = $qb->getQuery();
         $article = $query->getResult();
        
-        $ids = array_rand($article,1);
+        // username list
+        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
+        $users = $query->getResult();
 
-        $query = $em->createQueryBuilder();
-        $query = $src->createQueryBuilder('a')
-            ->where($query->expr()->in('a.id', $ids));
-        $articleRandom = $query->getQuery()->getResult();
+        for ($i=0; $i < sizeof($article); $i++) { 
+            $arrayTmp = $users[$i];
+            $article[$i]->setUsername($arrayTmp['username']);
+        }
 
         return array(
-            'article' => $article,
-            'articleRandom' => $articleRandom
+            'article' => $article
         );
     }
 

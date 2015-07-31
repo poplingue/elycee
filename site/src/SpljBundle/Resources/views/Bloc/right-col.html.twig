@@ -1,47 +1,24 @@
 <h3>A lire aussi</h3>
-<ul class="archives">
-{% for articleRandom in articleRandom %}
-		<li>
+<ul>
+{% for article in article %}
+	{% if article.status == 1  and article.date < date('-40days') %}
+	<li>
 		<div class="desc">
 			<div class="thumb">
-				<span class="badge bg-theme"><i class="fa fa-book"></i></span>
+				<span class="badge bg-theme"><i class="fa fa-file-text"></i></span>
 			</div>
 			<div class="details">
-          		<p><span>publié le </span><date>{{ articleRandom.date|date('d/m/Y') }}</date></p>
-      		   <a href="#">{{ articleRandom.title }}</a>
+      		   	<a href="#">{{ article.title }}</a>
+          		<p><span>publié le </span><date>{{ article.date|date('d/m/Y') }}</date></p>
           	</div>
 		</div>
 	</li>
+	{% endif %}
 {% endfor %}
 </ul>
 <h3>Fil twitter</h3>
 <ul class="twitter">
     <a class="twitter-timeline"  href="https://twitter.com/ColLySplj" data-widget-id="626881834316644352">Tweets de @ColLySplj</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-	<!-- <li>
-		<div class="desc">
-			<div class="thumb">
-				<span class="badge bg-theme"><i class="fa fa-twitter"></i></span>
-			</div>
-			<div class="details">
-		  		<p>
-		  		   <a href="#">#splj en force</a><br>
-		  		</p>
-		  	</div>
-		</div>
-	</li>
-	<li>
-		<div class="desc">
-			<div class="thumb">
-				<span class="badge bg-theme"><i class="fa fa-twitter"></i></span>
-			</div>
-			<div class="details">
-		  		<p>
-		  		   <a href="#">#splj en force</a><br>
-		  		</p>
-		  	</div>
-		</div>
-	</li> -->
 </ul>
 

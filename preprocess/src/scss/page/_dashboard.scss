@@ -34,12 +34,22 @@
 		text-align: right;
 	}
 	.table{
+		font-size: 13px;
+		thead{
+			color: $grey-dark;
+			span{
+				font-size: 14px;
+				padding-left: 6px;
+			}
+			tr{
+				background-color: $grey-light;
+			}
+		}
+		tbody tr{
+			background-color: #f6f6f6;
+		}
 		.fa{
 			font-size: 14px;
-		}
-		thead span{
-			font-size: 14px;
-			padding-left: 6px;
 		}
 	}
 	&.stats .table{
@@ -86,16 +96,8 @@
 			max-width: 180px;
 		}
 	}
-	table{
-		thead{
-			background: $grey-light;
-			color: $grey-dark;
-		}
-		tr,th{
-			border-color: $grey-light;
-		}
-	}
 	p.message{
+		font-size: 14px;
 		padding: 15px 0;
 		margin: 0;
 		text-indent: 0;
@@ -117,7 +119,7 @@
 			background-color: $grey-light;
 		}
 		.page {
-			@include inlineblock(center);
+			@include inlineblock(baseline);
 			a{
 				background-color: $blue;
 			}

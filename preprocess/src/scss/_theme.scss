@@ -345,7 +345,7 @@ ul.sidebar-menu li a.active i {
 
 /* MAIN CONTENT CONFIGURATION */
 #main-content {
-    background: #f2f2f2;
+    background: #fff;
 }
 
 .header, .footer {
@@ -727,6 +727,7 @@ ul.top-menu > li > a {
 	display: inline-block;
 	padding: 15px 0;
 	width: 100%;
+    font-size: 13px;
 }
 
 .ds .thumb {
@@ -754,12 +755,12 @@ ul.top-menu > li > a {
 
 .ds a {
     color: $grey-dark;
+    text-transform: uppercase;
 }
 
 /* LINE ICONS CONFIGURATION */
 
 .mtbox {
-	margin-top: 80px;
 	margin-bottom: 40px;
 }
 
@@ -918,12 +919,12 @@ PANELS CONFIGURATIONS
 /*Panel Size*/
 
 .pn {
-	height: 250px;
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid #ccc;
+    padding: 20px 0;
 }
 
 .pn:hover {
-	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
 	
 }
 
@@ -1029,9 +1030,11 @@ PANELS CONFIGURATIONS
 	margin-left: 15px;
 }
 .white-panel .white-header {
-	background: #f4f4f4;
+	background: $pink;
 	padding: 3px;
-	color: #c6c6c6;
+    a{
+        color: $grey-dark;
+    }
 }
 .white-panel .small {
 	font-size: 10px;
@@ -1733,6 +1736,7 @@ label {
 @media (min-width: 768px) {
 		.form-horizontal .control-label {
 		text-align: left;
+        font-size: 14px;
 	}
 }
 
@@ -2186,6 +2190,7 @@ label {
 }
 .site-min-height {
     min-height: 900px;
+    font-size: 0;
 }
 
 

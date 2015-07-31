@@ -40,7 +40,6 @@ class ArticleController extends Controller
         
         $form = $this->createForm($type,$entity);
         $form->handleRequest($request);
-        
 
         // username list
         $em = $doctrine->getManager();
@@ -144,7 +143,7 @@ class ArticleController extends Controller
     * )
     * 
     */
-    public function updateStatusArticle($id)
+    public function updateStatusArticle(Request $request, $id)
     {
         $newStatus = $_POST["status"];
         $em = $this->getDoctrine()->getManager();
@@ -155,6 +154,7 @@ class ArticleController extends Controller
 
         $message = "Le statut a été mis à jour";
         $request->getSession()->getFlashBag()->set('message',$message);
+        
         return $this->redirect($this->generateUrl('splj.dashTeacher.list-article'));
 
     }
