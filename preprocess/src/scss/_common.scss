@@ -11,12 +11,12 @@ h1{
 	padding: 10px 0;
 	text-align: center;
 	width: 90%;
-	b,img{
+	strong,img{
 		display: inline-block;
 		vertical-align: middle;
 	}
 	a.logo {
-	    font-size: 20px;
+		font-size: 28px;
 	    margin-top: 15px;
 	}
 }
@@ -50,9 +50,7 @@ h1{
 .main-chart{
 	p{
 		color: $blue;
-		text-indent: 20px;
-		padding: 15px 20px;
-		line-height: 14px;
+		font-size: 13px;
 	}
 	a.add{
 		span{
@@ -65,9 +63,6 @@ h1{
 	.btn a{
 		color: #fff;
 	}
-}
-.li-dashboard, span.dashboard{
-	display: none;
 }
 p.error{
 	color: crimson;
@@ -104,4 +99,31 @@ textarea{
 }
 .timeline-header{
 	display: none!important;
+}
+.loading{
+	@include opacity(1);
+	position: absolute;
+    top: 50%;
+    left: 50%;
+	z-index: 1;
+    -webkit-transition: opacity 0.6s ease-out 0s;
+    transition: opacity 0.6s ease-out 0s;
+	i{
+		font-size: 50px;
+		color: $grey-dark;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -25px 0 0 -25px;
+	}
+	&.on{
+		@include opacity(1);
+		-webkit-transition: opacity 0.6s ease-out 0s;
+    	transition: opacity 0.6s ease-out 0s;
+	}
+	&.off{
+		@include opacity(0);
+		-webkit-transition: opacity 0.6s ease-out 0s;
+    	transition: opacity 0.6s ease-out 0s;
+	}
 }

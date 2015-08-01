@@ -13,7 +13,6 @@
 	.main-chart{
 		h1{
 		  display: inline-block;
-		  width: 80%;
 		  vertical-align: middle;
 		}
 		.wrap-img{
@@ -97,10 +96,10 @@
 		}
 	}
 	p.message{
-		font-size: 14px;
 		padding: 15px 0;
 		margin: 0;
 		text-indent: 0;
+		text-align: center;
 	}
 	.pagination{
 		.first a,

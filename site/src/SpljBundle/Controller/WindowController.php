@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request as Request;
 use SpljBundle\Entity\Contact;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
+use jms\JMSSerializerBundle;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -50,7 +51,7 @@ class WindowController extends Controller
         }
 
         return array(
-            'article' => $article
+            'articles' => $article
         );
     }
 
@@ -139,6 +140,62 @@ class WindowController extends Controller
 
     /**
     * @Route(
+    *   "/search",
+    *   name="splj.window.search"
+    * )
+    *
+    * @Template("SpljBundle:Window:search.html.twig")
+    */
+    public function searchAction(Request $request)
+    {
+        return array();
+    }
+
+    /**
+    * @Route(
+    *   "/go-search",
+    *   name="splj.window.go-search",
+    *   options={"expose"=true}
+    * )
+    *
+    */
+    public function goSearchAction(Request $request)
+    {
+
+        $data = $request->request->all();
+        if ($data['search'] != null && $request->isXmlHttpRequest()){
+
+            if(strpos($data['search'], " ") !== false){
+                $search = str_replace(" ", "%", $data['search']);
+            }else{
+                $search = $data['search'];
+            }
+
+            $doctrine = $this->getDoctrine();
+            $qb = $doctrine->getRepository('SpljBundle:Article')->createQueryBuilder('a');
+            $qb ->select('a')
+                ->where($qb->expr()->like('a.content',':word'))
+                ->orWhere($qb->expr()->like('a.title',':word'))
+                ->setParameter('word','%' .$search. '%')
+                ->orderBy('a.date', 'DESC');
+            
+            $query = $qb->getQuery();
+            $article = $query->getResult();
+
+            // affichage date
+            for ($i=0; $i < sizeOf($article); $i++) {
+                $newDate = $article[$i]->getDate()->format('d-m-Y');
+                $article[$i]->setDate($newDate);
+            }
+
+            return new JsonResponse($article);
+
+        }
+        return array();
+    }
+
+    /**
+    * @Route(
     *   "/article/{id}",
     *   name="splj.window.article"
     * )
@@ -147,11 +204,15 @@ class WindowController extends Controller
     */
     public function articleAction(Request $request, $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('SpljBundle:Article')->find($id);
+        $doctrine = $this->getDoctrine();
+        $em = $doctrine->getManager();
+        $article = $doctrine->getRepository('SpljBundle:Article')->findAll();
+
+        $theArticle = $em->getRepository('SpljBundle:Article')->find($id);
 
         return array(
-            'article' => $article
+            'theArticle' => $theArticle,
+            'articles' => $article
         );
     }
 }

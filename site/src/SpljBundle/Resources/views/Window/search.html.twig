@@ -1,0 +1,16 @@
+{%extends "SpljBundle:Bloc:skeleton.html.twig"%}
+{% block title %}recherche{% endblock %}
+{% block h1 %}{% endblock %}
+{% block class %}public-window search-module{% endblock %}
+{% block body %}
+	<form class="form-search" data-ajax="true" method="POST" action="" novalidate="novalidate">
+		<input type="text" id="search" name="search" required class="form-control" placeholder="" data-error="search">
+		<br>
+		<input class="btn btn-theme btn-block" type="submit" value="rechercher">
+		<hr>
+	</form>
+	<ul class="wrap-list"></ul>
+{% endblock %}
+	          	
+
+

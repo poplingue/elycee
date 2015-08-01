@@ -3,19 +3,16 @@
 {% block class %}article public-window{% endblock %}
 {% block body %}
 	<div class="col-lg-12 text-center">
-		<h1>{{ article.title }}</h1>
-		{% if article.image != null %}
+		<h1>{{ theArticle.title }}</h1>
+		{% if theArticle.image != null %}
 			<figure>
-				<img class="img-responsive" src="{{ asset('bundles/splj/img/articles/'~ article.image)}}" alt="">
+				<img class="img-responsive" src="{{ asset('bundles/splj/img/articles/'~ theArticle.image)}}" alt="">
 			</figure>
 		{% endif %}
 	</div>
 	<div class="col-lg-12">
-		<p>{{ article.content }}</p>
+		<p>{{ theArticle.content }}</p>
 	</div>
-{% endblock %}
-{% block rightCol %}
-	<h3>à lire aussi...</h3>
 {% endblock %}
 	          	
 

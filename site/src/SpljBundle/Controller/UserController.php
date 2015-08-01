@@ -27,6 +27,9 @@ class UserController extends Controller
     */
     public function loginAction(Request $request)
     {
+        $doctrine = $this->getDoctrine();
+        $article = $doctrine->getRepository('SpljBundle:Article')->findAll();
+
         if ($this->get('security.authorization_checker')->isGranted('ROLE_TEACHER') || $this->get('security.authorization_checker')->isGranted('ROLE_STUDENT'))
         {
             return $this->redirect($this->generateUrl('splj.dashboard.list-mcq'));
@@ -47,7 +50,8 @@ class UserController extends Controller
 
             return array(
                 'form' => $form->createView(),
-                'error'=> $error
+                'error'=> $error,
+                'articles' => $article
             );
         }
     }

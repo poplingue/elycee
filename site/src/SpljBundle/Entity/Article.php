@@ -16,13 +16,13 @@ class Article
     /**
      * @var integer
      */
-    private $id;
+    public $id;
 
     /**
      * @var string
      * @Assert\NotBlank()
      */
-    private $title;
+    public $title;
 
     /**
      * @var integer
@@ -33,7 +33,7 @@ class Article
      * @var \DateTime
      * @Assert\NotBlank()
      */
-    private $date;
+    public $date;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -50,13 +50,13 @@ class Article
      * @var string
      * @Assert\NotBlank()
      */
-    private $content;
+    public $content;
 
     /**
      * @var string
      * @Assert\NotBlank()
      */
-    private $extract;
+    public $extract;
 
     /**
      * @var integer

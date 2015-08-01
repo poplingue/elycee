@@ -1,6 +1,6 @@
 <h3>A lire aussi</h3>
 <ul>
-{% for article in article %}
+{% for article in articles %}
 	{% if article.status == 1  and article.date < date('-40days') %}
 	<li>
 		<div class="desc">
@@ -8,7 +8,7 @@
 				<span class="badge bg-theme"><i class="fa fa-file-text"></i></span>
 			</div>
 			<div class="details">
-      		   	<a href="#">{{ article.title }}</a>
+      		   	<a href="/home/article/{{ article.id }}">{{ article.title }}</a>
           		<p><span>publié le </span><date>{{ article.date|date('d/m/Y') }}</date></p>
           	</div>
 		</div>
