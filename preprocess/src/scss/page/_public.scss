@@ -73,20 +73,6 @@
 			text-transform: italic;
 		}
 	}
-	&.contact{
-		.centered, .form-contact{
-			@include inlineblock(middle);
-		}
-		div.centered{
-			width: 40%;
-			&.w100{
-				width: 100%;
-			}
-		}
-		.form-contact{
-			width: 60%;
-		}
-	}
 	&.search-module{
 		form{
 			max-width: 40%;

@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request as Request;
 use SpljBundle\Entity\Contact;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
-use jms\JMSSerializerBundle;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -65,7 +65,22 @@ class WindowController extends Controller
     */
     public function estateAction()
     {
-       return array();
+        $this->articlesInSession($request);
+        return array();
+    }
+
+     /**
+    * @Route(
+    *   "/legal",
+    *   name="splj.window.legal"
+    * )
+    *
+    * @Template("SpljBundle:Window:legal.html.twig")
+    */
+    public function legalAction(Request $request)
+    {
+        $this->articlesInSession($request);
+        return array();
     }
 
     /**
@@ -79,6 +94,7 @@ class WindowController extends Controller
     public function contact(Request $request)
     {
 
+        // nb random secu
         if (!isset($_POST['random1'])) {
             $random1 = rand(0,10);
             $random2 = rand(0,10);
@@ -88,6 +104,8 @@ class WindowController extends Controller
                 'random2' => $random2
             );
         }
+        
+        $this->articlesInSession($request);
 
         $data = $request->request->all();
         return new JsonResponse($data);
@@ -148,6 +166,7 @@ class WindowController extends Controller
     */
     public function searchAction(Request $request)
     {
+        $this->articlesInSession($request);
         return array();
     }
 
@@ -206,14 +225,23 @@ class WindowController extends Controller
     {
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
-        $article = $doctrine->getRepository('SpljBundle:Article')->findAll();
-
         $theArticle = $em->getRepository('SpljBundle:Article')->find($id);
+         
+        $this->articlesInSession($request);
 
         return array(
-            'theArticle' => $theArticle,
-            'articles' => $article
+            'theArticle' => $theArticle
         );
+    }
+
+    public function articlesInSession(Request $request)
+    {
+        if (!$request->getSession()->has('articles')) {
+            $doctrine = $this->getDoctrine();
+            $article = $doctrine->getRepository('SpljBundle:Article')->findAll();
+            $request->getSession()->set('articles', $article);
+        }
+        return;
     }
 }
 

@@ -2503,27 +2503,12 @@ label {
 .public-window.estate .detail span {
   text-transform: italic; }
 /* line 77, src/scss/page/_public.scss */
-.public-window.contact .centered, .public-window.contact .form-contact {
-  vertical-align: middle;
-  display: inline-block;
-  *display: inline;
-  zoom: 1; }
-/* line 80, src/scss/page/_public.scss */
-.public-window.contact div.centered {
-  width: 40%; }
-  /* line 82, src/scss/page/_public.scss */
-  .public-window.contact div.centered.w100 {
-    width: 100%; }
-/* line 86, src/scss/page/_public.scss */
-.public-window.contact .form-contact {
-  width: 60%; }
-/* line 91, src/scss/page/_public.scss */
 .public-window.search-module form {
   max-width: 40%;
   margin: 0 auto; }
 
 @media screen and (max-width: 768px) {
-  /* line 100, src/scss/page/_public.scss */
+  /* line 86, src/scss/page/_public.scss */
   .public-window.contact .centered, .public-window.contact .form-contact {
     display: block;
     width: 100%; } }

@@ -1,3 +1,4 @@
+{% set articles = app.session.get('articles') %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -51,7 +52,7 @@
             </div>
             <section class="wrapper site-min-height">
                 <div class="row">
-                    {%  if articles is defined and app.request.attributes.get('_route') starts with 'splj.window' %}
+                    {%  if app.request.attributes.get('_route') starts with 'splj.window' %}
                     <div class="col-lg-9 main-chart">
                     {% else %}
                     <div class="col-lg-12 main-chart">
@@ -62,7 +63,7 @@
                         <h1>{% block h1 %}{% endblock %}</h1>
                         {% block body %}{% endblock %}
                     </div>
-                    {%  if articles is defined and app.request.attributes.get('_route') starts with 'splj.window' %}
+                    {%  if app.request.attributes.get('_route') starts with 'splj.window' %}
                     <div class="col-lg-3 ds">
                        {% include ('SpljBundle:Bloc:right-col.html.twig') %}
                     </div>

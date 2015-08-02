@@ -127,7 +127,7 @@ define("dashboard", function() {
             }
         },
         checkForm: function checkForm() {
-            $("form-validate").validateForm();
+            $(".form-validate").validateForm();
             // date format
             $('form[name="article"]').data("check", function() {
                 var form = this;
