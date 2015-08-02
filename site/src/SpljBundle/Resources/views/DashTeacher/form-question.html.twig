@@ -3,7 +3,7 @@
 {% block class %}dashboard form questions{% endblock %}
 {% block h1 %} Question du QCM {{ mcqCurrent.title }} {% endblock %}
 {% block body %}
-	{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
+	{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form form-validate', 'novalidate' : 'novalidate' } }) }}
 			{# itère sur chaque question existante #}
 	        {% for question in form.questions %}
 				{% include ('SpljBundle:Dashteacher:question-model.html.twig') %}

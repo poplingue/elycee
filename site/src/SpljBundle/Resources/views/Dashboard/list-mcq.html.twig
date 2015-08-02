@@ -83,7 +83,7 @@
                     {% endfor %}
                     {% if qcmRepondu == false %}
                         <td>
-                            <button class="btn btn-success btn-xs"><a href="/dashstudent/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa "></i>répondre</a></button>
+                            <button class="btn btn-info btn-xs"><a href="/dashstudent/student-answer/{{ user.id }}/{{ mcq.id }}"><i class="fa fa-play"></i></a></button>
                         </td>
                     {% else %}
                         <td>score : {{ qcmScore }}/{{ qcmScoreMax }} | Le : {{ qcmScoreDate }}</td>

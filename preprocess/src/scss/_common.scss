@@ -49,8 +49,12 @@ h1{
 }
 .main-chart{
 	p{
-		color: $blue;
+		color: $grey-dark;
 		font-size: 13px;
+		padding: 20px 0;
+		max-width: 70%;
+		margin: 0 auto;
+		line-height: 22px;
 	}
 	a.add{
 		span{

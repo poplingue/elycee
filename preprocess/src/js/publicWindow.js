@@ -6,7 +6,7 @@ define('publicWindow', function(){
 			this.listActiv();
 			this.ajaxContact();
 			this.ajaxSearch();
-			if ($('.main-chart p').length !== 0) {
+			if ($('.public-window').is('.article')) {
 				this.articleStyle();
 			}
 		},
@@ -97,9 +97,8 @@ define('publicWindow', function(){
 		}, 
 
 		articleStyle: function articleStyle(){
-			console.log('test');
-			var paragraph = $('p');
-  			paragraph.html(paragraph.html().replace(/<br>/ig, '</p><p>'));
+			var paragraph = $('.paragraph');
+  			paragraph.html(paragraph.html().replace(/BR/ig, '<br>'));
 		}
 	};
 	return publicWindow;

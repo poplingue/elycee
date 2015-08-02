@@ -3,7 +3,7 @@
 {% block class %}dashboard form mcq{% endblock %}
 {% block h1 %}Créer un QCM{% endblock %}
 {% block body %}
-{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form', 'novalidate' : 'novalidate' } }) }}
+{{ form_start(form, { 'attr' : { 'class' : 'form-horizontal style-form form-validate', 'novalidate' : 'novalidate' } }) }}
     {{ form_widget(form.user_id, {'value' : app.session.get('user').id},
         { 'attr' : { 'class' : 'form-control' }}
          )

@@ -22,7 +22,7 @@ class QuestionType extends AbstractType
                 ->add('answers','collection', array(
                     'type' => new AnswerType(),
                     'cascade_validation' => true,
-                    'allow_add' => true
+                    'allow_add' => true,
                 ));
     }
     

@@ -103,59 +103,63 @@ h1 {
       display: none; } }
 /* line 51, src/scss/_common.scss */
 .main-chart p {
-  color: #9966FF;
-  font-size: 13px; }
-/* line 56, src/scss/_common.scss */
+  color: #666666;
+  font-size: 13px;
+  padding: 20px 0;
+  max-width: 70%;
+  margin: 0 auto;
+  line-height: 22px; }
+/* line 60, src/scss/_common.scss */
 .main-chart a.add span {
   padding-left: 6px; }
-/* line 60, src/scss/_common.scss */
+/* line 64, src/scss/_common.scss */
 .main-chart a:hover {
   color: #666666; }
-/* line 63, src/scss/_common.scss */
+/* line 67, src/scss/_common.scss */
 .main-chart .btn a {
   color: #fff; }
 
-/* line 67, src/scss/_common.scss */
+/* line 71, src/scss/_common.scss */
 p.error {
   color: crimson;
   padding: 5px 3px;
   position: absolute;
   bottom: -20px; }
-  /* line 72, src/scss/_common.scss */
+  /* line 76, src/scss/_common.scss */
   p.error li {
     font-size: 11px; }
 
-/* line 76, src/scss/_common.scss */
+/* line 80, src/scss/_common.scss */
 .error-js {
   position: absolute;
   width: 100%;
   left: 0;
   top: 10px; }
-  /* line 81, src/scss/_common.scss */
+  /* line 85, src/scss/_common.scss */
   .error-js p.error {
     width: 100%;
     color: crimson;
     position: relative; }
 
-/* line 90, src/scss/_common.scss */
+/* line 94, src/scss/_common.scss */
 input.error,
 select.error,
 textarea.error {
   border-color: crimson; }
 
-/* line 94, src/scss/_common.scss */
+/* line 98, src/scss/_common.scss */
 #twitter-widget-0 {
   width: 100% !important; }
 
-/* line 97, src/scss/_common.scss */
+/* line 101, src/scss/_common.scss */
 .timeline {
   max-width: 100% !important; }
 
-/* line 100, src/scss/_common.scss */
+/* line 104, src/scss/_common.scss */
 .timeline-header {
   display: none !important; }
 
-/* line 103, src/scss/_common.scss */
+/* line 107, src/scss/_common.scss */
 .loading {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
   filter: alpha(opacity=100);
@@ -166,7 +170,7 @@ textarea.error {
   z-index: 1;
   -webkit-transition: opacity 0.6s ease-out 0s;
   transition: opacity 0.6s ease-out 0s; }
-  /* line 111, src/scss/_common.scss */
+  /* line 115, src/scss/_common.scss */
   .loading i {
     font-size: 50px;
     color: #666666;
@@ -174,14 +178,14 @@ textarea.error {
     top: 50%;
     left: 50%;
     margin: -25px 0 0 -25px; }
-  /* line 119, src/scss/_common.scss */
+  /* line 123, src/scss/_common.scss */
   .loading.on {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100);
     opacity: 1;
     -webkit-transition: opacity 0.6s ease-out 0s;
     transition: opacity 0.6s ease-out 0s; }
-  /* line 124, src/scss/_common.scss */
+  /* line 128, src/scss/_common.scss */
   .loading.off {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
@@ -2536,101 +2540,98 @@ label {
 .dashboard .main-chart h1 {
   display: inline-block;
   vertical-align: middle; }
-/* line 19, src/scss/page/_dashboard.scss */
-.dashboard .main-chart .wrap-img img {
-  display: block;
-  width: 100%;
-  height: auto; }
-/* line 27, src/scss/page/_dashboard.scss */
+/* line 20, src/scss/page/_dashboard.scss */
 .dashboard span.li-dashboard {
   display: block; }
-/* line 31, src/scss/page/_dashboard.scss */
+/* line 24, src/scss/page/_dashboard.scss */
 .dashboard .wrap-submit {
   width: 100%;
   text-align: right; }
-/* line 35, src/scss/page/_dashboard.scss */
+/* line 28, src/scss/page/_dashboard.scss */
 .dashboard .table {
   font-size: 13px; }
-  /* line 37, src/scss/page/_dashboard.scss */
+  /* line 30, src/scss/page/_dashboard.scss */
   .dashboard .table thead {
     color: #666666; }
-    /* line 39, src/scss/page/_dashboard.scss */
+    /* line 32, src/scss/page/_dashboard.scss */
     .dashboard .table thead span {
       font-size: 14px;
       padding-left: 6px; }
-    /* line 43, src/scss/page/_dashboard.scss */
+    /* line 36, src/scss/page/_dashboard.scss */
     .dashboard .table thead tr {
       background-color: #CCCCCC; }
-  /* line 47, src/scss/page/_dashboard.scss */
+  /* line 40, src/scss/page/_dashboard.scss */
   .dashboard .table tbody tr {
     background-color: #f6f6f6; }
-  /* line 50, src/scss/page/_dashboard.scss */
+  /* line 43, src/scss/page/_dashboard.scss */
   .dashboard .table .fa {
     font-size: 14px; }
-/* line 54, src/scss/page/_dashboard.scss */
+/* line 47, src/scss/page/_dashboard.scss */
 .dashboard.stats .table {
   margin: 50px 0; }
-/* line 59, src/scss/page/_dashboard.scss */
+/* line 52, src/scss/page/_dashboard.scss */
 .dashboard.questions form .form-group:nth-child(4n+1) {
   background-color: #FFE2C9;
   padding: 13px 0 13px 13px; }
-  /* line 62, src/scss/page/_dashboard.scss */
+  /* line 55, src/scss/page/_dashboard.scss */
   .dashboard.questions form .form-group:nth-child(4n+1) .control-label {
     font-weight: bold; }
-/* line 66, src/scss/page/_dashboard.scss */
+/* line 59, src/scss/page/_dashboard.scss */
 .dashboard.questions form .form-group:nth-child(4n+4) {
   border-bottom: 2px solid #CCCCCC; }
-/* line 72, src/scss/page/_dashboard.scss */
+/* line 65, src/scss/page/_dashboard.scss */
 .dashboard.answer .question {
+  font-size: 14px;
   padding: 20px 15px;
   background-color: #FFE2C9;
   border-top: 2px solid #CCCCCC; }
-  /* line 76, src/scss/page/_dashboard.scss */
+  /* line 70, src/scss/page/_dashboard.scss */
   .dashboard.answer .question:first-child {
     border: none; }
-/* line 80, src/scss/page/_dashboard.scss */
+/* line 74, src/scss/page/_dashboard.scss */
 .dashboard.answer .answers {
+  font-size: 14px;
   margin-top: 18px; }
-/* line 83, src/scss/page/_dashboard.scss */
+/* line 78, src/scss/page/_dashboard.scss */
 .dashboard.answer .switch {
   padding: 15px 0; }
-/* line 88, src/scss/page/_dashboard.scss */
+/* line 83, src/scss/page/_dashboard.scss */
 .dashboard.form p.bottom-form {
   display: block; }
-/* line 91, src/scss/page/_dashboard.scss */
+/* line 86, src/scss/page/_dashboard.scss */
 .dashboard.form textarea#article_content {
   min-height: 230px; }
-/* line 94, src/scss/page/_dashboard.scss */
+/* line 89, src/scss/page/_dashboard.scss */
 .dashboard.form img {
-  max-width: 180px; }
-/* line 98, src/scss/page/_dashboard.scss */
+  max-width: 150px; }
+/* line 93, src/scss/page/_dashboard.scss */
 .dashboard p.message {
   padding: 15px 0;
   margin: 0;
   text-indent: 0;
   text-align: center; }
-/* line 105, src/scss/page/_dashboard.scss */
+/* line 100, src/scss/page/_dashboard.scss */
 .dashboard .pagination .first a,
 .dashboard .pagination .last a,
 .dashboard .pagination .previous a,
 .dashboard .pagination .next a {
   font-size: 18px;
   margin: 0 4px; }
-/* line 112, src/scss/page/_dashboard.scss */
+/* line 107, src/scss/page/_dashboard.scss */
 .dashboard .pagination .current, .dashboard .pagination .page a {
   font-size: 16px;
   padding: 1px 7px;
   color: #fff; }
-/* line 117, src/scss/page/_dashboard.scss */
+/* line 112, src/scss/page/_dashboard.scss */
 .dashboard .pagination .current {
   background-color: #CCCCCC; }
-/* line 120, src/scss/page/_dashboard.scss */
+/* line 115, src/scss/page/_dashboard.scss */
 .dashboard .pagination .page {
   vertical-align: baseline;
   display: inline-block;
   *display: inline;
   zoom: 1; }
-  /* line 122, src/scss/page/_dashboard.scss */
+  /* line 117, src/scss/page/_dashboard.scss */
   .dashboard .pagination .page a {
     background-color: #9966FF; }
 
@@ -2640,11 +2641,11 @@ label {
 * Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
 /* Layout helpers
 ----------------------------------*/
-/* line 135, src/scss/page/_dashboard.scss */
+/* line 130, src/scss/page/_dashboard.scss */
 .ui-helper-hidden {
   display: none; }
 
-/* line 138, src/scss/page/_dashboard.scss */
+/* line 133, src/scss/page/_dashboard.scss */
 .ui-helper-hidden-accessible {
   border: 0;
   clip: rect(0 0 0 0);
@@ -2655,7 +2656,7 @@ label {
   position: absolute;
   width: 1px; }
 
-/* line 148, src/scss/page/_dashboard.scss */
+/* line 143, src/scss/page/_dashboard.scss */
 .ui-helper-reset {
   margin: 0;
   padding: 0;
@@ -2666,23 +2667,23 @@ label {
   font-size: 100%;
   list-style: none; }
 
-/* line 158, src/scss/page/_dashboard.scss */
+/* line 153, src/scss/page/_dashboard.scss */
 .ui-helper-clearfix:before,
 .ui-helper-clearfix:after {
   content: "";
   display: table;
   border-collapse: collapse; }
 
-/* line 164, src/scss/page/_dashboard.scss */
+/* line 159, src/scss/page/_dashboard.scss */
 .ui-helper-clearfix:after {
   clear: both; }
 
-/* line 167, src/scss/page/_dashboard.scss */
+/* line 162, src/scss/page/_dashboard.scss */
 .ui-helper-clearfix {
   min-height: 0;
   /* support: IE7 */ }
 
-/* line 170, src/scss/page/_dashboard.scss */
+/* line 165, src/scss/page/_dashboard.scss */
 .ui-helper-zfix {
   width: 100%;
   height: 100%;
@@ -2693,20 +2694,20 @@ label {
   filter: Alpha(Opacity=0);
   /* support: IE8 */ }
 
-/* line 180, src/scss/page/_dashboard.scss */
+/* line 175, src/scss/page/_dashboard.scss */
 .ui-front {
   z-index: 100; }
 
 /* Interaction Cues
 ----------------------------------*/
-/* line 187, src/scss/page/_dashboard.scss */
+/* line 182, src/scss/page/_dashboard.scss */
 .ui-state-disabled {
   cursor: default !important; }
 
 /* Icons
 ----------------------------------*/
 /* states and images */
-/* line 196, src/scss/page/_dashboard.scss */
+/* line 191, src/scss/page/_dashboard.scss */
 .ui-icon {
   display: block;
   text-indent: -99999px;
@@ -2716,7 +2717,7 @@ label {
 /* Misc visuals
 ----------------------------------*/
 /* Overlays */
-/* line 208, src/scss/page/_dashboard.scss */
+/* line 203, src/scss/page/_dashboard.scss */
 .ui-widget-overlay {
   position: fixed;
   top: 0;
@@ -2724,25 +2725,25 @@ label {
   width: 100%;
   height: 100%; }
 
-/* line 215, src/scss/page/_dashboard.scss */
+/* line 210, src/scss/page/_dashboard.scss */
 .ui-datepicker {
   background-color: #fff;
   border: 2px solid #FFE2C9;
   width: 17em;
   padding: 0;
   display: none; }
-  /* line 221, src/scss/page/_dashboard.scss */
+  /* line 216, src/scss/page/_dashboard.scss */
   .ui-datepicker a.ui-state-default {
     color: #666666; }
 
-/* line 225, src/scss/page/_dashboard.scss */
+/* line 220, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-header {
   position: relative;
   padding: .2em 0;
   background-color: #FFE2C9;
   color: #666666; }
 
-/* line 231, src/scss/page/_dashboard.scss */
+/* line 226, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-prev,
 .ui-datepicker .ui-datepicker-next {
   position: absolute;
@@ -2751,15 +2752,15 @@ label {
   height: 1.8em;
   cursor: pointer; }
 
-/* line 239, src/scss/page/_dashboard.scss */
+/* line 234, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-prev {
   left: 4px; }
 
-/* line 242, src/scss/page/_dashboard.scss */
+/* line 237, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-next {
   right: -12px; }
 
-/* line 245, src/scss/page/_dashboard.scss */
+/* line 240, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-prev span,
 .ui-datepicker .ui-datepicker-next span {
   display: block;
@@ -2769,7 +2770,7 @@ label {
   top: 50%;
   margin-top: -8px; }
 
-/* line 254, src/scss/page/_dashboard.scss */
+/* line 249, src/scss/page/_dashboard.scss */
 .ui-datepicker-prev,
 .ui-datepicker-next {
   position: absolute;
@@ -2783,50 +2784,50 @@ label {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
-/* line 267, src/scss/page/_dashboard.scss */
+/* line 262, src/scss/page/_dashboard.scss */
 .ui-datepicker-prev:before {
   content: "\f053"; }
 
-/* line 270, src/scss/page/_dashboard.scss */
+/* line 265, src/scss/page/_dashboard.scss */
 .ui-datepicker-next:before {
   content: "\f054"; }
 
-/* line 273, src/scss/page/_dashboard.scss */
+/* line 268, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-title {
   margin: 0 2.3em;
   line-height: 1.8em;
   text-align: center; }
 
-/* line 278, src/scss/page/_dashboard.scss */
+/* line 273, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-title select {
   font-size: 1em;
   margin: 1px 0; }
 
-/* line 282, src/scss/page/_dashboard.scss */
+/* line 277, src/scss/page/_dashboard.scss */
 .ui-datepicker select.ui-datepicker-month,
 .ui-datepicker select.ui-datepicker-year {
   width: 45%; }
 
-/* line 286, src/scss/page/_dashboard.scss */
+/* line 281, src/scss/page/_dashboard.scss */
 .ui-datepicker table {
   width: 100%;
   font-size: .9em;
   border-collapse: collapse;
   margin: 0 0 .4em; }
 
-/* line 292, src/scss/page/_dashboard.scss */
+/* line 287, src/scss/page/_dashboard.scss */
 .ui-datepicker th {
   padding: .7em .3em;
   text-align: center;
   font-weight: bold;
   border: 0; }
 
-/* line 298, src/scss/page/_dashboard.scss */
+/* line 293, src/scss/page/_dashboard.scss */
 .ui-datepicker td {
   border: 0;
   padding: 1px; }
 
-/* line 302, src/scss/page/_dashboard.scss */
+/* line 297, src/scss/page/_dashboard.scss */
 .ui-datepicker td span,
 .ui-datepicker td a {
   display: block;
@@ -2834,7 +2835,7 @@ label {
   text-align: right;
   text-decoration: none; }
 
-/* line 309, src/scss/page/_dashboard.scss */
+/* line 304, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-buttonpane {
   background-image: none;
   margin: .7em 0 0 0;
@@ -2843,7 +2844,7 @@ label {
   border-right: 0;
   border-bottom: 0; }
 
-/* line 317, src/scss/page/_dashboard.scss */
+/* line 312, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-buttonpane button {
   float: right;
   margin: .5em .2em .4em;
@@ -2852,80 +2853,80 @@ label {
   width: auto;
   overflow: visible; }
 
-/* line 325, src/scss/page/_dashboard.scss */
+/* line 320, src/scss/page/_dashboard.scss */
 .ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
   float: left; }
 
 /* with multiple calendars */
-/* line 330, src/scss/page/_dashboard.scss */
+/* line 325, src/scss/page/_dashboard.scss */
 .ui-datepicker.ui-datepicker-multi {
   width: auto; }
 
-/* line 333, src/scss/page/_dashboard.scss */
+/* line 328, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi .ui-datepicker-group {
   float: left; }
 
-/* line 336, src/scss/page/_dashboard.scss */
+/* line 331, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi .ui-datepicker-group table {
   width: 95%;
   margin: 0 auto .4em; }
 
-/* line 340, src/scss/page/_dashboard.scss */
+/* line 335, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi-2 .ui-datepicker-group {
   width: 50%; }
 
-/* line 343, src/scss/page/_dashboard.scss */
+/* line 338, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi-3 .ui-datepicker-group {
   width: 33.3%; }
 
-/* line 346, src/scss/page/_dashboard.scss */
+/* line 341, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi-4 .ui-datepicker-group {
   width: 25%; }
 
-/* line 349, src/scss/page/_dashboard.scss */
+/* line 344, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
 .ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
   border-left-width: 0; }
 
-/* line 353, src/scss/page/_dashboard.scss */
+/* line 348, src/scss/page/_dashboard.scss */
 .ui-datepicker-multi .ui-datepicker-buttonpane {
   clear: left; }
 
-/* line 356, src/scss/page/_dashboard.scss */
+/* line 351, src/scss/page/_dashboard.scss */
 .ui-datepicker-row-break {
   clear: both;
   width: 100%;
   font-size: 0; }
 
 /* RTL support */
-/* line 363, src/scss/page/_dashboard.scss */
+/* line 358, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl {
   direction: rtl; }
 
-/* line 366, src/scss/page/_dashboard.scss */
+/* line 361, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-prev {
   right: 2px;
   left: auto; }
 
-/* line 370, src/scss/page/_dashboard.scss */
+/* line 365, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-next {
   left: 2px;
   right: auto; }
 
-/* line 374, src/scss/page/_dashboard.scss */
+/* line 369, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-buttonpane {
   clear: right; }
 
-/* line 377, src/scss/page/_dashboard.scss */
+/* line 372, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-buttonpane button {
   float: left; }
 
-/* line 380, src/scss/page/_dashboard.scss */
+/* line 375, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
 .ui-datepicker-rtl .ui-datepicker-group {
   float: right; }
 
-/* line 384, src/scss/page/_dashboard.scss */
+/* line 379, src/scss/page/_dashboard.scss */
 .ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
 .ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
   border-right-width: 0;

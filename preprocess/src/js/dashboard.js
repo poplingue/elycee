@@ -33,8 +33,9 @@ define('dashboard', function(){
 	    },
 
 	   	checkForm: function checkForm(){
-			$('form').validateForm();
+			$('.form-validate').validateForm();
 
+			// date format
 			$('form[name="article"]').data('check', function() {
 				var form = this;
 				var isValid = true;
@@ -61,7 +62,7 @@ define('dashboard', function(){
 				}
 			});
 			// on error 
-			$('input, select, textarea').on('error', function() {
+			$('input:not([type="checkbox"]), select, textarea').on('error', function() {
 				$('.error-js').append('<p class="centered error">Le champ ' + $(this).attr('data-error') + ' est obligatoire</p>');
 				setTimeout(function(){
 					$('.error-js').empty();

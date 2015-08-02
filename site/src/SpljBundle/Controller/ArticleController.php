@@ -31,6 +31,7 @@ class ArticleController extends Controller
         $doctrine = $this->getDoctrine();
         $qb = $doctrine->getRepository('SpljBundle:Article')->createQueryBuilder('a');
         $qb->select(array('a'))
+            ->where('a.status != 2')
             ->orderBy('a.date', 'DESC');
         $query = $qb->getQuery();
         $article = $query->getResult();
@@ -43,9 +44,8 @@ class ArticleController extends Controller
 
         // username list
         $em = $doctrine->getManager();
-        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
+        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id AND a.status!= 2 ORDER BY a.date DESC');
         $users = $query->getResult();
-
         for ($i=0; $i < sizeof($article); $i++) { 
             $arrayTmp = $users[$i];
             $article[$i]->setUsername($arrayTmp['username']);

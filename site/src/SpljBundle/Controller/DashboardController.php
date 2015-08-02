@@ -59,7 +59,7 @@ class DashboardController extends Controller
 
         // username
         $em = $doctrine->getManager();
-        $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, SpljBundle:User u WHERE m.userId = u.id ORDER BY m.id ASC');
+        $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, SpljBundle:User u WHERE m.userId = u.id AND m.status!= 2 ORDER BY m.id ASC');
         $users = $query->getResult();
 
         for ($i=0; $i < sizeof($mcq); $i++) { 

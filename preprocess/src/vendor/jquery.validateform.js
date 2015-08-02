@@ -67,10 +67,10 @@
                     $form.find('[required]:enabled').each(function() {
                         var $input = $(this);
                         
-                        if ($input.val() === "" || ($input.is('input[type=checkbox]') && !$input.is(':checked'))) {
-                            isValid = false;
-                            self.applyError(this);
-                        }
+                        // if ($input.val() === "" || ($input.is('input[type=checkbox]') && !$input.is(':checked'))) {
+                        //     isValid = false;
+                        //     self.applyError(this);
+                        // }
                     });
                     
                     $form.find('input[type=email]:enabled').each(function() {

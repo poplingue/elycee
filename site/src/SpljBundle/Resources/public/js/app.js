@@ -127,7 +127,8 @@ define("dashboard", function() {
             }
         },
         checkForm: function checkForm() {
-            $("form").validateForm();
+            $("form-validate").validateForm();
+            // date format
             $('form[name="article"]').data("check", function() {
                 var form = this;
                 var isValid = true;
@@ -151,7 +152,7 @@ define("dashboard", function() {
                 }
             });
             // on error 
-            $("input, select, textarea").on("error", function() {
+            $('input:not([type="checkbox"]), select, textarea').on("error", function() {
                 $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
                 setTimeout(function() {
                     $(".error-js").empty();
@@ -186,7 +187,7 @@ define("publicWindow", function() {
             this.listActiv();
             this.ajaxContact();
             this.ajaxSearch();
-            if ($(".main-chart p").length !== 0) {
+            if ($(".public-window").is(".article")) {
                 this.articleStyle();
             }
         },
@@ -256,9 +257,8 @@ define("publicWindow", function() {
             });
         },
         articleStyle: function articleStyle() {
-            console.log("test");
-            var paragraph = $("p");
-            paragraph.html(paragraph.html().replace(/<br>/gi, "</p><p>"));
+            var paragraph = $(".paragraph");
+            paragraph.html(paragraph.html().replace(/BR/gi, "<br>"));
         }
     };
     return publicWindow;

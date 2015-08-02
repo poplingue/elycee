@@ -16,7 +16,7 @@
     </thead>
     <tbody>
         {% for article in pagination %}
-            {% if article.status < 2  %}
+            
             <tr>
                 {% if app.session.get('user').id == article.userId %}
                     <td><a href="/dashteacher/update-article/{{ article.id }}">{{ article.title }}</a></td>
@@ -60,7 +60,7 @@
                     {% endif %}
                 </td>
             </tr>
-            {% endif %}
+            
     {% endfor %}
     </tbody>
 </table>

@@ -18,31 +18,20 @@
                     <div class="switch has-switch">
                     {% if loop.index == 1 %}
                         {{ form_widget(studentAnswer.answer1,
-                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch', 'value': 'false'} } )
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
                         }}
                     {% elseif loop.index == 2 %}
                         {{ form_widget(studentAnswer.answer2,
-                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch', 'value': 'false'} } )
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
                         }}
                     {% else %}
                         {{ form_widget(studentAnswer.answer3,
-                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch', 'value': 'false'} } )
+                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
                         }}
                     {% endif %}
                     </div>
                 </div>
             {% endfor %}
-        {% endfor %}
-        {% for studentAnswer in form.studentAnswers %}
-        <div class="col-sm-2 control-label">
-                <div class="col-sm-6 col-xs-2">
-                    <div class="switch has-switch">
-                        {{ form_widget(studentAnswer.answer1,
-                            { 'attr' : { 'class' : 'form-control', 'data-toggle' : 'switch'} } )
-                        }}
-                    </div>
-                </div>
-        </div>
         {% endfor %}
     </div>
     <div class="wrap-submit">
