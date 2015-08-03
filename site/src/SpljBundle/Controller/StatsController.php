@@ -32,7 +32,7 @@ class StatsController extends Controller
     	$em = $doctrine->getManager();
     	
     	// total articles
-        $query = $em->createQuery('SELECT COUNT(a.id) FROM SpljBundle:Article a');
+        $query = $em->createQuery('SELECT COUNT(a.id) FROM SpljBundle:Article a WHERE a.status != 2');
         $articleCount = $query->getSingleResult();
         $stats->setTotalArticle($articleCount[1]);
 
@@ -68,12 +68,12 @@ class StatsController extends Controller
 				(SELECT count(a.id)
 					FROM SpljBundle:Article a
 					WHERE a.userId = u.id
-					AND a.status != 2
-					AND u.profil = 1
-					GROUP BY u.username) AS articles,
-				(SELECT count(q.id)
-					FROM SpljBundle:question q, SpljBundle:mcq x
-					WHERE x.userId = u.id
+                    AND a.status != 2
+                    AND u.profil = 1
+                    GROUP BY u.username) AS articles,
+                (SELECT count(q.id)
+                    FROM SpljBundle:question q, SpljBundle:mcq x
+                    WHERE x.userId = u.id
 					AND x.status != 2
 					AND u.profil = 1
 					AND x.id = q.idQcm
@@ -83,7 +83,7 @@ class StatsController extends Controller
 
         $teacherStats = $query->getResult();
         $stats->setTeacherArray($teacherStats);
-
+       
         // tableau eleves
         $query = $em->createQuery(
         	'SELECT u.username,
@@ -107,6 +107,77 @@ class StatsController extends Controller
 
         $studentStats = $query->getResult();
         $stats->setStudentArray($studentStats);
+
+        // chart articles
+        $query = $em->createQuery(
+            'SELECT COUNT(a) FROM SpljBundle:Article a WHERE a.status != 2 GROUP BY a.userId'
+            );
+        $count = $query->getResult();
+        $maxArticles = 0;
+
+        for ($i=0; $i < sizeOf($count); $i++) {
+            if ($maxArticles < $count[$i][1]) {
+                $maxArticles = $count[$i][1];
+            }
+        }
+        $coefArticle = ceil($maxArticles /5);
+        $stats->setCoefArticle($coefArticle);
+
+        // chart mcq
+        $query = $em->createQuery(
+            'SELECT COUNT(m) FROM SpljBundle:Mcq m WHERE m.status != 2 GROUP BY m.userId'
+            );
+        $countMcq = $query->getResult();
+        $maxMcq = 0;
+        for ($i=0; $i < sizeOf($countMcq); $i++) {
+            if ($maxMcq < $countMcq[$i][1]) {
+                $maxMcq = $countMcq[$i][1];
+            }
+        }
+        $coefMcq = ceil($maxMcq /5);
+        $stats->setCoefMcq($coefMcq);
+
+        // chart questions
+        $query = $em->createQuery(
+            'SELECT SUM(m.nbQuestions) FROM SpljBundle:Mcq m WHERE m.status != 2 GROUP BY m.userId'
+            );
+        $countQuestion = $query->getResult();
+        $maxQuestion = 0;
+        for ($i=0; $i < sizeOf($countQuestion); $i++) {
+            if ($maxQuestion < $countQuestion[$i][1]) {
+                $maxQuestion = $countQuestion[$i][1];
+            }
+        }
+        $coefQuestion = ceil($maxQuestion /5);
+        $stats->setCoefQuestion($coefQuestion);
+
+         // chart student mcq
+        $query = $em->createQuery(
+            'SELECT COUNT(s.mcqId) FROM SpljBundle:Score s GROUP BY s.userId'
+            );
+        $countMcqStudent = $query->getResult();
+        $maxMcq = 0;
+        for ($i=0; $i < sizeOf($countMcqStudent); $i++) {
+            if ($maxMcq < $countMcqStudent[$i][1]) {
+                $maxMcq = $countMcqStudent[$i][1];
+            }
+        }
+        $coefMcqStudent = ceil($maxMcq /5);
+        $stats->setCoefMcqStudent($coefMcqStudent);
+
+        /*score*/
+        $query = $em->createQuery(
+            'SELECT SUM(s.scoreMax) FROM SpljBundle:Score s GROUP BY s.userId'
+            );
+        $countScoreMax = $query->getResult();
+        $maxScore = 0;
+        for ($i=0; $i < sizeOf($countScoreMax); $i++) {
+            if ($maxScore < $countScoreMax[$i][1]) {
+                $maxScore = $countScoreMax[$i][1];
+            }
+        }
+        $coefScore = ceil($maxScore /5);
+        $stats->setCoefScore($coefScore);
 
       	return array(
       		'stats' => $stats

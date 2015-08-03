@@ -3,62 +3,135 @@
 {% block class %}dashboard stats{% endblock %}
 {% block h1 %}Statistiques du site{% endblock %}
 {% block body %}
-<table class="table table-bordered table-striped table-condensed">
-	<thead>
-		<tr>
-			<th>Total des articles</th>
-			<th>Total des QCM</th>
-			<th>Total des questions</th>
-			<th>Total des étudiants</th>
-			<th>Total des enseignants</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>{{ stats.totalArticle }}</td>
-			<td>{{ stats.totalMcq }}</td>
-			<td>{{ stats.totalQuestion }}</td>
-			<td>{{ stats.totalStudent }}</td>
-			<td>{{ stats.totalTeacher }}</td>
-		</tr>
-	</tbody>
-</table>
-<table class="table table-bordered table-striped table-condensed">
-	<thead>
-		<tr>
-			<th>Enseignant</th>
-			<th>Nombre d'articles</th>
-			<th>Nombre de QCM</th>
-			<th>Nombre de questions</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for teacher in stats.teacherArray %}
-			<tr>
-				<td>{{ teacher.username }}</td>
-				<td>{{ teacher.articles }}</td>
-				<td>{{ teacher.mcqs }}</td>
-				<td>{{ teacher.questions }}</td>
-			</tr>
-			{% endfor %}
-	</tbody>
-</table>
-<table class="table table-bordered table-striped table-condensed">
-	<thead>
-		<tr>
-			<th>Étudiant</th>
-			<th>Nombre de QCM répondus</th>
-			<th>Score total / score max</th>
-		</tr>
-	</thead>
-	<tbody>
-		{% for student in stats.studentArray %}
-			<tr>
-				<td>{{ student.username }}</td>
-				<td>{{ student.mcqs }}</td>
-				<td>{{ student.score }} / {{ student.scoreMax }}</td>
-			</tr>
-			{% endfor %}
-	</tbody>
-</table>
+	<div class="mtbox centered">
+  		<div class="col-md-2 col-sm-2 col-md-offset-1 box0">
+  			<div class="box1">
+	  			<span><i class="fa fa-file-text"></i></span>
+	  			<h3>{{ stats.totalArticle }}</h3>
+  			</div>
+	  			<p>Total des articles</p>
+  		</div>
+  		<div class="col-md-2 col-sm-2 box0">
+  			<div class="box1">
+	  			<span><i class="fa fa-question-circle"></i></span>
+	  			<h3>{{ stats.totalMcq }}</h3>
+  			</div>
+	  			<p>Total des QCM</p>
+  		</div>
+  		<div class="col-md-2 col-sm-2 box0">
+  			<div class="box1">
+	  			<span><i class="fa fa-question"></i></span>
+	  			<h3>{{ stats.totalQuestion }}</h3>
+  			</div>
+	  			<p>Total des questions</p>
+  		</div>
+  		<div class="col-md-2 col-sm-2 box0">
+  			<div class="box1">
+	  			<span><i class="fa fa-pencil"></i></span>
+	  			<h3>{{ stats.totalStudent }}</h3>
+  			</div>
+	  			<p>Total des étudiants</p>
+  		</div>
+  		<div class="col-md-2 col-sm-2 box0">
+  			<div class="box1">
+	  			<span><i class="fa fa-book"></i></span>
+	  			<h3>{{ stats.totalTeacher }}</h3>
+  			</div>
+	  			<p>Total des enseignants</p>
+  		</div>
+  	</div>
+  	<div class="mt">
+  		<div class="border-head">
+  			<h3>Nombre d'articles par enseignant</h3>
+  		</div>
+  		<div class="custom-bar-chart">
+  			<ul class="y-axis">
+  				{% for i in 0..5 %}
+  				<li><span>{{  stats.coefArticle * loop.revindex0 }}</span></li>
+  				{% endfor %}
+  			</ul>
+  			{% for teacher in stats.teacherArray %}
+  			<div class="bar">
+  				<div class="title">{{ teacher.username }}</div>
+  				<div class="value tooltips" data-original-title="{{ teacher.articles }}" data-toggle="tooltip" data-placement="top">{{ teacher.articles/(stats.coefArticle*5)*100 }}%</div>
+  			</div>
+  			{% endfor %}
+  		</div>
+  	</div>
+  	<div class="mt">
+  		<div class="border-head">
+  			<h3>Nombre de QCM par enseignant</h3>
+  		</div>
+  		<div class="custom-bar-chart">
+  			<ul class="y-axis">
+  				{% for i in 0..5 %}
+  				<li><span>{{  stats.coefMcq * loop.revindex0 }}</span></li>
+  				{% endfor %}
+  			</ul>
+  			{% for teacher in stats.teacherArray %}
+  			<div class="bar">
+  				<div class="title">{{ teacher.username }}</div>
+  				<div class="value tooltips" data-original-title="{{ teacher.mcqs }}" data-toggle="tooltip" data-placement="top">{{ teacher.mcqs/(stats.coefMcq*5)*100 }}%</div>
+  			</div>
+  			{% endfor %}
+  		</div>
+  	</div>
+  	<div class="mt">
+  		<div class="border-head">
+  			<h3>Nombre de questions par enseignant</h3>
+  		</div>
+  		<div class="custom-bar-chart">
+  			<ul class="y-axis">
+  				{% for i in 0..5 %}
+  				<li><span>{{  stats.coefQuestion * loop.revindex0 }}</span></li>
+  				{% endfor %}
+  			</ul>
+  			{% for teacher in stats.teacherArray %}
+  			<div class="bar">
+  				<div class="title">{{ teacher.username }}</div>
+  				<div class="value tooltips" data-original-title="{{ teacher.questions }}" data-toggle="tooltip" data-placement="top">{{ teacher.questions/(stats.coefQuestion*5)*100 }}%</div>
+  			</div>
+  			{% endfor %}
+  		</div>
+  	</div>
+  	  	<div class="mt">
+  		<div class="border-head">
+  			<h3>Nombre de QCM répondus</h3>
+  		</div>
+  		<div class="custom-bar-chart">
+  			<ul class="y-axis">
+  				{% for i in 0..5 %}
+  				<li><span>{{  stats.coefMcqStudent * loop.revindex0 }}</span></li>
+  				{% endfor %}
+  			</ul>
+  			{% for student in stats.StudentArray %}
+  			<div class="bar">
+  				<div class="title">{{ student.username }}</div>
+  				<div class="value tooltips" data-original-title="{{ student.mcqs }}" data-toggle="tooltip" data-placement="top">{{ student.mcqs/(stats.coefMcqStudent*5)*100 }}%</div>
+  			</div>
+  			{% endfor %}
+  		</div>
+  	</div>
+  	  	</div>
+  	  	<div class="mt">
+  		<div class="border-head">
+  			<h3>Score / score max</h3>
+  		</div>
+  		<div class="custom-bar-chart score">
+  			<ul class="y-axis">
+  				{% for i in 0..5 %}
+  				<li><span>{{  stats.coefScore * loop.revindex0 }}</span></li>
+  				{% endfor %}
+  			</ul>
+  			{% for student in stats.StudentArray %}
+  			<div class="bar">
+  				<div class="title">{{ student.username }}</div>
+  				<div class="value tooltips" data-original-title="{{ student.scoreMax }}" data-toggle="tooltip" data-placement="top">{{ student.scoreMax/(stats.coefScore*5)*100 }}%</div>
+  			</div>
+  			<div class="bar">
+  				<div class="value tooltips" data-original-title="{{ student.score }}" data-toggle="tooltip" data-placement="top">{{ student.score/(stats.coefScore*5)*100 }}%</div>
+  			</div>
+  			{% endfor %}
+  		</div>
+  	</div>
 {% endblock %}

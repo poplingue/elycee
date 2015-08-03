@@ -70,6 +70,41 @@ class Stats
      */
     private $studentArray;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coefArticle", type="integer")
+     */
+    private $coefArticle;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coefMcq", type="integer")
+     */
+    private $coefMcq;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coefQuestion", type="integer")
+     */
+    private $coefQuestion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coefMcqStudent", type="integer")
+     */
+    private $coefMcqStudent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="coefScore", type="integer")
+     */
+    private $coefScore;
+
 
     /**
      * Get id
@@ -240,5 +275,120 @@ class Stats
     public function getStudentArray()
     {
         return $this->studentArray;
+    }
+
+    /**
+     * Set pasArticle
+     *
+     * @param integer $coefArticle
+     * @return Stats
+     */
+    public function setCoefArticle($coefArticle)
+    {
+        $this->coefArticle = $coefArticle;
+
+        return $this;
+    }
+
+    /**
+     * Get coefArticle
+     *
+     * @return integer 
+     */
+    public function getCoefArticle()
+    {
+        return $this->coefArticle;
+    }
+
+    /**
+     * Set coefMcq
+     *
+     * @param integer $coefMcq
+     * @return Stats
+     */
+    public function setCoefMcq($coefMcq)
+    {
+        $this->coefMcq = $coefMcq;
+
+        return $this;
+    }
+
+    /**
+     * Get coefMcq
+     *
+     * @return integer 
+     */
+    public function getCoefMcq()
+    {
+        return $this->coefMcq;
+    }
+
+    /**
+     * Set coefMcq
+     *
+     * @param integer $coefQuestion
+     * @return Stats
+     */
+    public function setCoefQuestion($coefQuestion)
+    {
+        $this->coefQuestion = $coefQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get coefQuestion
+     *
+     * @return integer 
+     */
+    public function getCoefQuestion()
+    {
+        return $this->coefQuestion;
+    }
+
+    /**
+     * Set coefMcq
+     *
+     * @param integer $coefMcqStudent
+     * @return Stats
+     */
+    public function setCoefMcqStudent($coefMcqStudent)
+    {
+        $this->coefMcqStudent = $coefMcqStudent;
+
+        return $this;
+    }
+
+    /**
+     * Get coefMcqStudent
+     *
+     * @return integer 
+     */
+    public function getCoefMcqStudent()
+    {
+        return $this->coefMcqStudent;
+    }
+
+    /**
+     * Set coefMcq
+     *
+     * @param integer $coefScore
+     * @return Stats
+     */
+    public function setCoefScore($coefScore)
+    {
+        $this->coefScore = $coefScore;
+
+        return $this;
+    }
+
+    /**
+     * Get coefScore
+     *
+     * @return integer 
+     */
+    public function getCoefScore()
+    {
+        return $this->coefScore;
     }
 }

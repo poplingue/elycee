@@ -44,8 +44,14 @@
 			font-size: 14px;
 		}
 	}
-	&.stats .table{
-		margin: 50px 0;
+	&.stats{
+		#main-content{
+			z-index: 0;
+			position: relative;
+		}
+		.table{
+			margin: 50px 0;
+		}
 	}
 	&.questions{
 		form{
