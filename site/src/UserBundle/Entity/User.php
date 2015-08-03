@@ -1,45 +1,62 @@
 <?php
 
-namespace SpljBundle\Entity;
+namespace UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
- * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="SpljBundle\Entity\UserRepository")
+ *
+ * @ORM\Table()
+ * @ORM\Entity
  */
-class User 
+class User implements UserInterface
 {
     /**
      * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
      * @var string
      *
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    private $salt;
+
+    /**
      * @var integer
+     *
+     * @ORM\Column(name="profil", type="integer")
      */
     private $profil;
 
-  /**
-   * @ORM\Column(name="salt", type="string", length=255)
-   */
-  private $salt;
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="array")
+     */
+    private $roles;
 
-  
 
     /**
      * Get id
@@ -50,6 +67,8 @@ class User
     {
         return $this->id;
     }
+
+
 
     /**
      * Set username
@@ -98,29 +117,6 @@ class User
     }
 
     /**
-     * Set profil
-     *
-     * @param integer $profil
-     * @return User
-     */
-    public function setProfil($profil)
-    {
-        $this->profil = $profil;
-
-        return $this;
-    }
-
-    /**
-     * Get profil
-     *
-     * @return integer 
-     */
-    public function getProfil()
-    {
-        return $this->profil;
-    }
-
-    /**
      * Set salt
      *
      * @param string $salt
@@ -143,9 +139,33 @@ class User
         return $this->salt;
     }
 
-     /**
+    /**
+     * Get profil
+     *
+     * @return integer 
+     */
+    public function getProfil()
+    {
+        return $this->profil;
+    }
+
+    /**
+     * Set profil
+     *
+     * @param integer $profil
+     * @return User 
+     */
+    public function setProfil($profil)
+    {
+        $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
      * Set roles
      *
+     * @param array $roles
      * @return User
      */
     public function setRoles($roles)
@@ -162,6 +182,11 @@ class User
      */
     public function getRoles()
     {
-        return $this->groups->toArray();
+        return $this->roles;
+    }
+
+    public function eraseCredentials()
+    {
+
     }
 }

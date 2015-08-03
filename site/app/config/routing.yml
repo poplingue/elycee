@@ -3,9 +3,19 @@ splj:
     prefix:   /
     type:     annotation
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+user:
+    resource: "@UserBundle/Controller"
+    prefix:   /
+    type: annotation
+
+login:
+    pattern: /home/login
+    defaults: { _controller: UserBundle:Security:login }
+
+login_check:
+    pattern: login_check
+logout:
+    pattern: /home/logout
 
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

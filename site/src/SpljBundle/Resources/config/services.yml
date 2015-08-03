@@ -3,8 +3,8 @@ services:
 #        class: SpljBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
     redirect.after.login:
-        class: SpljBundle\Redirection\AfterLoginRedirection
+        class: UserBundle\Redirection\AfterLoginRedirection
         arguments: [@router,@doctrine]
     redirect.after.logout:
-        class: SpljBundle\Redirection\AfterLogoutRedirection
+        class: UserBundle\Redirection\AfterLogoutRedirection
         arguments: [@router, @security.context]

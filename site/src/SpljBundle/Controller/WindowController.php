@@ -42,14 +42,15 @@ class WindowController extends Controller
         $article = $query->getResult();
        
         // username list
-        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
+        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, UserBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
         $users = $query->getResult();
 
         for ($i=0; $i < sizeof($article); $i++) { 
             $arrayTmp = $users[$i];
             $article[$i]->setUsername($arrayTmp['username']);
         }
-
+        
+        $this->articlesInSession($request);
         return array(
             'articles' => $article
         );
@@ -63,7 +64,7 @@ class WindowController extends Controller
     *
     * @Template("SpljBundle:Window:estate.html.twig")
     */
-    public function estateAction()
+    public function estateAction(Request $request)
     {
         $this->articlesInSession($request);
         return array();

@@ -44,7 +44,7 @@ class ArticleController extends Controller
 
         // username list
         $em = $doctrine->getManager();
-        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, SpljBundle:User u WHERE a.userId = u.id AND a.status!= 2 ORDER BY a.date DESC');
+        $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, UserBundle:User u WHERE a.userId = u.id AND a.status!= 2 ORDER BY a.date DESC');
         $users = $query->getResult();
         for ($i=0; $i < sizeof($article); $i++) { 
             $arrayTmp = $users[$i];

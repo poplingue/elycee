@@ -13,7 +13,6 @@
                     { 'attr' : { 'class' : 'form-control', 'placeholder': 'pseudo', 'data-error' : 'pseudo' }}
                      )
                 }}
-
 				<br>
 				{{ form_widget(form.password,
                     { 'attr' : { 'class' : 'form-control', 'placeholder': 'mot de passe', 'data-error' : 'mot de passe' }}
@@ -23,7 +22,7 @@
 				<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i></button>
 				<hr>
 			</div>
-		{{ form_end(form) }} 	
+		{{ form_end(form) }} 
 		{% if error %}
 			<p class="centered">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
 		{% endif %}

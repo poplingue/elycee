@@ -1,6 +1,6 @@
 <?php
 
-namespace SpljBundle\Form;
+namespace UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,7 +26,7 @@ class UserType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SpljBundle\Entity\User'
+            'data_class' => 'UserBundle\Entity\User'
         ));
     }
 

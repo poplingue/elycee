@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use SpljBundle\Entity\Mcq;
-use SpljBundle\Entity\User;
+use UserBundle\Entity\User;
 use SpljBundle\Form\McqType;
 
 use Symfony\Component\HttpFoundation\Request as Request;
@@ -59,7 +59,7 @@ class DashboardController extends Controller
 
         // username
         $em = $doctrine->getManager();
-        $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, SpljBundle:User u WHERE m.userId = u.id AND m.status!= 2 ORDER BY m.id ASC');
+        $query = $em->createQuery('SELECT m.id, u.username FROM SpljBundle:Mcq m, UserBundle:User u WHERE m.userId = u.id AND m.status!= 2 ORDER BY m.id ASC');
         $users = $query->getResult();
 
         for ($i=0; $i < sizeof($mcq); $i++) { 

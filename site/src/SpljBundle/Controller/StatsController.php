@@ -47,12 +47,12 @@ class StatsController extends Controller
         $stats->setTotalQuestion($questionCount[1]);
 
         // total étudiants
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM SpljBundle:User u WHERE u.profil = 2');
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.profil = 2');
         $studentCount = $query->getSingleResult();
         $stats->setTotalStudent($studentCount[1]);
 
         // total profs
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM SpljBundle:User u WHERE u.profil = 1');
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.profil = 1');
         $teacherCount = $query->getSingleResult();
         $stats->setTotalTeacher($teacherCount[1]);
 
@@ -78,7 +78,7 @@ class StatsController extends Controller
 					AND u.profil = 1
 					AND x.id = q.idQcm
 					GROUP BY u.username) AS questions 
-			FROM SpljBundle:User u
+			FROM UserBundle:User u
 			WHERE u.profil = 1');
 
         $teacherStats = $query->getResult();
@@ -102,7 +102,7 @@ class StatsController extends Controller
        				WHERE x.userId = u.id
 	        		AND u.profil = 2
 	        		GROUP BY u.username) AS scoreMax
-        	FROM SpljBundle:User u
+        	FROM UserBundle:User u
         	WHERE u.profil = 2');
 
         $studentStats = $query->getResult();

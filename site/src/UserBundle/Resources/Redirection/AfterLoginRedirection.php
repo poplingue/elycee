@@ -1,13 +1,13 @@
 <?php
 
-namespace SpljBundle\Redirection;
+namespace UserBundle\Redirection;
  
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 
-use SpljBundle\Entity\User;
+use UserBundle\Entity\User;
 
 use Symfony\Component\HttpFoundation\Request as Request;
 use Doctrine\Bundle\DoctrineBundle\Registry as Doctrine;
@@ -49,9 +49,8 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
         $user = new User();
         // $userToken = $this->get('security.token_storage')->getToken()->getUser();
 
-        $qb = $this->em->getRepository('SpljBundle:User')->createQueryBuilder('u');
+        $qb = $this->em->getRepository('UserBundle:User')->createQueryBuilder('u');
         $qb->select(array('u'))
-           ->from('SpljBundle:User', 'user')
             ->where('u.username = :username')
             ->setParameter('username', $token->getUsername());
         $query = $qb->getQuery();
