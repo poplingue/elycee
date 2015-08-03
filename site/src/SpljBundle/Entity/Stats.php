@@ -70,6 +70,41 @@ class Stats
      */
     private $studentArray;
 
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pasArticle", type="integer")
+     */
+    private $pasArticle;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pasMcq", type="integer")
+     */
+    private $pasMcq;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pasQuestion", type="integer")
+     */
+    private $pasQuestion;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pasMcqStudent", type="integer")
+     */
+    private $pasMcqStudent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="pasScore", type="integer")
+     */
+    private $pasScore;
+
 
     /**
      * Get id
@@ -240,5 +275,120 @@ class Stats
     public function getStudentArray()
     {
         return $this->studentArray;
+    }
+
+    /**
+     * Set pasArticle
+     *
+     * @param integer $pasArticle
+     * @return Stats
+     */
+    public function setPasArticle($pasArticle)
+    {
+        $this->pasArticle = $pasArticle;
+
+        return $this;
+    }
+
+    /**
+     * Get pasArticle
+     *
+     * @return integer 
+     */
+    public function getPasArticle()
+    {
+        return $this->pasArticle;
+    }
+
+    /**
+     * Set pasMcq
+     *
+     * @param integer $pasMcq
+     * @return Stats
+     */
+    public function setPasMcq($pasMcq)
+    {
+        $this->pasMcq = $pasMcq;
+
+        return $this;
+    }
+
+    /**
+     * Get pasMcq
+     *
+     * @return integer 
+     */
+    public function getPasMcq()
+    {
+        return $this->pasMcq;
+    }
+
+    /**
+     * Set pasMcq
+     *
+     * @param integer $pasQuestion
+     * @return Stats
+     */
+    public function setPasQuestion($pasQuestion)
+    {
+        $this->pasQuestion = $pasQuestion;
+
+        return $this;
+    }
+
+    /**
+     * Get pasQuestion
+     *
+     * @return integer 
+     */
+    public function getPasQuestion()
+    {
+        return $this->pasQuestion;
+    }
+
+    /**
+     * Set pasMcq
+     *
+     * @param integer $pasMcqStudent
+     * @return Stats
+     */
+    public function setPasMcqStudent($pasMcqStudent)
+    {
+        $this->pasMcqStudent = $pasMcqStudent;
+
+        return $this;
+    }
+
+    /**
+     * Get pasMcqStudent
+     *
+     * @return integer 
+     */
+    public function getPasMcqStudent()
+    {
+        return $this->pasMcqStudent;
+    }
+
+    /**
+     * Set pasMcq
+     *
+     * @param integer $pasScore
+     * @return Stats
+     */
+    public function setPasScore($pasScore)
+    {
+        $this->pasScore = $pasScore;
+
+        return $this;
+    }
+
+    /**
+     * Get pasScore
+     *
+     * @return integer 
+     */
+    public function getPasScore()
+    {
+        return $this->pasScore;
     }
 }
