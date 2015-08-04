@@ -849,6 +849,9 @@ ul.top-menu > li > a {
         .bar{
             margin: 0;
         }
+        .y-axis+.bar{
+            margin-left: 5%;;
+        }
         .bar:nth-child(odd) .value{
             background: $blue;
             margin: 0 -100%;

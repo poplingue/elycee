@@ -36,7 +36,7 @@
                     <li><a class="btn-square " href="{{  path('fos_user_security_logout')  }}"><i class="fa fa-sign-out tooltips" data-placement="left" data-original-title="déconnexion"></i></a></li>
                     <li><p class="username">Bonjour {{ app.session.get('user').username }} !</p></li>
                     {% if app.request.attributes.get('_route') starts with 'splj.window' %}
-                        <li><a class="btn-square" href="{{ url('splj.stats') }}"><i class="fa fa-hand-o-right tooltips" data-placement="left" data-original-title="dashboard"></i></a></li>
+                        <li><a class="btn-square" href="{{ url('dashboard.stats') }}"><i class="fa fa-hand-o-right tooltips" data-placement="left" data-original-title="dashboard"></i></a></li>
                     {% endif %}
                 {% else %}
                     <li><a class="btn-square" href="{{ path('fos_user_security_login') }}"><i class="fa fa-sign-in tooltips" data-placement="left" data-original-title="connexion"></i></a></li>

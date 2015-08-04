@@ -1,3 +1,8 @@
+stats:
+    resource: "@StatsBundle/Controller/"
+    prefix:   /
+    type:     annotation
+
 splj:
     resource: "@SpljBundle/Controller/"
     prefix:   /

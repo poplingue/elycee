@@ -1,26 +1,9 @@
-/*---LEFT BAR ACCORDION----*/
-$(function() {
-    $("#nav-accordion").dcAccordion({
-        eventType: "click",
-        autoClose: true,
-        saveState: true,
-        disableLink: true,
-        speed: "slow",
-        showCount: false,
-        autoExpand: true,
-        //        cookie: 'dcjq-accordion-1',
-        classExpand: "dcjq-current-parent"
-    });
-});
-
 var Script = function() {
-    //    sidebar dropdown menu auto scrolling
     jQuery("#sidebar .sub-menu > a").click(function() {
         var o = $(this).offset();
         diff = 250 - o.top;
         if (diff > 0) $("#sidebar").scrollTo("-=" + Math.abs(diff), 500); else $("#sidebar").scrollTo("+=" + Math.abs(diff), 500);
     });
-    //    sidebar toggle
     $(function() {
         function responsiveView() {
             var wSize = $(window).width();
@@ -51,7 +34,6 @@ var Script = function() {
             $("#container").removeClass("sidebar-closed");
         }
     });
-    // custom scrollbar
     $("#sidebar").niceScroll({
         styler: "fb",
         cursorcolor: "#9966FF",
@@ -71,7 +53,6 @@ var Script = function() {
         cursorborder: "",
         zindex: "1000"
     });
-    // widget tools
     jQuery(".panel .tools .fa-chevron-down").click(function() {
         var el = jQuery(this).parents(".panel").children(".panel-body");
         if (jQuery(this).hasClass("fa-chevron-down")) {
@@ -85,11 +66,7 @@ var Script = function() {
     jQuery(".panel .tools .fa-times").click(function() {
         jQuery(this).parents(".panel").parent().remove();
     });
-    //    tool tips
     $(".tooltips").tooltip();
-    //    popovers
-    $(".popovers").popover();
-    // custom bar chart
     if ($(".custom-bar-chart")) {
         $(".bar").each(function() {
             var i = $(this).find(".value").html();
