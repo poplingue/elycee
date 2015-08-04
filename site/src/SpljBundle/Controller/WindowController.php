@@ -31,6 +31,8 @@ class WindowController extends Controller
     */
     public function indexAction(Request $request)
     {
+        $this->articlesInSession($request);
+
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $src = $doctrine->getRepository('SpljBundle:Article');
@@ -40,7 +42,7 @@ class WindowController extends Controller
             ->orderBy('a.date', 'DESC');
         $query = $qb->getQuery();
         $article = $query->getResult();
-       
+        
         // username list
         $query = $em->createQuery('SELECT a.id, u.username FROM SpljBundle:Article a, UserBundle:User u WHERE a.userId = u.id ORDER BY a.id ASC');
         $users = $query->getResult();
@@ -50,10 +52,9 @@ class WindowController extends Controller
             $article[$i]->setUsername($arrayTmp['username']);
         }
         
-        $this->articlesInSession($request);
-        // return array(
-        //     'articles' => $article
-        // );
+        return array(
+            'articleHome' => $article
+        );
     }
 
     /**
@@ -94,7 +95,8 @@ class WindowController extends Controller
     */
     public function contact(Request $request)
     {
-
+        $this->articlesInSession($request);
+        
         // nb random secu
         if (!isset($_POST['random1'])) {
             $random1 = rand(0,10);
@@ -105,8 +107,6 @@ class WindowController extends Controller
                 'random2' => $random2
             );
         }
-        
-        $this->articlesInSession($request);
 
         $data = $request->request->all();
         return new JsonResponse($data);
@@ -224,11 +224,11 @@ class WindowController extends Controller
     */
     public function articleAction(Request $request, $id)
     {
+        $this->articlesInSession($request);
+
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
         $theArticle = $em->getRepository('SpljBundle:Article')->find($id);
-         
-        $this->articlesInSession($request);
 
         return array(
             'theArticle' => $theArticle
@@ -242,7 +242,6 @@ class WindowController extends Controller
             $article = $doctrine->getRepository('SpljBundle:Article')->findAll();
             $request->getSession()->set('articles', $article);
         }
-        return;
     }
 }
 

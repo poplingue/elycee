@@ -122,7 +122,10 @@ button {
 }
 button,
 select {
+  cursor: pointer;
+  border: 2px solid #CCCCCC;
   text-transform: none;
+  padding: 3px 4px;
 }
 button,
 html input[type="button"],
@@ -257,7 +260,7 @@ th {
   }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #ddd !important;
+    border: none;
   }
 }
 @font-face {
@@ -1420,7 +1423,9 @@ pre code {
   padding-left: 15px;
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
-  float: left;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
 }
 .col-xs-12 {
   width: 100%;
@@ -1577,7 +1582,10 @@ pre code {
 }
 @media (min-width: 768px) {
   .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    *display: inline;
+    zoom: 1;
   }
   .col-sm-12 {
     width: 100%;
@@ -1735,7 +1743,10 @@ pre code {
 }
 @media (min-width: 992px) {
   .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    *display: inline;
+    zoom: 1;
   }
   .col-md-12 {
     width: 100%;
@@ -1893,7 +1904,10 @@ pre code {
 }
 @media (min-width: 1200px) {
   .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {
-    float: left;
+    display: inline-block;
+    vertical-align: top;
+    *display: inline;
+    zoom: 1;
   }
   .col-lg-12 {
     width: 100%;
@@ -2066,14 +2080,15 @@ th {
 .table > thead > tr > td,
 .table > tbody > tr > td,
 .table > tfoot > tr > td {
+  height: 45px;
   padding: 8px;
   line-height: 1.42857143;
-  vertical-align: top;
-  border-top: 1px solid #ddd;
+  vertical-align: middle;
+  border-top: 1px solid #ccc;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
-  border-bottom: 2px solid #ddd;
+  border-bottom: none;
 }
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
@@ -2298,7 +2313,7 @@ legend {
   line-height: inherit;
   color: #333;
   border: 0;
-  border-bottom: 1px solid $grey-light;
+  border-bottom: 1px solid #e5e5e5;
 }
 label {
   display: inline-block;
@@ -2313,8 +2328,6 @@ input[type="search"] {
 }
 input[type="radio"],
 input[type="checkbox"] {
-  margin: 4px 0 0;
-  margin-top: 1px \9;
   line-height: normal;
 }
 input[type="file"] {
@@ -2360,10 +2373,10 @@ output {
           transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control:focus {
-  border-color: #66afe9;
+  border-color: #FFE2C9;
   outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 226, 201, 1);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(255, 226, 201, 1);
 }
 .form-control::-moz-placeholder {
   color: #777;
@@ -2382,8 +2395,8 @@ fieldset[disabled] .form-control {
   background-color: #eee;
   opacity: 1;
 }
-.contact textarea.form-control {
-  height: 230px;
+textarea.form-control {
+  height: auto;
 }
 input[type="search"] {
   -webkit-appearance: none;
@@ -2430,8 +2443,6 @@ input[type="month"].input-lg {
 .checkbox input[type="checkbox"],
 .checkbox-inline input[type="checkbox"] {
   position: absolute;
-  margin-top: 4px \9;
-  margin-left: -20px;
 }
 .radio + .radio,
 .checkbox + .checkbox {
@@ -2713,7 +2724,7 @@ select[multiple].input-lg {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -2731,7 +2742,7 @@ select[multiple].input-lg {
 .btn:active:focus,
 .btn.active:focus {
   outline: thin dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+  outline: 5px auto #FFE2C9;
   outline-offset: -2px;
 }
 .btn:hover,
@@ -3042,13 +3053,13 @@ fieldset[disabled] .btn-link:focus {
 .btn-sm,
 .btn-group-sm > .btn {
   padding: 5px 10px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .btn-xs,
 .btn-group-xs > .btn {
   padding: 1px 5px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
 }
 .btn-block {
@@ -3137,7 +3148,7 @@ tbody.collapse.in {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: $grey-light;
+  background-color: #e5e5e5;
 }
 .dropdown-menu > li > a {
   display: block;
@@ -3568,7 +3579,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:hover,
 .nav > li > a:focus {
   text-decoration: none;
-  background-color: #eee;
 }
 .nav > li.disabled > a {
   color: #777;
@@ -3590,7 +3600,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: $grey-light;
+  background-color: #e5e5e5;
 }
 .nav > li > a > img {
   max-width: none;
@@ -4278,9 +4288,8 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   color: #777;
 }
 .pagination {
-  display: inline-block;
-  padding-left: 0;
-  margin: 20px 0;
+  width: 100%;
+  text-align: center;
 }
 .pagination > li {
   display: inline;
@@ -5269,16 +5278,17 @@ button.close {
   overflow-y: auto;
 }
 .modal-dialog {
-    top: 50%;
-    position: absolute;
-    left: 50%;
-    margin: -92px 0 0 -150px;
+  position: relative;
+  width: auto;
+  margin: 10px;
 }
 .modal-content {
   position: relative;
   background-color: #fff;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
+  border: 1px solid #999;
+  border: 1px solid rgba(0, 0, 0, .2);
   outline: 0;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
           box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
@@ -5303,7 +5313,7 @@ button.close {
 .modal-header {
   min-height: 16.42857143px;
   padding: 15px;
-  border-bottom: 1px solid $grey-light;
+  border-bottom: 1px solid #e5e5e5;
 }
 .modal-header .close {
   margin-top: -2px;
@@ -5313,14 +5323,13 @@ button.close {
   line-height: 1.42857143;
 }
 .modal-body {
-    font-size: 15px;
-    color: $grey-dark;
-    padding: 17px 0 0px 17px;
+  position: relative;
+  padding: 15px;
 }
 .modal-footer {
   padding: 15px;
   text-align: right;
-  border-top: 1px solid $grey-light;
+  border-top: 1px solid #e5e5e5;
 }
 .modal-footer .btn + .btn {
   margin-bottom: 0;
@@ -5341,7 +5350,8 @@ button.close {
 }
 @media (min-width: 768px) {
   .modal-dialog {
-    width: 300px;
+    width: 600px;
+    margin: 20% auto;
   }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
@@ -5392,7 +5402,7 @@ button.close {
   color: #fff;
   text-align: center;
   text-decoration: none;
-  background-color: #000;
+  background-color: #666;
 }
 .tooltip-arrow {
   position: absolute;
@@ -5406,52 +5416,52 @@ button.close {
   left: 50%;
   margin-left: -5px;
   border-width: 5px 5px 0;
-  border-top-color: #000;
+  border-top-color: #666;
 }
 .tooltip.top-left .tooltip-arrow {
   bottom: 0;
   left: 5px;
   border-width: 5px 5px 0;
-  border-top-color: #000;
+  border-top-color: #666;
 }
 .tooltip.top-right .tooltip-arrow {
   right: 5px;
   bottom: 0;
   border-width: 5px 5px 0;
-  border-top-color: #000;
+  border-top-color: #666;
 }
 .tooltip.right .tooltip-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;
   border-width: 5px 5px 5px 0;
-  border-right-color: #000;
+  border-right-color: #666;
 }
 .tooltip.left .tooltip-arrow {
   top: 50%;
   right: 0;
   margin-top: -5px;
   border-width: 5px 0 5px 5px;
-  border-left-color: #000;
+  border-left-color: #666;
 }
 .tooltip.bottom .tooltip-arrow {
   top: 0;
   left: 50%;
   margin-left: -5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000;
+  border-bottom-color: #666;
 }
 .tooltip.bottom-left .tooltip-arrow {
   top: 0;
   left: 5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000;
+  border-bottom-color: #666;
 }
 .tooltip.bottom-right .tooltip-arrow {
   top: 0;
   right: 5px;
   border-width: 0 5px 5px;
-  border-bottom-color: #000;
+  border-bottom-color: #666;
 }
 .popover {
   position: absolute;

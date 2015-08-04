@@ -36,6 +36,7 @@ var Script = function() {
         $(window).on("load", responsiveView);
         $(window).on("resize", responsiveView);
     });
+    $("#sidebar").hide();
     $(".fa-bars").click(function() {
         if ($("#sidebar > ul").is(":visible") === true) {
             $("#main-content").css({
@@ -105,7 +106,7 @@ define("dashboard", function() {
         init: function init() {
             this.customMenu();
             this.checkForm();
-            this.confirmDialog();
+            this.customPaginator();
         },
         customMenu: function customMenu() {
             var body = $("body");
@@ -126,7 +127,18 @@ define("dashboard", function() {
             }
         },
         checkForm: function checkForm() {
-            $("form").validateForm();
+            $(".form-validate").validateForm();
+            // date format
+            $('form[name="article"]').data("check", function() {
+                var form = this;
+                var isValid = true;
+                var dateReg = /^\d{2}([./])\d{2}\1\d{4}$/;
+                if (!$("#article_date").val().match(dateReg)) {
+                    isValid = false;
+                    $('form[name="article"]').data("ValidateForm").applyError($("#article_date")[0]);
+                }
+                return isValid;
+            });
             // which side of website
             if (".dashboard") {
                 $("form").after('<span class="error-js"></span>');
@@ -140,13 +152,19 @@ define("dashboard", function() {
                 }
             });
             // on error 
-            $("input, select, textarea").on("error", function() {
+            $('input:not([type="checkbox"]), select, textarea').on("error", function() {
                 $(".error-js").append('<p class="centered error">Le champ ' + $(this).attr("data-error") + " est obligatoire</p>");
-                setTimeout(function() {}, 2e3);
+                setTimeout(function() {
+                    $(".error-js").empty();
+                }, 2e3);
             });
         },
-        confirmDialog: function confirm() {
-            $(".btn-danger a").confirm();
+        customPaginator: function customPaginator() {
+            var pagination = $(".pagination");
+            pagination.find(".first a").html('<i class="fa fa-fast-backward"></i>');
+            pagination.find(".last a").html('<i class="fa fa-fast-forward"></i>');
+            pagination.find(".next a").html('<i class="fa fa-forward"></i>');
+            pagination.find(".previous a").html('<i class="fa fa-backward"></i>');
         }
     };
     return dashboard;
@@ -155,13 +173,23 @@ define("dashboard", function() {
 define("main", [ "publicWindow", "dashboard" ], function(publicWindow, dashboard) {
     dashboard.init();
     publicWindow.init();
+    // modal
+    $(".btn-danger a").confirm();
+    // datepicker
+    $(function() {
+        $(".datepicker").datepicker($.datepicker.regional["fr"]);
+    });
 });
 
 define("publicWindow", function() {
     var publicWindow = {
         init: function init() {
             this.listActiv();
-            this.contact();
+            this.ajaxContact();
+            this.ajaxSearch();
+            if ($(".public-window").is(".article")) {
+                this.articleStyle();
+            }
         },
         listActiv: function listActiv() {
             var body = $("body");
@@ -176,7 +204,7 @@ define("publicWindow", function() {
                 $(".sidebar-menu").find("li:eq(2)").find("a").addClass("active");
             }
         },
-        contact: function contact() {
+        ajaxContact: function contact() {
             $(".form-contact").data("beforesend", function() {
                 $(".loading").addClass("on").removeClass("off");
             });
@@ -186,19 +214,51 @@ define("publicWindow", function() {
                     url: Routing.generate("splj.window.contact-save"),
                     data: $(".form-contact").serializeArray(),
                     success: function(data) {
-                        $(".loading").addClass("inactive off").removeClass("active on");
+                        $(".loading").addClass("off").removeClass("on");
                         $(".centered").addClass("w100");
                         $(".form-contact").remove();
                         $(".centered").append("<p>Merci " + data.name + ". Votre message a été envoyé !</p>");
                     },
                     error: function(error) {
-                        $(".loading").addClass("inactive off").removeClass("active on");
+                        $(".loading").addClass("off").removeClass("on");
                         $(".centered").addClass("w100");
                         $(".form-contact").remove();
                         $(".centered").append('<div class="error-js"><p class="error">Une erreur est survenue. Tu sais pas compter ?!</p><div>');
                     }
                 });
             });
+        },
+        ajaxSearch: function ajaxSearch() {
+            $(".form-search").data("beforesend", function() {
+                $(".loading").addClass("on").removeClass("off");
+            });
+            $(".form-search").data("onsuccess", function() {
+                $.ajax({
+                    method: "POST",
+                    url: Routing.generate("splj.window.go-search"),
+                    data: $(".form-search").serializeArray(),
+                    success: function(data) {
+                        $(".loading").addClass("off").removeClass("on");
+                        if (data.length !== 0) {
+                            $(".wrap-list").empty();
+                            $.each(data, function(key, value) {
+                                $(".wrap-list").append('<div class="col-md-6 col-sm-6 mb">' + '<li class="article white-panel pn donut-chart">' + '<div class="white-header">' + '<h3><a href="/home/article/' + value.id + '">' + value.title + "</a></h3>" + "</div>" + '<div class="text-left"><div class="infos"><span>publié le </span>' + "<date>" + value.date + "</date></span></div>" + '<div class="text-solo">' + value.extract + '<a href="/home/article/' + value.id + '">...Lire la suite</a></div>' + "</li></div>");
+                            });
+                        } else {
+                            $(".wrap-list").empty();
+                            $(".wrap-list").append("<p>Aucun article correspondant</p>");
+                        }
+                    },
+                    error: function(error) {
+                        $(".loading").addClass("off").removeClass("on");
+                        $(".wrap-list").append("<p>Une erreur est survenue</p>");
+                    }
+                });
+            });
+        },
+        articleStyle: function articleStyle() {
+            var paragraph = $(".paragraph");
+            paragraph.html(paragraph.html().replace(/BR/gi, "<br>"));
         }
     };
     return publicWindow;

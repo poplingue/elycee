@@ -24,20 +24,13 @@ class ContribController extends Controller
     */
 	public function addBddAction(Request $request)
 	{
-    	$listNames = array('Alexandre', 'Marine', 'Anna');
+    	$doctrine =  $this->getDoctrine();;
+		$src = $doctrine->getRepository('UserBundle:User');
+        
+        $user = $src->find(4);
+		$user->setRoles(array('ROLE_TEACHER'));
 
-
-	    foreach ($listNames as $name) {
-			$user = new User;
-
-			$user->setUsername($name);
-			$user->setPassword($name);
-			$user->setSalt('');
-			$user->setRoles(array('ROLE_TEACHER'));
-
-			$this->getDoctrine()->getManager()->persist($user);
-	    }
-
+		$this->getDoctrine()->getManager()->persist($user);
 
     	$this->getDoctrine()->getManager()->flush();
     }

@@ -22,11 +22,6 @@ form{
 		font-size: 28px;
 	    margin-top: 15px;
 	}
-	@media screen and(max-width: 640px){
-		strong{
-			display: none;
-		}
-	}
 }
 .top-menu{
 	display: inline-block;
@@ -39,11 +34,6 @@ form{
 		margin-top: 4px;
 		color: #fff;
 	}
-	@media screen and(max-width: 640px){
-		p.username{
-			display: none;
-		}
-	}
 	i.fa{
 		font-size: 21px;
 		color: #fff;
@@ -51,14 +41,6 @@ form{
 }
 .bottom-form{
 	display: none;
-}
-@media screen and(max-width: 640px){
-	.wrap-logo{
-		width: 80%;
-		b{
-	    	display: none;
-		}
-	}
 }
 .main-chart{
 	p{
@@ -108,8 +90,8 @@ textarea{
 		border-color: crimson;
 	}
 }
-#twitter-widget-0{
-	width: 100%!important;
+.twitter{
+	text-align: center;
 }
 .timeline{
 	max-width: 100%!important;
@@ -143,5 +125,26 @@ textarea{
 		z-index: 0;
 		-webkit-transition: opacity 0.6s ease-out 0s;
     	transition: opacity 0.6s ease-out 0s;
+	}
+}
+@media screen and(max-width: 640px){
+	.main-chart{
+		p{
+			max-width: 100%;
+		}
+	}
+	.wrap-logo{
+		width: 80%;
+		b{
+	    	display: none;
+		}
+		strong{
+			display: none;
+		}
+	}
+	.top-menu{
+		p.username{
+			display: none;
+		}
 	}
 }

@@ -40,7 +40,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token) 
     {
-    	
+        
         $roles = $token->getRoles();
         $rolesTab = array_map(function($role){ 
         	return $role->getRole(); 

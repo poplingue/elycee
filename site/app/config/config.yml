@@ -80,3 +80,8 @@ swiftmailer:
     username:   p.gaudetchah
     password:   gmail7614#
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: UserBundle\Entity\User 

@@ -5,7 +5,7 @@
 {% block body %}
 <div class="row mtbox">
 	<ul class="wrap-list">
-	{% for article in articles %}
+	{% for article in articleHome %}
 		{% if article.status == 1 and article.date > date('-40days') %}
 			<div class="col-md-6 col-sm-6 mb">
 				<li class="article white-panel pn donut-chart">

@@ -4,9 +4,9 @@
 {% block class %}public-window search-module{% endblock %}
 {% block body %}
 	<form class="form-validate form-search" data-ajax="true" method="POST" action="" novalidate="novalidate">
-		<input type="text" id="search" name="search" required class="form-control" placeholder="" data-error="search">
+		<input type="text" id="search" name="search" required class="form-control" placeholder="rechercher" data-error="search">
 		<br>
-		<input class="btn btn-theme btn-block" type="submit" value="rechercher">
+		<button type="submit" class="btn btn-theme btn-block"  id="_submit" name="_submit" ><i class="fa fa-search"></i></button>
 		<hr>
 	</form>
 	<ul class="wrap-list"></ul>

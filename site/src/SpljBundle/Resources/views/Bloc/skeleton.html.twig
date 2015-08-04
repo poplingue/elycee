@@ -22,7 +22,7 @@
     <body class="{% block class %}{% endblock %}">
         <header class="header black-bg">
             <div class="sidebar-toggle-box">
-                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                <div class="fa fa-bars tooltips" data-placement="right" data-original-title="menu"></div>
             </div>
             <div class="wrap-logo">
                 <a href="{{ url('splj.window.index')}}" class="logo">
@@ -33,13 +33,13 @@
             <div class="top-menu">
                 <ul class="nav pull-right top-menu">
                 {% if is_granted('ROLE_STUDENT') or is_granted('ROLE_TEACHER') %}
-                    <li><a class="btn-square" href="{{ url('redirect.after.logout') }}"><i class="fa fa-sign-out"></i></a></li>
+                    <li><a class="btn-square " href="{{  path('fos_user_security_logout')  }}"><i class="fa fa-sign-out tooltips" data-placement="left" data-original-title="déconnexion"></i></a></li>
                     <li><p class="username">Bonjour {{ app.session.get('user').username }} !</p></li>
                     {% if app.request.attributes.get('_route') starts with 'splj.window' %}
-                        <li><a class="btn-square" href="{{ url('splj.stats') }}"><i class="fa fa-hand-o-right"></i></a></li>
+                        <li><a class="btn-square" href="{{ url('splj.stats') }}"><i class="fa fa-hand-o-right tooltips" data-placement="left" data-original-title="dashboard"></i></a></li>
                     {% endif %}
                 {% else %}
-                    <li><a class="btn-square" href="{{ url('user.security.login')}}"><i class="fa fa-sign-in"></i></a></li>
+                    <li><a class="btn-square" href="{{ path('fos_user_security_login') }}"><i class="fa fa-sign-in tooltips" data-placement="left" data-original-title="connexion"></i></a></li>
                 {% endif %}
                 {% block link %}{% endblock %}
                 </ul>
@@ -65,7 +65,7 @@
                     </div>
                     {%  if app.request.attributes.get('_route') starts with 'splj.window' %}
                     <div class="col-lg-3 ds">
-                       {% include ('SpljBundle:Bloc:right-col.html.twig') %}
+                        {% include ('SpljBundle:Bloc:right-col.html.twig') %}
                     </div>
                     {% endif %}
                 </div>

@@ -1,0 +1,14 @@
+{%extends "SpljBundle:Bloc:skeleton.html.twig"%}
+{% block title %}Login{% endblock %}
+{% block class %}login{% endblock %}
+{% block body %}
+<div id="login-page">
+	<div class="container">
+		{% block fos_user_content %}
+		{% endblock fos_user_content %}
+		{% if error %}
+			<p class="centered">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}
