@@ -48,7 +48,7 @@ class DashboardController extends Controller
 
         // scores of students
         $scores = null;
-        if($user->getProfil() == 2){
+        if($this->get('security.context')->isGranted('ROLE_STUDENT')){
             $qb = $this->getDoctrine()->getRepository('SpljBundle:Score')->createQueryBuilder('s');
             $qb->select(array('s'))
                 ->where('s.userId = :userId')

@@ -51,9 +51,9 @@ class WindowController extends Controller
         }
         
         $this->articlesInSession($request);
-        return array(
-            'articles' => $article
-        );
+        // return array(
+        //     'articles' => $article
+        // );
     }
 
     /**

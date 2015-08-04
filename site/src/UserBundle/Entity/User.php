@@ -9,7 +9,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * User
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(
+ *      repositoryClass="UserRepository")
  */
 class User implements UserInterface
 {
@@ -42,13 +43,6 @@ class User implements UserInterface
      * @ORM\Column(name="salt", type="string", length=255)
      */
     private $salt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="profil", type="integer")
-     */
-    private $profil;
 
     /**
      * @var array
@@ -137,29 +131,6 @@ class User implements UserInterface
     public function getSalt()
     {
         return $this->salt;
-    }
-
-    /**
-     * Get profil
-     *
-     * @return integer 
-     */
-    public function getProfil()
-    {
-        return $this->profil;
-    }
-
-    /**
-     * Set profil
-     *
-     * @param integer $profil
-     * @return User 
-     */
-    public function setProfil($profil)
-    {
-        $this->profil = $profil;
-
-        return $this;
     }
 
     /**

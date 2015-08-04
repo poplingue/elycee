@@ -55,15 +55,13 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface
             ->setParameter('username', $token->getUsername());
         $query = $qb->getQuery();
         $user = $query->getResult();
-        print_r($token->getUsername());
         
         $request->getSession()->set('user',$user[0]);
 
         if (in_array('ROLE_TEACHER', $rolesTab, true)){
-
-            $redirection = new RedirectResponse($this->router->generate('splj.dashboard.list-mcq'));
-        }else if(in_array('ROLE_STUDENT', $rolesTab, true)){
-        	
+            $redirection = new RedirectResponse($this->router->generate('splj.dashTeacher.list-article'));
+        }
+        else if(in_array('ROLE_STUDENT', $rolesTab, true)){
             $redirection = new RedirectResponse($this->router->generate('splj.dashboard.list-mcq'));
         }
 	    return $redirection;

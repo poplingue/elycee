@@ -75,7 +75,6 @@ class ArticleController extends Controller
     public function createAction(Request $request)
     {
         $doctrine = $this->getDoctrine();
-        // $em = $doctrine->getManager();
 
         $entity = new Article();
         $type = new ArticleType();

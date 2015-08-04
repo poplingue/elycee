@@ -179,10 +179,9 @@ textarea.error {
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 1;
   -webkit-transition: opacity 0.6s ease-out 0s;
   transition: opacity 0.6s ease-out 0s; }
-  /* line 128, src/scss/_common.scss */
+  /* line 127, src/scss/_common.scss */
   .loading i {
     font-size: 50px;
     color: #666666;
@@ -190,11 +189,12 @@ textarea.error {
     top: 50%;
     left: 50%;
     margin: -25px 0 0 -25px; }
-  /* line 136, src/scss/_common.scss */
+  /* line 135, src/scss/_common.scss */
   .loading.on {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100);
     opacity: 1;
+    z-index: 1;
     -webkit-transition: opacity 0.6s ease-out 0s;
     transition: opacity 0.6s ease-out 0s; }
   /* line 141, src/scss/_common.scss */
@@ -202,6 +202,7 @@ textarea.error {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity=0);
     opacity: 0;
+    z-index: 0;
     -webkit-transition: opacity 0.6s ease-out 0s;
     transition: opacity 0.6s ease-out 0s; }
 

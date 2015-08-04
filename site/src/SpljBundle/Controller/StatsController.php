@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SpljBundle\Entity\Stats;
 
 use Symfony\Component\HttpFoundation\Request as Request;
+use Doctrine\ORM\EntityRepository;
+use UserBundle\Entity\User;
 
 /**
  * @Route("/dashboard")
@@ -25,7 +27,10 @@ class StatsController extends Controller
     * @Template("SpljBundle:Dashboard:stats.html.twig")
     */
     public function statsAction(Request $request)
-    {
+    {   
+        $student = 'ROLE_STUDENT';
+        $teacher = 'ROLE_TEACHER';
+
     	$stats = new Stats();
 
     	$doctrine = $this->getDoctrine();
@@ -47,63 +52,63 @@ class StatsController extends Controller
         $stats->setTotalQuestion($questionCount[1]);
 
         // total étudiants
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.profil = 2');
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.roles LIKE :student')->setParameter('student', '%' .$student. '%');
         $studentCount = $query->getSingleResult();
         $stats->setTotalStudent($studentCount[1]);
 
         // total profs
-        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.profil = 1');
+        $query = $em->createQuery('SELECT COUNT(u.id) FROM UserBundle:User u WHERE u.roles LIKE :teacher')->setParameter('teacher', '%' .$teacher. '%');
         $teacherCount = $query->getSingleResult();
         $stats->setTotalTeacher($teacherCount[1]);
 
         // Tableau profs
         $query = $em->createQuery(
-	        'SELECT u.username, 
-				(SELECT count(m.id)
-					FROM SpljBundle:Mcq m
-					WHERE m.userId = u.id
-					AND m.status != 2
-					AND u.profil = 1
-					GROUP BY u.username) AS mcqs, 
-				(SELECT count(a.id)
-					FROM SpljBundle:Article a
-					WHERE a.userId = u.id
+            'SELECT u.username, 
+                (SELECT count(m.id)
+                    FROM SpljBundle:Mcq m
+                    WHERE m.userId = u.id
+                    AND m.status != 2
+                    AND u.roles LIKE :teacher
+                    GROUP BY u.username) AS mcqs, 
+                (SELECT count(a.id)
+                    FROM SpljBundle:Article a
+                    WHERE a.userId = u.id
                     AND a.status != 2
-                    AND u.profil = 1
+                    AND u.roles LIKE :teacher
                     GROUP BY u.username) AS articles,
                 (SELECT count(q.id)
                     FROM SpljBundle:question q, SpljBundle:mcq x
                     WHERE x.userId = u.id
-					AND x.status != 2
-					AND u.profil = 1
-					AND x.id = q.idQcm
-					GROUP BY u.username) AS questions 
-			FROM UserBundle:User u
-			WHERE u.profil = 1');
+                    AND x.status != 2
+                    AND u.roles LIKE :teacher
+                    AND x.id = q.idQcm
+                    GROUP BY u.username) AS questions 
+            FROM UserBundle:User u
+            WHERE u.roles LIKE :teacher')->setParameter('teacher', '%' .$teacher. '%');;
 
         $teacherStats = $query->getResult();
         $stats->setTeacherArray($teacherStats);
        
         // tableau eleves
         $query = $em->createQuery(
-        	'SELECT u.username,
+            'SELECT u.username,
         		(SELECT count(s.id)
 	        		FROM SpljBundle:Score s
 	        		WHERE s.userId = u.id
-	        		AND u.profil = 2
+	        		AND u.roles LIKE :student
 	        		GROUP BY u.username) AS mcqs,
        			(SELECT SUM(c.score)
        				FROM SpljBundle:Score c
        				WHERE c.userId = u.id
-	        		AND u.profil = 2
+	        		AND u.roles LIKE :student
 	        		GROUP BY u.username) AS score,
         		(SELECT SUM(x.scoreMax)
        				FROM SpljBundle:Score x
        				WHERE x.userId = u.id
-	        		AND u.profil = 2
+	        		AND u.roles LIKE :student
 	        		GROUP BY u.username) AS scoreMax
         	FROM UserBundle:User u
-        	WHERE u.profil = 2');
+        	WHERE u.roles LIKE :student')->setParameter('student', '%' .$student. '%');
 
         $studentStats = $query->getResult();
         $stats->setStudentArray($studentStats);
@@ -178,7 +183,6 @@ class StatsController extends Controller
         }
         $coefScore = ceil($maxScore /5);
         $stats->setCoefScore($coefScore);
-
       	return array(
       		'stats' => $stats
       	);
