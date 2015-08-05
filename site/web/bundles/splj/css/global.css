@@ -2538,24 +2538,27 @@ label {
 .public-window.home .comments, .public-window.search-module .comments {
   text-align: right;
   padding: 4px; }
-/* line 63, src/scss/page/_public.scss */
+/* line 60, src/scss/page/_public.scss */
+.public-window.home .wrap-img, .public-window.search-module .wrap-img {
+  padding: 10px 0; }
+/* line 66, src/scss/page/_public.scss */
 .public-window.estate #main-content .wrap-img {
   max-width: 720px;
   margin: 0 auto; }
-  /* line 66, src/scss/page/_public.scss */
+  /* line 69, src/scss/page/_public.scss */
   .public-window.estate #main-content .wrap-img img {
     max-width: 720px;
     padding: 15px 20px; }
-/* line 72, src/scss/page/_public.scss */
+/* line 75, src/scss/page/_public.scss */
 .public-window.estate .detail span {
   text-transform: italic; }
-/* line 77, src/scss/page/_public.scss */
+/* line 80, src/scss/page/_public.scss */
 .public-window.search-module form {
   max-width: 40%;
   margin: 0 auto; }
 
 @media screen and (max-width: 1024px) {
-  /* line 86, src/scss/page/_public.scss */
+  /* line 89, src/scss/page/_public.scss */
   .public-window.contact .centered, .public-window.contact .form-contact {
     display: block;
     width: 100%; } }
