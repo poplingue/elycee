@@ -18,13 +18,13 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new SpljBundle\SpljBundle(),
+            new UserBundle\UserBundle(),
+            new StatsBundle\StatsBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new JMS\SerializerBundle\JMSSerializerBundle(),
-            new UserBundle\UserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new StatsBundle\StatsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
